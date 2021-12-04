@@ -4,7 +4,6 @@
   "description": "Package for Left over app Web dev 1st semester by Kasia, Ola and Piotr",
   "main": "index.js",
   "scripts": {
-    "test": "test",
     "build-tailwind": "tailwindcss build -i ./src/styles/tailwind.scss -o ./public/styles/tailwind_output.css",
     "build": "NODE_ENV=production npm run dev"
   },

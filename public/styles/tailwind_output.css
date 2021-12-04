@@ -32268,10 +32268,6 @@ h1 {
   content: none;
 }
 
-h2 {
-  text-align: center;
-}
-
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;
