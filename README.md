@@ -1,3 +1,5 @@
+![alt text](https://mir-s3-cdn-cf.behance.net/project_modules/disp/09f37545677313.5838e5ef4c6de.gif)
+
 # Left-over-spa
 
 Project of Kasia, Ola and Piotr
