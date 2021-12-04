@@ -1,0 +1,14 @@
+@import "tailwindcss/base";
+
+@import "tailwindcss/components";
+
+@import "tailwindcss/utilities";
+
+@layer base {
+  .container {
+    @apply mx-auto 2xl:max-w-7xl;
+  }
+  h1 {
+    @apply text-base sm:text-lg;
+  }
+}

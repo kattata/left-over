@@ -1,0 +1,32 @@
+{
+  "name": "left-over-spa",
+  "version": "1.0.0",
+  "description": "Package for Left over app Web dev 1st semester by Kasia, Ola and Piotr",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "build-tailwind": "tailwindcss build -i ./src/styles/tailwind.scss -o ./public/styles/tailwind_output.css",
+    "build": "NODE_ENV=production npm run dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Piotr20/Left-over-spa.git"
+  },
+  "author": "Kasia Laniecka, Aleksandra Wytulany, Piotr Pospiech",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Piotr20/Left-over-spa/issues"
+  },
+  "homepage": "https://github.com/Piotr20/Left-over-spa#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.4.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-sass": "^5.0.0",
+    "postcss-cli": "^9.0.2",
+    "sass": "^1.44.0",
+    "tailwindcss": "^2.2.19"
+  }
+}
