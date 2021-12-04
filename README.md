@@ -17,7 +17,7 @@ npm i
 You might also need to install Gulp globaly
 
 ```bash
-npm i gulp -g
+npm i gulp-cli -g
 ```
 
 ## TailwindCSS
