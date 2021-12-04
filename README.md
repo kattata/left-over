@@ -22,7 +22,7 @@ npm i gulp -g
 
 ## TailwindCSS
 
-If you have made some changes in tailwind.js file before being able to use them please run this command
+If you have made some changes in tailwind.config.js file before being able to use them please run this command
 
 ```bash
 npm run build-tailwind

@@ -616,7 +616,7 @@ h1 {
   line-height: 1.5rem;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 572px) {
   h1 {
     font-size: 1.125rem;
     line-height: 1.75rem;
@@ -627,9 +627,9 @@ h1 {
   width: 100%;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 572px) {
   .container {
-    max-width: 640px;
+    max-width: 572px;
   }
 }
 
@@ -6967,7 +6967,7 @@ h1 {
 }
 
 .max-w-screen-sm {
-  max-width: 640px;
+  max-width: 572px;
 }
 
 .max-w-screen-md {
@@ -32268,14 +32268,14 @@ h1 {
   content: none;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 572px) {
   .sm\:container {
     width: 100%;
   }
 
-  @media (min-width: 640px) {
+  @media (min-width: 572px) {
     .sm\:container {
-      max-width: 640px;
+      max-width: 572px;
     }
   }
 
@@ -38613,7 +38613,7 @@ h1 {
   }
 
   .sm\:max-w-screen-sm {
-    max-width: 640px;
+    max-width: 572px;
   }
 
   .sm\:max-w-screen-md {
@@ -63501,9 +63501,9 @@ h1 {
     width: 100%;
   }
 
-  @media (min-width: 640px) {
+  @media (min-width: 572px) {
     .md\:container {
-      max-width: 640px;
+      max-width: 572px;
     }
   }
 
@@ -69841,7 +69841,7 @@ h1 {
   }
 
   .md\:max-w-screen-sm {
-    max-width: 640px;
+    max-width: 572px;
   }
 
   .md\:max-w-screen-md {
@@ -94729,9 +94729,9 @@ h1 {
     width: 100%;
   }
 
-  @media (min-width: 640px) {
+  @media (min-width: 572px) {
     .lg\:container {
-      max-width: 640px;
+      max-width: 572px;
     }
   }
 
@@ -101069,7 +101069,7 @@ h1 {
   }
 
   .lg\:max-w-screen-sm {
-    max-width: 640px;
+    max-width: 572px;
   }
 
   .lg\:max-w-screen-md {
@@ -125957,9 +125957,9 @@ h1 {
     width: 100%;
   }
 
-  @media (min-width: 640px) {
+  @media (min-width: 572px) {
     .xl\:container {
-      max-width: 640px;
+      max-width: 572px;
     }
   }
 
@@ -132297,7 +132297,7 @@ h1 {
   }
 
   .xl\:max-w-screen-sm {
-    max-width: 640px;
+    max-width: 572px;
   }
 
   .xl\:max-w-screen-md {
@@ -157185,9 +157185,9 @@ h1 {
     width: 100%;
   }
 
-  @media (min-width: 640px) {
+  @media (min-width: 572px) {
     .\32xl\:container {
-      max-width: 640px;
+      max-width: 572px;
     }
   }
 
@@ -163525,7 +163525,7 @@ h1 {
   }
 
   .\32xl\:max-w-screen-sm {
-    max-width: 640px;
+    max-width: 572px;
   }
 
   .\32xl\:max-w-screen-md {
