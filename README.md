@@ -14,13 +14,15 @@ Before you use the code run
 npm i
 ```
 
-You might also need to install Gulp globaly
+You might also need to install gulp-cli globaly
 
 ```bash
 npm i gulp-cli -g
 ```
 
 ## TailwindCSS
+
+To make your life easier add this extension to your VSC [TailwindCSS intelisense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
 
 If you have made some changes in tailwind.config.js file before being able to use them please run this command
 
