@@ -6,9 +6,46 @@
 
 @layer base {
   .container {
-    @apply mx-auto 2xl:max-w-7xl;
+    @apply mx-auto;
   }
   h1 {
-    @apply text-base sm:text-lg;
+    @apply font-abril text-4xl text-light-black;
+  }
+  h2 {
+    @apply font-abril text-3xl text-light-black;
+  }
+  h3 {
+    @apply font-jesefin-sans text-2xl text-light-black;
+  }
+  h4 {
+    @apply font-jesefin-sans text-xl text-light-black;
+  }
+  p {
+    @apply font-jesefin-sans text-base text-light-black;
+  }
+
+  .btn-primary {
+    @apply font-jesefin-sans text-base bg-green-custom text-light-grey py-3 px-6 rounded-3xl uppercase font-bold;
+  }
+  .btn-text-green {
+    @apply font-jesefin-sans text-base bg-transparent text-green-custom font-bold uppercase;
+  }
+  .btn-text-black {
+    @apply font-jesefin-sans text-base bg-transparent text-light-black font-bold;
+  }
+  .btn-secondary {
+    @apply font-jesefin-sans text-sm bg-light-grey rounded-3xl text-light-black border-2 border-light-black py-1.5 px-4 font-bold;
+  }
+  .btn-tertiary {
+    @apply font-jesefin-sans text-sm bg-light-black text-light-grey rounded-3xl  border-2 border-light-black py-1.5 px-4 font-bold;
+  }
+  .form-label {
+    @apply font-jesefin-sans text-sm font-semibold text-black-custom pb-1 pt-4;
+  }
+  .form-input {
+    @apply outline-none font-jesefin-sans text-base text-light-black py-2 px-4 border-2 border-light-black rounded-3xl;
+  }
+  .food-category-badge {
+    @apply font-abril text-xs text-light-black py-1 px-2;
   }
 }
