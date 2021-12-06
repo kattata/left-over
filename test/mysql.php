@@ -7,10 +7,10 @@ set_error_handler(function() {  });
 class MySQL {
     public $error = null;
 
-    private $server = "mysql44.unoeuro.com"; // Change to domain name, e.g. www.iloveunicorns.com
-    private $username = "kattata_online"; // Change to the admins username of the server
-    private $password = "EtFdprzAnb2a"; // Change to the admins password of the server
-    private $database = "kattata_online_db"; // Change to the name of the database you would like to connect to on the server
+    private $server = "mysql108.unoeuro.com"; // Change to domain name, e.g. www.iloveunicorns.com
+    private $username = "piotrpospiech_com"; // Change to the admins username of the server
+    private $password = "tF95dyp6Egzw"; // Change to the admins password of the server
+    private $database =  "piotrpospiech_com_db_left_over"; // Change to the name of the database you would like to connect to on the server
 
     private $mySQL;
     private $isConnected = false;

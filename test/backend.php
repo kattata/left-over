@@ -7,18 +7,23 @@ $db = new MySQL();
 $db->Connect();
 
 
-if ($_GET['action'] == 'getUsers') {
-    global $db;
-    $results = $db->Query('SELECT * FROM users');
-    foreach($results as $result) {
-        echo $result['username'];
-    }
+// if ($_GET['action'] == 'getUsers') {
+//     global $db;
+//     $results = $db->Query('SELECT * FROM users');
+//     foreach($results as $result) {
+//         echo $result['username'];
+//     }
     
-} else if ($_GET['action'] == 'createUser') {
-    $newUser = json_decode(file_get_contents("php://input"));
-    $username = $newUser->username;
-    $email = $newUser->email;
-    global $db;
-    $results = $db->Query("INSERT INTO users (username, email) VALUES ('$username', '$email')");
-    echo "User created";
+// } else if ($_GET['action'] == 'createUser') {
+//     $newUser = json_decode(file_get_contents("php://input"));
+//     $username = $newUser->username;
+//     $email = $newUser->email;
+//     global $db;
+//     $results = $db->Query("INSERT INTO users (username, email) VALUES ('$username', '$email')");
+//     echo "User created";
+// }
+
+if ($_GET['test2'] == 'Create user') {
+    $results = $db->Query("INSERT INTO users (name, email) VALUES ('form', 'works')");
+    header("location: ../index.html");
 }
