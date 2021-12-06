@@ -22,8 +22,13 @@ $db->Connect();
 //     $results = $db->Query("INSERT INTO users (username, email) VALUES ('$username', '$email')");
 //     echo "User created";
 // }
+$results1 = $db->Query("SELECT * FROM Categories");
+var_dump($results1);
+$fp = fopen('results.json', 'w');
+fwrite($fp, json_encode($results1, false));
+fclose($fp);
 
 if ($_GET['test2'] == 'Create user') {
-    $results = $db->Query("INSERT INTO users (name, email) VALUES ('form', 'works')");
-    header("location: ../index.html");
+    $results2 = $db->Query("INSERT INTO users (name, email) VALUES ('form', 'works')");
+    // header("location: ../index.html");
 }
