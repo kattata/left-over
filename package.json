@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build-tailwind": "tailwindcss build -i ./src/styles/tailwind.scss -o ./public/styles/tailwind_output.css",
+    "gulp-watch": "gulp",
     "build": "NODE_ENV=production npm run dev"
   },
   "repository": {
