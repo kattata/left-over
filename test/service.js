@@ -1,8 +1,8 @@
 const users = [];
-const baseUrl = "http://localhost:3000/test/backend.php";
+const baseUrl = "../test/results.json";
 
 async function getUsers() {
-  const response = await fetch(baseUrl + "?action=getUsers");
+  const response = await fetch(baseUrl);
   const users = await response.json();
   console.log(users);
 }
@@ -20,3 +20,16 @@ async function createUser() {
   const result = response.json();
   console.log(result);
 }
+
+// const response = fetch("../test/service.js");
+// // const users2 = response.json();
+// console.log("users array", response);
+async () => {
+  await getUsers();
+};
+let fetchData = fetch("../test/results.json")
+  .then((res) => res.json())
+  .then((data) => {
+    return data;
+    console.log(data);
+  });

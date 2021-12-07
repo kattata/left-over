@@ -23,18 +23,23 @@ $db->Connect();
 //     echo "User created";
 // }
 $results1 = $db->Query("SELECT * FROM users");
-$array = array(
-    'name' => 'text'
-);
+$usersJsonArray = array();
+
 
 foreach ($results1 as $result) {
     echo $result["username"];
     echo "<br/>";
-    array_push($array['name'] = $result['username']);
+    $usersArray = array(
+        "username" => $result["username"],
+        "email" => $result["email"],
+        "password" => $result["password"]
+    );
+    array_push($usersJsonArray, $usersArray);
 }
-var_dump($array);
+
+var_dump($usersJsonArray);
 $fp = fopen('results.json', 'w');
-fwrite($fp, json_encode($array, JSON_FORCE_OBJECT));
+fwrite($fp, json_encode($usersJsonArray, JSON_FORCE_OBJECT));
 fclose($fp);
 
 if ($_GET['test2'] == 'Create user') {

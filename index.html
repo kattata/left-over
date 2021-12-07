@@ -14,13 +14,14 @@
   </head>
   <body class="bg-light-grey">
     <!-- NAVIGATION -->
-    <header class="bottom-0 left-0 w-full fixed">
+    <header class="bottom-0 left-0 w-full fixed z-30">
       <nav class="bg-light-black relative flex rounded-t-3xl flex-row justify-between items-center p-4">
         <a
           class="
             rounded-full
-            border-light-black border-solid border
+            border-light-black border-solid
             bg-light-grey
+            border-2
             absolute
             top-0
             p-4
@@ -51,13 +52,200 @@
       </nav>
     </header>
     <!-- ADD POST PAge -->
-    <section id="createPost" class="page">
+    <section id="createPost" class="page container">
       <h1>Add post</h1>
+      <form class="flex w-full flex-col" action="backend.php" method="POST">
+        <label class="form-label" for="product_name">Product name</label>
+        <input class="form-input" type="text" name="product_name" placeholder="Product name" />
+        <div class="flex w-full">
+          <div class="w-1/2 pr-1 flex flex-col">
+            <label class="form-label" for="product_amount">Amount</label>
+            <input class="form-input w-full" type="number" name="product_amount" placeholder="Amount" />
+          </div>
+          <div class="w-1/2 pl-1 flex flex-col">
+            <label class="form-label" for="product_price">Amount</label>
+            <input class="form-input w-full" type="number" name="product_price" placeholder="Price" />
+          </div>
+        </div>
+        <label class="form-label" for="product_expiration-date">Expires in</label>
+        <input class="form-input w-full" type="date" name="product_expiration-date" placeholder="Expires in" />
+        <label class="form-label" for="product_categories">Category</label>
+        <div>
+          <input
+            onclick="filterActive(event)"
+            class="btn-secondary mb-2 mr-1 transition-colors duration-200"
+            type="button"
+            name="product_categort_dish"
+            value="Dish"
+          />
+          <input
+            onclick="filterActive(event)"
+            class="btn-secondary mb-2 mr-1 transition-colors duration-200"
+            type="button"
+            name="product_categort_fruits_vegetables"
+            value="Fruits & Vegetables"
+          />
+          <input
+            onclick="filterActive(event)"
+            class="btn-secondary mb-2 mr-1 transition-colors duration-200"
+            type="button"
+            name="product_categort_diary"
+            value="Dairy"
+          />
+          <input
+            onclick="filterActive(event)"
+            class="btn-secondary mb-2 mr-1 transition-colors duration-200"
+            type="button"
+            name="product_categort_bread_pastery"
+            value="Bread & Pastry"
+          />
+          <input
+            onclick="filterActive(event)"
+            class="btn-secondary mb-2 mr-1 transition-colors duration-200"
+            type="button"
+            name="product_categort_dessert"
+            value="Dessert"
+          />
+        </div>
+        <label class="form-label pt-2" for="product_diet">Diet</label>
+        <div>
+          <input
+            onclick="filterActive(event)"
+            class="btn-secondary mb-2 mr-1 transition-colors duration-200"
+            type="button"
+            name="product_categort_egetarian"
+            value="Vegetarian"
+          />
+          <input
+            onclick="filterActive(event)"
+            class="btn-secondary mb-2 mr-1 transition-colors duration-200"
+            type="button"
+            name="product_categort_vegan"
+            value="Vegan"
+          />
+          <input
+            onclick="filterActive(event)"
+            class="btn-secondary mb-2 mr-1 transition-colors duration-200"
+            type="button"
+            name="product_categort_gluten_free"
+            value="Gluten-free"
+          />
+          <input
+            onclick="filterActive(event)"
+            class="btn-secondary mb-2 mr-1 transition-colors duration-200"
+            type="button"
+            name="product_categort_diary_free"
+            value="Dairy-free"
+          />
+        </div>
+        <label class="form-label pt-2" for="product_collection_time">Collection day</label>
+        <!-- <input type="button" onclick="showTimeSlots()" class="btn-text-green outline-none self-start" value="+ Add time" /> -->
+        <!-- <div class="time-slots hidden flex-col justify-end fixed z-40 left-0 top-0 w-full h-screen bg-light-black bg-opacity-30">
+          <div class="slot-wrapper container bg-light-green-custom absolute -bottom-full rounded-tl-3xl rounded-tr-3xl flex-col flex">
+            <label class="form-label" for="product_collection_time">Choose day</label>
+            <input
+              onclick="filterActive()"
+              class="btn-secondary mb-2 mr-1 w-full transition-colors duration-200"
+              type="date"
+              name="product_time_slot_date"
+              value="Date"
+            />
+            <label class="form-label" for="product_collection_time">Choose day</label>
+            <div>
+              <input
+                onclick="filterActive(event)"
+                class="btn-secondary mb-2 mr-1 transition-colors duration-200"
+                type="button"
+                name="product_time_slot_hour"
+                value="Date"
+              />
+            </div>
+          </div>
+        </div>
+          -->
+        <input class="form-input w-1/2" type="date" name="product_expiration-date" />
+        <label class="form-label pt-2" for="product_collection_time">Time slots</label>
+        <div>
+          <input
+            onclick="filterActive(event)"
+            class="btn-secondary mb-2 mr-1 transition-colors duration-200"
+            type="button"
+            name="product_collection_time_8_10"
+            value="8:00 - 10:00"
+          />
+          <input
+            onclick="filterActive(event)"
+            class="btn-secondary mb-2 mr-1 transition-colors duration-200"
+            type="button"
+            name="product_collection_time_10_12"
+            value="10:00 - 12:00"
+          />
+          <input
+            onclick="filterActive(event)"
+            class="btn-secondary mb-2 mr-1 transition-colors duration-200"
+            type="button"
+            name="product_collection_time_12_14"
+            value="12:00 - 14:00"
+          />
+          <input
+            onclick="filterActive(event)"
+            class="btn-secondary mb-2 mr-1 transition-colors duration-200"
+            type="button"
+            name="product_collection_time_14_16"
+            value="14:00 - 16:00"
+          />
+          <input
+            onclick="filterActive(event)"
+            class="btn-secondary mb-2 mr-1 transition-colors duration-200"
+            type="button"
+            name="product_collection_time_16_18"
+            value="16:00 - 18:00"
+          />
+          <input
+            onclick="filterActive(event)"
+            class="btn-secondary mb-2 mr-1 transition-colors duration-200"
+            type="button"
+            name="product_collection_time_18_20"
+            value="18:00 - 20:00"
+          />
+        </div>
+        <label class="form-label" for="product_image">Upload image</label>
+        <input type="file" name="image" accept="image/*" capture="environment" />
+        <input class="btn-primary self-center mt-6" type="submit" value="Create Post" />
+      </form>
     </section>
 
     <!-- BROWSE PAGE -->
-    <section id="browse" class="page">
+    <section id="browse" class="page container">
       <h1 class="">Browse</h1>
+      <div class="filter-wrapper flex justify-between">
+        <input type="text" name="search-results" class="form-input w-full mr-2" placeholder="Search" />
+        <button class="btn-tertiary rounded-full h-10 w-11 px-2 flex justify-center items-center">
+          <img src="./src/media/icons/filter-icon.svg" class="h-5" alt="" />
+        </button>
+      </div>
+      <div class="posts-feed-container mt-4 w-full">
+        <article class="post-box border-2 mb-4 border-light-black rounded-3xl">
+          <img src="./src//media//posted/example-food-image.png" alt="image of sold food" />
+          <div class="post-content-wrapper mx-3">
+            <div class="flex justify-between mt-2">
+              <span class="food-category-badge bg-light-green-custom">Fruit & Vegetables</span>
+              <div class="flex">
+                <img src="./src/media/posted/avatar-test.png" alt="" />
+                <p>Piotr Pospiech</p>
+              </div>
+            </div>
+            <div class="flex justify-between font-bold mt-4">
+              <p>Banana</p>
+              <p>Dkk 5</p>
+            </div>
+            <div class="flex justify-between mt-1 mb-4 opacity-50 text-xs">
+              <p>Amount: 7</p>
+              <p>Expires in: 2 days</p>
+            </div>
+          </div>
+        </article>
+      </div>
       <!-- <h1 class="">H1 tag</h1>
       <h2 class="">H2 tag</h2>
       <h3 class="">H3 tag</h3>
@@ -91,5 +279,6 @@
     </section>
 
     <script src="services/router.js"></script>
+    <script src="./src/frontend/main.js"></script>
   </body>
 </html>

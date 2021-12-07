@@ -1,1 +1,10 @@
-null
+{
+  "0": { "username": "ola", "email": "ola@gmail.com", "password": "$2y$10$4cVUnGsMWIH3Hl1aEuxyje7aZANViZzcHzhlvd8u338z7yJ3IYpOq" },
+  "1": { "username": "ja", "email": "ja", "password": "$2y$10$hSCH/oDycP0wCyoG7YlmVeANRs8eBFaltBTSVvkYbPKcBsY4UtJzS" },
+  "2": { "username": "kasia", "email": "kasia", "password": "$2y$10$0fjRdiLb6veT3RlxDx5VUeDu.MYCAc5Uz1HW6RkvFEVHB9xPu6a4y" },
+  "3": { "username": "mama", "email": "mama", "password": "$2y$10$kCUL/oAm3nejaz46F1WmXeQyfmDLfwF.5k8cs5ihb2SSKSPzQNQ2C" },
+  "4": { "username": "me", "email": "me", "password": "$2y$10$mVXSajz.INl/6QF1vygJDO0cM.vG9VY4pfERRAIVCqXpaYw58mm3i" },
+  "5": { "username": "you", "email": "you", "password": "$2y$10$n3T3hgPAhNNMaejRfLex5e.MfKS57IlztZVABC8DnhMzs3jyMtUmO" },
+  "6": { "username": "her", "email": "her", "password": "$2y$10$vLsRflM1VNdroUshwahvv.UEKhRqP2q2owC21cGnhafkwLPg/xlHK" },
+  "7": { "username": "him", "email": "him", "password": "$2y$10$R04tmux7dtvWCHgjtyLcNOdwNxK5VGewEsbKBImF9CTT80U1xTWOC" }
+}
