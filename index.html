@@ -5,35 +5,55 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Josefin+Sans:wght@400;600;700&display=swap"
-      rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Josefin+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./public/styles/tailwind_output.css" />
     <link rel="stylesheet" href="/public/styles/bundle.css" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
-  <body class=" bg-light-grey">
+  <body class="bg-light-grey">
+    <!-- NAVIGATION -->
+    <header class="bottom-0 left-0 w-full fixed">
+      <nav class="bg-light-black relative flex rounded-t-3xl flex-row justify-between items-center p-4">
+        <div
+          class="
+            rounded-full
+            border-light-black border-solid border
+            bg-light-grey
+            absolute
+            top-0
+            p-4
+            left-1/2
+            transform
+            -translate-x-1/2 -translate-y-1/2
+          "
+        >
+          <img src="./src/media/icons/create-post-icon.svg" alt="" class="h-8" />
+        </div>
+        <div class="flex">
+          <a class="font-jesefin-sans text-light-grey text-xs flex flex-col items-center" href="#/"
+            ><img src="./src/media/icons/browse-icon.svg" alt="" class="h-8 p-1" />Browse</a
+          >
+          <a class="font-jesefin-sans text-light-grey text-xs flex flex-col items-center ml-10 mr-6" href="#/blog"
+            ><img src="./src/media/icons/blog-icon.svg" alt="" class="h-8 p-1" />Blog</a
+          >
+        </div>
+        <!-- <span class=" w-20"></span> -->
+        <div class="flex flex-row">
+          <a class="font-jesefin-sans text-light-grey text-xs flex flex-col items-center ml-6 mr-6" href="#/shoppingList"
+            ><img src="./src/media/icons/shopping-list-icon.svg" alt="" class="h-8 p-1" />Shopping List</a
+          >
+          <a class="font-jesefin-sans text-light-grey text-xs flex flex-col items-center" href="#/profile"
+            ><img src="./src/media/icons/profile-icon.svg" alt="" class="h-8 p-1" />Profile</a
+          >
+        </div>
+      </nav>
+    </header>
 
-<!-- NAVIGATION -->
-    <nav class=" fixed bottom-0 left-0 w-full bg-light-black flex rounded-t-3xl flex-row justify-around items-center p-4">
-      <div class=" rounded-full border-light-black border-solid border bg-light-grey absolute bottom-2/4 p-4"><img src="./images/create-post-icon.svg" alt="" class=" h-8"></div>
-      <div class=" flex flex-row">
-      <a class=" font-jesefin-sans text-light-grey text-xs flex flex-col items-center" href="#/"><img src="./images/browse-icon.svg" alt="" class=" h-8 p-1">Browse</a>
-      <a class=" font-jesefin-sans text-light-grey text-xs flex flex-col items-center ml-10 mr-6" href="#/blog"><img src="./images/blog-icon.svg" alt="" class=" h-8 p-1">Blog</a>
-      </div>
-      <!-- <span class=" w-20"></span> -->
-      <div class=" flex flex-row">
-      <a class=" font-jesefin-sans text-light-grey text-xs flex flex-col items-center ml-6 mr-6" href="#/shoppingList"><img src="./images/shopping-list-icon.svg" alt="" class=" h-8 p-1">Shopping List</a>
-      <a class=" font-jesefin-sans text-light-grey text-xs flex flex-col items-center" href="#/profile"><img src="./images/profile-icon.svg" alt="" class=" h-8 p-1">Profile</a>
-      </div>
-    </nav>
-  
-<!-- BROWSE PAGE -->
+    <!-- BROWSE PAGE -->
     <section id="browse" class="page">
-      
-      <h1 class=" ">Browse</h1>
+      <h1 class="">Browse</h1>
       <h1 class="">H1 tag</h1>
       <h2 class="">H2 tag</h2>
       <h3 class="">H3 tag</h3>
@@ -50,20 +70,20 @@
       <span class="food-category-badge bg-red-300">Dish</span>
     </section>
 
-<!-- BLOG PAGE -->
-<section id="blog" class="page">
-  <h1>Blog</h1>
-</section>
+    <!-- BLOG PAGE -->
+    <section id="blog" class="page">
+      <h1>Blog</h1>
+    </section>
 
-<!-- SHOPPING LIST PAGE -->
-<section id="shoppingList" class="page">
-  <h1>Shopping List</h1>
-</section>
+    <!-- SHOPPING LIST PAGE -->
+    <section id="shoppingList" class="page">
+      <h1>Shopping List</h1>
+    </section>
 
-<!-- PROFILE PAGE -->
+    <!-- PROFILE PAGE -->
     <section id="profile" class="page">
-      <h1 class=" ">Profile</h1>
-      <input type="text">
+      <h1 class="">Profile</h1>
+      <input type="text" />
     </section>
 
     <script src="services/router.js"></script>
