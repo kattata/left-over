@@ -7,8 +7,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Josefin+Sans:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
+      rel="stylesheet">
     <link rel="stylesheet" href="./public/styles/tailwind_output.css" />
     <link rel="stylesheet" href="/public/styles/bundle.css" />
 
@@ -16,19 +15,51 @@
     <title>Document</title>
   </head>
   <body>
-    <h1 class="">H1 tag</h1>
-    <h2 class="">H2 tag</h2>
-    <h3 class="">H3 tag</h3>
-    <button class="btn-primary">Something</button>
-    <button class="btn-secondary">Something</button>
-    <button class="btn-tertiary">Something</button>
-    <button class="btn-text-green">Something</button>
-    <button class="btn-text-black">Something</button>
-    <br />
-    <label for="" class="form-label">Some title</label>
-    <br />
-    <input type="text" name="" class="form-input" placeholder="some text" />
-    <br />
-    <span class="food-category-badge bg-red-300">Dish</span>
+
+<!-- NAVIGATION -->
+    <nav class=" fixed bottom-0 left-0 w-full bg-light-black flex rounded-t-3xl h-20">
+      <a class="nav-link font-jesefin-sans text-light-grey text-" href="#/"><img src="./images/browse-icon.svg" alt="">Browse</a>
+      <a class="nav-link" href="#/blog"><img src="./images/blog-icon.svg" alt="">Blog</a>
+      <a class="nav-link" href="#/shoppingList"><img src="./images/shopping-list-icon.svg" alt="">Shopping List</a>
+      <a class="nav-link" href="#/profile"><img src="./images/profile-icon.svg" alt="">Profile</a>
+    </nav>
+  
+<!-- BROWSE PAGE -->
+    <section id="browse" class="page">
+      
+      <h1 class=" ">Browse</h1>
+      <h1 class="">H1 tag</h1>
+      <h2 class="">H2 tag</h2>
+      <h3 class="">H3 tag</h3>
+      <button class="btn-primary">Something</button>
+      <button class="btn-secondary">Something</button>
+      <button class="btn-tertiary">Something</button>
+      <button class="btn-text-green">Something</button>
+      <button class="btn-text-black">Something</button>
+      <br />
+      <label for="" class="form-label">Some title</label>
+      <br />
+      <input type="text" name="" class="form-input" placeholder="some text" />
+      <br />
+      <span class="food-category-badge bg-red-300">Dish</span>
+    </section>
+
+<!-- BLOG PAGE -->
+<section id="blog" class="page">
+  <h1>Blog</h1>
+</section>
+
+<!-- SHOPPING LIST PAGE -->
+<section id="shoppingList" class="page">
+  <h1>Shopping List</h1>
+</section>
+
+<!-- PROFILE PAGE -->
+    <section id="profile" class="page">
+      <h1 class=" ">Profile</h1>
+      <input type="text">
+    </section>
+
+    <script src="services/router.js"></script>
   </body>
 </html>

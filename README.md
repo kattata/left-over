@@ -37,5 +37,5 @@ When you want to add styles or update them use Gulp it's awesome and merges all 
 Also it will watch for changes in the scss files and compile, minifiy and bundle them at once.
 
 ```bash
-gulp
+npm run gulp-watch
 ```
