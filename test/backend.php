@@ -9,7 +9,7 @@ $db = new MySQL();
 $db->Connect();
 
 
-// VALIDATION
+// SIGNUP VALIDATION
 function passwordsMatch($password, $rptPassword) {
     if($password === $rptPassword) {
         return true;
@@ -39,10 +39,44 @@ function userIsUnique($email) {
         $databaseEmail = $result['email'];
     }
     if($databaseEmail == "") {
+        global $error;
+        $error = "";
         return true;
     } else {
         global $error;
         $error = "User already exists";
+        return false;
+    }
+}
+
+// LOGIN VALIDATION
+function verifyPassword($enteredPassword, $databasePassword) {
+    if(password_verify($enteredPassword, $databasePassword)) {
+        global $error;
+        $error = "";
+        return true;
+    } else {
+        global $error;
+        $error = "Wrong password. Try again";
+        return false;
+    }
+}
+
+function userExists($email) {
+    global $db;
+    $results = $db->Query("SELECT * FROM users WHERE email = '$email'");
+    $databaseEmail = "";
+    foreach($results as $result) {
+        global $databaseEmail;
+        $databaseEmail = $result['email'];
+    }
+    if($databaseEmail !== "") {
+        global $error;
+        $error = "";
+        return true;
+    } else {
+        global $error;
+        $error = "User doesn't exist";
         return false;
     }
 }
@@ -97,17 +131,23 @@ if ($_GET['action'] == 'getUsers') {
         $databasePassword = $result['password'];
     }
 
-    // if password from database and entered password match
-    if(password_verify($enteredPassword, $databasePassword)) {
-        $error = "Correct password. Welcome!";
+    // check is user exists
+    if(userExists($enteredEmail) && verifyPassword($enteredPassword, $databasePassword)) {
+        global $error;
+        $error = "";
         echo json_encode($error);
-        return $error;
     } else {
-        $error = "Wrong password. Try again";
+        global $error;
         echo json_encode($error);
-        return $error;
+        
     }
+    
+
+    // check if password from database and entered password match
+    // verifyPassword($enteredPassword, $databasePassword);
+
 }
+
 
 // $results1 = $db->Query("SELECT * FROM users");
 // $array = array(
