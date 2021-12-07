@@ -21,4 +21,5 @@ if ($_GET['action'] == 'getUsers') {
     global $db;
     $results = $db->Query("INSERT INTO users (username, email) VALUES ('$username', '$email')");
     echo "User created";
+
 }
