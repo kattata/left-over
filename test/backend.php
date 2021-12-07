@@ -1,5 +1,5 @@
 <?php
-    require('mysql.php');
+require('mysql.php');
 
 $jsonFile = file_get_contents("users.json");
 $users = json_decode($jsonFile);
@@ -13,7 +13,7 @@ $db->Connect();
 //     foreach($results as $result) {
 //         echo $result['username'];
 //     }
-    
+
 // } else if ($_GET['action'] == 'createUser') {
 //     $newUser = json_decode(file_get_contents("php://input"));
 //     $username = $newUser->username;
@@ -22,7 +22,7 @@ $db->Connect();
 //     $results = $db->Query("INSERT INTO users (username, email) VALUES ('$username', '$email')");
 //     echo "User created";
 // }
-$results1 = $db->Query("SELECT * FROM Categories");
+$results1 = $db->Query("SELECT * FROM users");
 var_dump($results1);
 $fp = fopen('results.json', 'w');
 fwrite($fp, json_encode($results1, false));
