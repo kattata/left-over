@@ -8,15 +8,15 @@
         <title>Test</title>
     </head>
     <body>
-      <form onsubmit="() => createUser()">
+      <form class="signup-form">
           <label>Name</label>
           <input type="text" placeholder="Enter name" class="name">
           <label>Email</label>
           <input type="text" placeholder="Enter email" class="email">
           <label>Password</label>
-          <input type="text" placeholder="Enter password" class="password">
+          <input type="password" placeholder="Enter password" class="password">
           <label>Repeat password</label>
-          <input type="text" placeholder="Repeat password" class="rpt-password">
+          <input type="password" placeholder="Repeat password" class="rpt-password">
           <button type="submit">Sign up</button>
       </form>
 
