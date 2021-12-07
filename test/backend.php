@@ -1,11 +1,7 @@
 <?php
-<<<<<<< HEAD
-    require('mysql.php');
 
 $error = "";
-=======
 require('mysql.php');
->>>>>>> main
 
 $jsonFile = file_get_contents("users.json");
 $users = json_decode($jsonFile);
@@ -13,7 +9,6 @@ $db = new MySQL();
 $db->Connect();
 
 
-<<<<<<< HEAD
 // VALIDATION
 function passwordsMatch($password, $rptPassword) {
     if($password === $rptPassword) {
@@ -76,10 +71,10 @@ if ($_GET['action'] == 'getUsers') {
     if(passwordsMatch($password, $rptPassword) && allFieldsFilled($username, $email, $password, $rptPassword) && userIsUnique($email)) {
         global $db;
         $results = $db->Query("INSERT INTO users (username, email, password) VALUES ('$username', '$email', '$hashPassword')");
-        echo $results;
+        echo json_encode($results);
     } else {
         global $error;
-        echo $error;
+        echo json_encode($error);
     }
 } else if ($_GET['action'] == 'login') {
     // get user from frontend
@@ -90,6 +85,7 @@ if ($_GET['action'] == 'getUsers') {
     // select entered email from database
     global $db;
     $results = $db->Query("SELECT * FROM users WHERE email = '$enteredEmail'");
+    echo $db->error;
 
     // save email and password from database into variables
     $databaseEmail;
@@ -103,44 +99,32 @@ if ($_GET['action'] == 'getUsers') {
 
     // if password from database and entered password match
     if(password_verify($enteredPassword, $databasePassword)) {
-        echo "correct password";
+        $error = "Correct password. Welcome!";
+        echo json_encode($error);
+        return $error;
     } else {
-        echo "wrong password";
+        $error = "Wrong password. Try again";
+        echo json_encode($error);
+        return $error;
     }
 }
-=======
-// if ($_GET['action'] == 'getUsers') {
-//     global $db;
-//     $results = $db->Query('SELECT * FROM users');
-//     foreach($results as $result) {
-//         echo $result['username'];
-//     }
 
-// } else if ($_GET['action'] == 'createUser') {
-//     $newUser = json_decode(file_get_contents("php://input"));
-//     $username = $newUser->username;
-//     $email = $newUser->email;
-//     global $db;
-//     $results = $db->Query("INSERT INTO users (username, email) VALUES ('$username', '$email')");
-//     echo "User created";
+// $results1 = $db->Query("SELECT * FROM users");
+// $array = array(
+//     'name' => 'text'
+// );
+
+// foreach ($results1 as $result) {
+//     echo $result["username"];
+//     echo "<br/>";
+//     array_push($array['name'] = $result['username']);
 // }
-$results1 = $db->Query("SELECT * FROM users");
-$array = array(
-    'name' => 'text'
-);
+// var_dump($array);
+// $fp = fopen('results.json', 'w');
+// fwrite($fp, json_encode($array, JSON_FORCE_OBJECT));
+// fclose($fp);
 
-foreach ($results1 as $result) {
-    echo $result["username"];
-    echo "<br/>";
-    array_push($array['name'] = $result['username']);
-}
-var_dump($array);
-$fp = fopen('results.json', 'w');
-fwrite($fp, json_encode($array, JSON_FORCE_OBJECT));
-fclose($fp);
-
-if ($_GET['test2'] == 'Create user') {
-    $results2 = $db->Query("INSERT INTO users (name, email) VALUES ('form', 'works')");
-    // header("location: ../index.html");
-}
->>>>>>> main
+// if ($_GET['test2'] == 'Create user') {
+//     $results2 = $db->Query("INSERT INTO users (name, email) VALUES ('form', 'works')");
+//     // header("location: ../index.html");
+// }

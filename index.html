@@ -7,33 +7,162 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Josefin+Sans:wght@400;600;700&display=swap"
-      rel="stylesheet">
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./public/styles/tailwind_output.css" />
     <link rel="stylesheet" href="/public/styles/bundle.css" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
-  <body class=" bg-light-grey">
-
-<!-- NAVIGATION -->
-    <nav class=" fixed bottom-0 left-0 w-full bg-light-black flex rounded-t-3xl flex-row justify-around items-center p-4">
-      <div class=" rounded-full border-light-black border-solid border bg-light-grey absolute bottom-2/4 p-4"><img src="./images/create-post-icon.svg" alt="" class=" h-8"></div>
-      <div class=" flex flex-row">
-      <a class=" font-jesefin-sans text-light-grey text-xs flex flex-col items-center" href="#/"><img src="./images/browse-icon.svg" alt="" class=" h-8 p-1">Browse</a>
-      <a class=" font-jesefin-sans text-light-grey text-xs flex flex-col items-center ml-10 mr-6" href="#/blog"><img src="./images/blog-icon.svg" alt="" class=" h-8 p-1">Blog</a>
+  <body class="bg-light-grey">
+    <!-- NAVIGATION -->
+    <nav
+      class="
+        fixed
+        bottom-0
+        left-0
+        w-full
+        bg-light-black
+        flex
+        rounded-t-3xl
+        flex-row
+        justify-around
+        items-center
+        p-4
+      "
+    >
+      <div
+        class="
+          rounded-full
+          border-light-black border-solid border
+          bg-light-grey
+          absolute
+          bottom-2/4
+          p-4
+        "
+      >
+        <img src="./images/create-post-icon.svg" alt="" class="h-8" />
+      </div>
+      <div class="flex flex-row">
+        <a
+          class="
+            font-jesefin-sans
+            text-light-grey text-xs
+            flex flex-col
+            items-center
+          "
+          href="#/"
+          ><img
+            src="./images/browse-icon.svg"
+            alt=""
+            class="h-8 p-1"
+          />Browse</a
+        >
+        <a
+          class="
+            font-jesefin-sans
+            text-light-grey text-xs
+            flex flex-col
+            items-center
+            ml-10
+            mr-6
+          "
+          href="#/blog"
+          ><img src="./images/blog-icon.svg" alt="" class="h-8 p-1" />Blog</a
+        >
       </div>
       <!-- <span class=" w-20"></span> -->
-      <div class=" flex flex-row">
-      <a class=" font-jesefin-sans text-light-grey text-xs flex flex-col items-center ml-6 mr-6" href="#/shoppingList"><img src="./images/shopping-list-icon.svg" alt="" class=" h-8 p-1">Shopping List</a>
-      <a class=" font-jesefin-sans text-light-grey text-xs flex flex-col items-center" href="#/profile"><img src="./images/profile-icon.svg" alt="" class=" h-8 p-1">Profile</a>
+      <div class="flex flex-row">
+        <a
+          class="
+            font-jesefin-sans
+            text-light-grey text-xs
+            flex flex-col
+            items-center
+            ml-6
+            mr-6
+          "
+          href="#/shoppingList"
+          ><img
+            src="./images/shopping-list-icon.svg"
+            alt=""
+            class="h-8 p-1"
+          />Shopping List</a
+        >
+        <a
+          class="
+            font-jesefin-sans
+            text-light-grey text-xs
+            flex flex-col
+            items-center
+          "
+          href="#/profile"
+          ><img
+            src="./images/profile-icon.svg"
+            alt=""
+            class="h-8 p-1"
+          />Profile</a
+        >
       </div>
     </nav>
-  
-<!-- BROWSE PAGE -->
+
+    <!-- LOGIN PAGE -->
+    <section id="login" class="page">
+      <div class="container">
+        <form class="login-form flex flex-col">
+          <label>Email</label>
+          <input
+            type="text"
+            placeholder="Enter email"
+            class="login-email form-label"
+          />
+          <label>Password</label>
+          <input
+            type="password"
+            placeholder="Enter password"
+            class="login-password form-label"
+          />
+          <button type="submit" class="btn-primary">Log in</button>
+          <button type="button" class="btn-text-green pt-5 go-to-signup">
+            Sign up
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- SIGNUP PAGE -->
+    <section id="signup" class="page">
+      <div class="container">
+        <form class="signup-form flex flex-col">
+          <label>Name</label>
+          <input type="text" placeholder="Enter name" class="name form-label" />
+          <label>Email</label>
+          <input
+            type="text"
+            placeholder="Enter email"
+            class="email form-label"
+          />
+          <label>Password</label>
+          <input
+            type="password"
+            placeholder="Enter password"
+            class="password form-label"
+          />
+          <label>Repeat password</label>
+          <input
+            type="password"
+            placeholder="Repeat password"
+            class="rpt-password form-label"
+          />
+          <button type="submit" class="btn-primary">Sign up</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- BROWSE PAGE -->
     <section id="browse" class="page">
-      
-      <h1 class=" ">Browse</h1>
+      <h1 class="">Browse</h1>
       <h1 class="">H1 tag</h1>
       <h2 class="">H2 tag</h2>
       <h3 class="">H3 tag</h3>
@@ -50,22 +179,24 @@
       <span class="food-category-badge bg-red-300">Dish</span>
     </section>
 
-<!-- BLOG PAGE -->
-<section id="blog" class="page">
-  <h1>Blog</h1>
-</section>
+    <!-- BLOG PAGE -->
+    <section id="blog" class="page">
+      <h1>Blog</h1>
+    </section>
 
-<!-- SHOPPING LIST PAGE -->
-<section id="shoppingList" class="page">
-  <h1>Shopping List</h1>
-</section>
+    <!-- SHOPPING LIST PAGE -->
+    <section id="shoppingList" class="page">
+      <h1>Shopping List</h1>
+    </section>
 
-<!-- PROFILE PAGE -->
+    <!-- PROFILE PAGE -->
     <section id="profile" class="page">
-      <h1 class=" ">Profile</h1>
-      <input type="text">
+      <h1 class="">Profile</h1>
+      <input type="text" />
     </section>
 
     <script src="services/router.js"></script>
+    <script src="src/signup/login.js"></script>
+    <script src="src/signup/signup.js"></script>
   </body>
 </html>

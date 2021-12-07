@@ -17,8 +17,9 @@ async function createUser() {
     headers: { "Content-Type": "application/json; charset=utf-8" },
     body: JSON.stringify(newUser),
   });
-  const result = response.json();
+  const result = await response.json();
   console.log(result);
+  navigateTo("#/login");
 }
 
 document.querySelector(".signup-form").addEventListener("submit", (e) => {
