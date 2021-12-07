@@ -6,7 +6,16 @@ const _routes = {
     "#/": "browse",
 	"#/blog": "blog",
 	"#/shoppingList": "shoppingList",
-	"#/profile": "profile"
+	"#/profile": "profile",
+    "#/login": "login",
+    "#/signup": "signup",
+    "#/createPost": "createPost",
+    "#/postDetials": "postDetails",
+    "#/buyProduct": "buyProduct",
+    "#/summary": "summary",
+    "#/editProfile": "editProfile",
+    "#/myPostDetails": "myPostDetails",
+    "#/purchasedSummary": "purchasedSummary"
 };
 
 const _pages = document.querySelectorAll(".page");

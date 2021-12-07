@@ -7,11 +7,14 @@ async function getUsers() {
   console.log(users);
 }
 
+<<<<<<< HEAD
 const name = document.querySelector(".name");
 const email = document.querySelector(".email");
 const password = document.querySelector(".password");
 const rptPassword = document.querySelector(".rpt-password");
 
+=======
+>>>>>>> main
 async function createUser() {
   const newUser = {
     username: "Lola",

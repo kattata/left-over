@@ -6,10 +6,10 @@
 
 @layer base {
   .container {
-    @apply mx-auto;
+    @apply mx-auto py-6;
   }
   h1 {
-    @apply font-abril text-4xl text-light-black;
+    @apply font-abril text-4xl text-light-black text-left pb-6;
   }
   h2 {
     @apply font-abril text-3xl text-light-black;
