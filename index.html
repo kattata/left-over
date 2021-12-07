@@ -18,20 +18,20 @@
 
 <!-- NAVIGATION -->
     <nav class=" fixed bottom-0 left-0 w-full bg-light-black flex rounded-t-3xl flex-row justify-around items-center p-4">
-      <div class=" rounded-full border-light-black border-solid border bg-light-grey absolute bottom-2/4 p-4"><img src="./images/create-post-icon.svg" alt="" class=" h-8"></div>
+      <div class=" rounded-full border-light-black border-solid border bg-light-grey absolute bottom-2/4 p-4"><img src="./src/media/icons/create-post-icon.svg" alt="" class=" h-8"></div>
       <div class=" flex flex-row">
-      <a class=" font-jesefin-sans text-light-grey text-xs flex flex-col items-center" href="#/"><img src="./images/browse-icon.svg" alt="" class=" h-8 p-1">Browse</a>
-      <a class=" font-jesefin-sans text-light-grey text-xs flex flex-col items-center ml-10 mr-6" href="#/blog"><img src="./images/blog-icon.svg" alt="" class=" h-8 p-1">Blog</a>
+      <a class=" font-jesefin-sans text-light-grey text-xs flex flex-col items-center" href="#/"><img src="./src/media/icons/blog-icon.svg" alt="" class=" h-8 p-1">Browse</a>
+      <a class=" font-jesefin-sans text-light-grey text-xs flex flex-col items-center ml-10 mr-6" href="#/blog"><img src="./src/media/icons/blog-icon.svg" alt="" class=" h-8 p-1">Blog</a>
       </div>
       <!-- <span class=" w-20"></span> -->
       <div class=" flex flex-row">
-      <a class=" font-jesefin-sans text-light-grey text-xs flex flex-col items-center ml-6 mr-6" href="#/shoppingList"><img src="./images/shopping-list-icon.svg" alt="" class=" h-8 p-1">Shopping List</a>
-      <a class=" font-jesefin-sans text-light-grey text-xs flex flex-col items-center" href="#/profile"><img src="./images/profile-icon.svg" alt="" class=" h-8 p-1">Profile</a>
+      <a class=" font-jesefin-sans text-light-grey text-xs flex flex-col items-center ml-6 mr-6" href="#/shoppingList"><img src="./src/media/icons/shopping-list-icon.svg" alt="" class=" h-8 p-1">Shopping List</a>
+      <a class=" font-jesefin-sans text-light-grey text-xs flex flex-col items-center" href="#/profile"><img src="./src/media/icons/profile-icon.svg" alt="" class=" h-8 p-1">Profile</a>
       </div>
     </nav>
   
 <!-- BROWSE PAGE -->
-    <section id="browse" class="page">
+    <section id="browse" class="page container">
       
       <h1 class=" ">Browse</h1>
       <h1 class="">H1 tag</h1>
@@ -51,17 +51,61 @@
     </section>
 
 <!-- BLOG PAGE -->
-<section id="blog" class="page">
+<section id="blog" class="page container">
   <h1>Blog</h1>
+  <!-- TIPS & TRICKS -->
+  <div class=" flex justify-between mb-2">
+    <h4>Tips & Tricks</h4>
+    <button class="btn-text-green">SEE ALL</button>
+  </div>
+
+  <div class=" border-light-black border-solid border bg-light-grey rounded-3xl">
+    <img src="./src/media/images/tipsandtrick.png" alt="" class=" rounded-t-3xl">
+    <p class=" p-4">How to store food properly and enjoy it for longer</p>
+  </div>
+
+  <!-- NEWS -->
+  <div class=" flex justify-between mb-2 mt-6">
+    <h4>News</h4>
+    <button class="btn-text-green">SEE ALL</button>
+  </div>
+
+  <div class=" overflow-auto whitespace-nowrap">
+    <div class=" border-light-black border-solid border bg-light-grey rounded-3xl inline-block w-52 mr-4">
+      <img src="./src/media/images/news1.png" alt="" class=" rounded-t-3xl">
+      <p class=" p-4 whitespace-pre-line">Major brand promised to reduce their food waste by 20%</p>
+    </div>
+    <div class=" border-light-black border-solid border bg-light-grey rounded-3xl inline-block w-52">
+      <img src="./src/media/images/news2.png" alt="" class=" rounded-t-3xl">
+      <p class=" p-4 whitespace-pre-line">Livestock or livestock feed occupies 1/3 of the earth’s ice-free land</p>
+    </div>
+  </div>
+
+  <!-- RECIPES -->
+  <div class=" flex justify-between mb-2 mt-6">
+    <h4>Recipes</h4>
+    <button class="btn-text-green">SEE ALL</button>
+  </div>
+
+  <div class=" overflow-auto whitespace-nowrap">
+    <div class=" border-light-black border-solid border bg-light-grey rounded-3xl inline-block w-52 mr-4">
+      <img src="./src/media/images/recipes1.png" alt="" class=" rounded-t-3xl">
+      <p class=" p-4 whitespace-pre-line">Red curry with tofu and carrot</p>
+    </div>
+    <div class=" border-light-black border-solid border bg-light-grey rounded-3xl inline-block w-52">
+      <img src="./src/media/images/recipes2.png" alt="" class=" rounded-t-3xl">
+      <p class=" p-4 whitespace-pre-line">Vegetable stock from leftover ingredients</p>
+    </div>
+  </div>
 </section>
 
 <!-- SHOPPING LIST PAGE -->
-<section id="shoppingList" class="page">
+<section id="shoppingList" class="page container">
   <h1>Shopping List</h1>
 </section>
 
 <!-- PROFILE PAGE -->
-    <section id="profile" class="page">
+    <section id="profile" class="page container">
       <h1 class=" ">Profile</h1>
       <input type="text">
     </section>
