@@ -19,7 +19,12 @@ async function createUser() {
   });
   const result = await response.json();
   console.log(result);
-  navigateTo("#/login");
+  error = result;
+  if (error.length != "") {
+    document.querySelector(".signup-error").innerHTML = error;
+  } else {
+    navigateTo("#/login");
+  }
 }
 
 document.querySelector(".signup-form").addEventListener("submit", (e) => {

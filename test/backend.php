@@ -39,8 +39,6 @@ function userIsUnique($email) {
         $databaseEmail = $result['email'];
     }
     if($databaseEmail == "") {
-        global $error;
-        $error = "";
         return true;
     } else {
         global $error;
@@ -52,8 +50,6 @@ function userIsUnique($email) {
 // LOGIN VALIDATION
 function verifyPassword($enteredPassword, $databasePassword) {
     if(password_verify($enteredPassword, $databasePassword)) {
-        global $error;
-        $error = "";
         return true;
     } else {
         global $error;
@@ -71,8 +67,6 @@ function userExists($email) {
         $databaseEmail = $result['email'];
     }
     if($databaseEmail !== "") {
-        global $error;
-        $error = "";
         return true;
     } else {
         global $error;
@@ -105,7 +99,9 @@ if ($_GET['action'] == 'getUsers') {
     if(passwordsMatch($password, $rptPassword) && allFieldsFilled($username, $email, $password, $rptPassword) && userIsUnique($email)) {
         global $db;
         $results = $db->Query("INSERT INTO users (username, email, password) VALUES ('$username', '$email', '$hashPassword')");
-        echo json_encode($results);
+        global $error;
+        $error = "";
+        echo json_encode($error);
     } else {
         global $error;
         echo json_encode($error);
