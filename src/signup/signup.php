@@ -8,7 +8,7 @@
         <title>Test</title>
     </head>
     <body>
-      <form onsubmit="createUser()">
+      <form onsubmit="() => createUser()">
           <label>Name</label>
           <input type="text" placeholder="Enter name" class="name">
           <label>Email</label>
@@ -20,6 +20,6 @@
           <button type="submit">Sign up</button>
       </form>
 
-    <script src="service.js"></script>
+    <script src="signup.js"></script>
   </body>
 </html>
