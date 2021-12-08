@@ -16,9 +16,6 @@
     <title>Document</title>
   </head>
   <body class="bg-light-grey">
-    <?php
-      session_start();
-    ?>
     <!-- NAVIGATION -->
     <nav
       class="
@@ -114,13 +111,13 @@
     <section id="login" class="page">
       <div class="container">
         <form class="login-form flex flex-col">
-          <label>Email</label>
+          <label class="form-label">Email</label>
           <input
             type="text"
             placeholder="Enter email"
             class="login-email form-label"
           />
-          <label>Password</label>
+          <label class="form-label">Password</label>
           <input
             type="password"
             placeholder="Enter password"
@@ -139,49 +136,49 @@
     <section id="signup" class="page">
       <div class="container">
         <form class="signup-form flex flex-col">
-          <label>Name</label>
+          <label class="form-label">Name</label>
           <input
             type="text"
             placeholder="Enter name"
             class="signup-name form-label"
           />
-          <label>Email</label>
+          <label class="form-label">Email</label>
           <input
             type="text"
             placeholder="Enter email"
             class="signup-email form-label"
           />
-          <label>Password</label>
+          <label class="form-label">Password</label>
           <input
             type="password"
             placeholder="Enter password"
             class="signup-password form-label"
           />
-          <label>Repeat password</label>
+          <label class="form-label">Repeat password</label>
           <input
             type="password"
             placeholder="Repeat password"
             class="signup-rpt-password form-label"
           />
-          <label>Phone number</label>
+          <label class="form-label">Phone number</label>
           <input
             type="text"
             placeholder="Enter phone number"
             class="signup-phone-number form-label"
           />
-          <label>Address</label>
+          <label class="form-label">Address</label>
           <input
             type="text"
             placeholder="Enter address"
             class="signup-address form-label"
           />
-          <label>Zip code</label>
+          <label class="form-label">Zip code</label>
           <input
             type="text"
             placeholder="Enter zip code"
             class="signup-zip-code form-label"
           />
-          <label>City</label>
+          <label class="form-label">City</label>
           <input
             type="text"
             placeholder="Enter city"
@@ -226,9 +223,91 @@
 
     <!-- PROFILE PAGE -->
     <section id="profile" class="page">
-      <button class="btn-text-green" onclick="navigateTo('#/editProfile')">
-        Edit profile
-      </button>
+      <div class="container mb-10">
+        <header class="flex mb-6">
+          <div
+            class="profile-picture rounded-full bg-light-black h-20 w-20"
+          ></div>
+          <div class="ml-4">
+            <p>Piotr Pospiech</p>
+            <p>Joined 5 months ago</p>
+            <button
+              class="btn-text-green"
+              onclick="navigateTo('#/editProfile')"
+            >
+              Edit profile
+            </button>
+          </div>
+        </header>
+        <div class="mb-6">
+          <p>Your environmental impact</p>
+          <p class="mb-2">
+            Thanks to your activities on Left Over, you are helping slow down
+            the negative effects of food waste in the environment.
+          </p>
+          <div>
+            <div class="flex w-full justify-between mb-2">
+              <div class="impact-box w-1/2 mr-2">
+                <img src="src/media/icons/co2.png" alt="co2 reduction" />
+                <h4>258 kg</h4>
+                <p>of CO2 reduced</p>
+              </div>
+              <div class="impact-box w-1/2">
+                <img src="src/media/icons/trees.png" alt="trees planted" />
+                <h4>11</h4>
+                <p>trees planted</p>
+              </div>
+            </div>
+            <div class="impact-box">
+              <img src="src/media/icons/money.png" alt="money saved" />
+              <h4>322 DKK</h4>
+              <p>saved</p>
+            </div>
+          </div>
+        </div>
+        <div class="profile-posts">
+          <div class="flex justify-between w-full">
+            <div class="w-1/2 active-profile-tab posted-tab">
+              <button
+                class="
+                  btn-text-black
+                  posted-btn
+                  text-green-custom
+                  opacity-50
+                  m-auto
+                  block
+                "
+                onclick="openPosted()"
+              >
+                Posted
+              </button>
+              <span class="w-full h-px bg-green-custom block opacity-50"></span>
+            </div>
+            <div class="w-1/2 purchased-tab">
+              <button
+                class="
+                  btn-text-black
+                  purchased-btn
+                  text-green-custom
+                  opacity-50
+                  m-auto
+                  block
+                "
+                onclick="openPurchased()"
+              >
+                Purchased
+              </button>
+              <span class="w-full h-px bg-green-custom block opacity-50"></span>
+            </div>
+          </div>
+          <div class="posted">
+            <p>POSTED</p>
+          </div>
+          <div class="purchased hidden">
+            <p>PURCHASED</p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- EDIT PROFILE PAGE -->
@@ -239,44 +318,44 @@
         </button>
         <h1>Edit profile</h1>
         <form class="edit-profile-form flex flex-col">
-          <label>Name</label>
+          <label class="form-label">Name</label>
           <input
             type="text"
             placeholder="Enter name"
             class="edit-profile-name form-label"
           />
-          <label>Email</label>
+          <label class="form-label">Email</label>
           <input
             type="text"
             placeholder="Enter email"
             class="edit-profile-email form-label"
           />
-          <label>Password</label>
+          <label class="form-label">Password</label>
           <input
             type="password"
             placeholder="Enter password"
             class="edit-profile-password form-label"
           />
           <button class="btn-text-green">Change password</button>
-          <label>Phone number</label>
+          <label class="form-label">Phone number</label>
           <input
             type="text"
             placeholder="Enter phone number"
             class="edit-profile-phone-number form-label"
           />
-          <label>Address</label>
+          <label class="form-label">Address</label>
           <input
             type="text"
             placeholder="Enter address"
             class="edit-profile-address form-label"
           />
-          <label>Zip code</label>
+          <label class="form-label">Zip code</label>
           <input
             type="text"
             placeholder="Enter zip code"
             class="edit-profile-zip-code form-label"
           />
-          <label>City</label>
+          <label class="form-label">City</label>
           <input
             type="text"
             placeholder="Enter city"
@@ -291,6 +370,7 @@
     <script src="services/router.js"></script>
     <script src="src/frontend/login.js"></script>
     <script src="src/frontend/signup.js"></script>
+    <script src="src/frontend/profile.js"></script>
     <script src="src/frontend/editProfile.js"></script>
   </body>
 </html>
