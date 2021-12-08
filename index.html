@@ -51,7 +51,7 @@
         </div>
       </nav>
     </header>
-    <!-- ADD POST PAge -->
+    <!-- ADD POST PAGE -->
     <section id="createPost" class="page container">
       <h1>Add post</h1>
       <form class="flex w-full flex-col" action="backend.php" method="POST">
@@ -63,80 +63,39 @@
             <input class="form-input w-full" type="number" name="product_amount" placeholder="Amount" />
           </div>
           <div class="w-1/2 pl-1 flex flex-col">
-            <label class="form-label" for="product_price">Amount</label>
+            <label class="form-label" for="product_price">Price</label>
             <input class="form-input w-full" type="number" name="product_price" placeholder="Price" />
           </div>
         </div>
         <label class="form-label" for="product_expiration-date">Expires in</label>
         <input class="form-input w-full" type="date" name="product_expiration-date" placeholder="Expires in" />
         <label class="form-label" for="product_categories">Category</label>
-        <div>
-          <input
-            onclick="filterActive(event)"
-            class="btn-secondary mb-2 mr-1 transition-colors duration-200"
-            type="button"
-            name="product_categort_dish"
-            value="Dish"
-          />
-          <input
-            onclick="filterActive(event)"
-            class="btn-secondary mb-2 mr-1 transition-colors duration-200"
-            type="button"
-            name="product_categort_fruits_vegetables"
-            value="Fruits & Vegetables"
-          />
-          <input
-            onclick="filterActive(event)"
-            class="btn-secondary mb-2 mr-1 transition-colors duration-200"
-            type="button"
-            name="product_categort_diary"
-            value="Dairy"
-          />
-          <input
-            onclick="filterActive(event)"
-            class="btn-secondary mb-2 mr-1 transition-colors duration-200"
-            type="button"
-            name="product_categort_bread_pastery"
-            value="Bread & Pastry"
-          />
-          <input
-            onclick="filterActive(event)"
-            class="btn-secondary mb-2 mr-1 transition-colors duration-200"
-            type="button"
-            name="product_categort_dessert"
-            value="Dessert"
-          />
+        <div id="product-category-wrapper">
+          <input id="product_category_dish" type="radio" name="product_category" value="Dish" hidden />
+          <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="product_category_dish">Dish</label>
+          <input id="product_category_fruits_vegetables" type="radio" name="product_category" value="Fruits & Vegetables" hidden />
+          <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="product_category_fruits_vegetables"
+            >Fruits & Vegetables</label
+          >
+          <input id="product_category_diary" type="radio" name="product_category" value="Diray" hidden />
+          <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="product_category_diary">Diary</label>
+          <input id="product_category_bread_pastery" type="radio" name="product_category" value="Bread & Pastry" hidden />
+          <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="product_category_bread_pastery"
+            >Bread & Pastry</label
+          >
+          <input id="product_category_dessert" type="radio" name="product_category" value="Dessert" hidden />
+          <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="product_category_dessert">Dessert</label>
         </div>
-        <label class="form-label pt-2" for="product_diet">Diet</label>
-        <div>
-          <input
-            onclick="filterActive(event)"
-            class="btn-secondary mb-2 mr-1 transition-colors duration-200"
-            type="button"
-            name="product_categort_egetarian"
-            value="Vegetarian"
-          />
-          <input
-            onclick="filterActive(event)"
-            class="btn-secondary mb-2 mr-1 transition-colors duration-200"
-            type="button"
-            name="product_categort_vegan"
-            value="Vegan"
-          />
-          <input
-            onclick="filterActive(event)"
-            class="btn-secondary mb-2 mr-1 transition-colors duration-200"
-            type="button"
-            name="product_categort_gluten_free"
-            value="Gluten-free"
-          />
-          <input
-            onclick="filterActive(event)"
-            class="btn-secondary mb-2 mr-1 transition-colors duration-200"
-            type="button"
-            name="product_categort_diary_free"
-            value="Dairy-free"
-          />
+        <label class="form-label pt-2">Diet</label>
+        <div id="product-diet-wrapper">
+          <input id="product_diet_vegetarian" type="checkbox" name="product_diet" value="Vegetarian" hidden />
+          <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="product_diet_vegetarian">Vegetarian</label>
+          <input id="product_diet_vegan" type="checkbox" name="product_diet" value="Vegan" hidden />
+          <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="product_diet_vegan">Vegan</label>
+          <input id="product_diet_gluten_free" type="checkbox" name="product_diet" value="Gluten-free" hidden />
+          <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="product_diet_gluten_free">Gluten-free</label>
+          <input id="product_diet_diary_free" type="checkbox" name="product_diet" value="Diary-free" hidden />
+          <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="product_diet_diary_free">Diary-free</label>
         </div>
         <label class="form-label pt-2" for="product_collection_time">Collection day</label>
         <!-- <input type="button" onclick="showTimeSlots()" class="btn-text-green outline-none self-start" value="+ Add time" /> -->
@@ -165,49 +124,19 @@
           -->
         <input class="form-input w-1/2" type="date" name="product_expiration-date" />
         <label class="form-label pt-2" for="product_collection_time">Time slots</label>
-        <div>
-          <input
-            onclick="filterActive(event)"
-            class="btn-secondary mb-2 mr-1 transition-colors duration-200"
-            type="button"
-            name="product_collection_time_8_10"
-            value="8:00 - 10:00"
-          />
-          <input
-            onclick="filterActive(event)"
-            class="btn-secondary mb-2 mr-1 transition-colors duration-200"
-            type="button"
-            name="product_collection_time_10_12"
-            value="10:00 - 12:00"
-          />
-          <input
-            onclick="filterActive(event)"
-            class="btn-secondary mb-2 mr-1 transition-colors duration-200"
-            type="button"
-            name="product_collection_time_12_14"
-            value="12:00 - 14:00"
-          />
-          <input
-            onclick="filterActive(event)"
-            class="btn-secondary mb-2 mr-1 transition-colors duration-200"
-            type="button"
-            name="product_collection_time_14_16"
-            value="14:00 - 16:00"
-          />
-          <input
-            onclick="filterActive(event)"
-            class="btn-secondary mb-2 mr-1 transition-colors duration-200"
-            type="button"
-            name="product_collection_time_16_18"
-            value="16:00 - 18:00"
-          />
-          <input
-            onclick="filterActive(event)"
-            class="btn-secondary mb-2 mr-1 transition-colors duration-200"
-            type="button"
-            name="product_collection_time_18_20"
-            value="18:00 - 20:00"
-          />
+        <div id="product-time-slots-wrapper">
+          <input id="product_collection_time_8_10" type="checkbox" name="product_collection_time" value="8:00 - 10:00" hidden />
+          <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="product_collection_time_8_10">8:00 - 10:00</label>
+          <input id="product_collection_time_10_12" type="checkbox" name="product_collection_time" value="10:00 - 12:00" hidden />
+          <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="product_collection_time_10_12">10:00 - 12:00</label>
+          <input id="product_collection_time_12_14" type="checkbox" name="product_collection_time" value="12:00 - 14:00" hidden />
+          <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="product_collection_time_12_14">12:00 - 14:00</label>
+          <input id="product_collection_time_14_16" type="checkbox" name="product_collection_time" value="14:00 - 16:00" hidden />
+          <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="product_collection_time_14_16">14:00 - 16:00</label>
+          <input id="product_collection_time_16_18" type="checkbox" name="product_collection_time" value="16:00 - 18:00" hidden />
+          <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="product_collection_time_16_18">16:00 - 18:00</label>
+          <input id="product_collection_time_18_20" type="checkbox" name="product_collection_time" value="18:00 - 20:00" hidden />
+          <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="product_collection_time_18_20">18:00 - 20:00</label>
         </div>
         <label class="form-label" for="product_image">Upload image</label>
         <input type="file" name="image" accept="image/*" capture="environment" />
