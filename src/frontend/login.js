@@ -44,25 +44,27 @@ async function searchForUser() {
   console.log(result);
   let userInfo = {};
   for (const user of result) {
+    // change email to id
     if (user.email == userEmail) {
       userInfo = user;
     }
   }
-  sessionStorage.setItem("userSession", JSON.stringify(userInfo));
-  userSessionInfo = JSON.parse(sessionStorage.getItem("userSession"));
-  console.log(userSessionInfo.username);
-  document.querySelector(".username").innerHTML = userSessionInfo.username;
+  sessionStorage.setItem("user", JSON.stringify(userInfo));
+  // append user info after log in
+  appendUserInfo();
 }
 
-// document.querySelector(".username").innerHTML = JSON.parse(
-//   sessionStorage.getItem("userSession").username
-// );
+function appendUserInfo() {
+  userSessionInfo = JSON.parse(sessionStorage.getItem("user"));
+  document.querySelector(".username").innerHTML +=
+    " " + userSessionInfo.username;
+}
+
+// append user info in case of refresh
+appendUserInfo();
 
 function logout() {
   sessionStorage.clear();
   navigateTo("#/login");
+  window.location.reload();
 }
-
-document.querySelector(".logout").addEventListener("click", () => {
-  logout();
-});
