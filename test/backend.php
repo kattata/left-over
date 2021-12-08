@@ -134,6 +134,7 @@ if ($_GET['action'] == 'getUsers') {
         global $error;
         $error = "";
         echo json_encode($error);
+        
     } else {
         global $error;
         echo json_encode($error);
