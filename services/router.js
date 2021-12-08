@@ -82,7 +82,7 @@ function initRouter() {
   attachNavLinkEvents();
   window.addEventListener("popstate", () => showPage(location.hash)); // change page when using back and forth in browser
 
-  let path = "#/"; // default path
+  let path = "#/login"; // default path
   if (_routes[location.hash]) {
     path = location.hash;
   }

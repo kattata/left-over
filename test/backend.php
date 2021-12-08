@@ -2,7 +2,7 @@
 
 $error = "";
 require('mysql.php');
-require('../signup/user.php');
+// require('../signup/user.php');
 
 $jsonFile = file_get_contents("users.json");
 $users = json_decode($jsonFile);
@@ -116,7 +116,7 @@ if ($_GET['action'] == 'getUsers') {
     // select entered email from database
     global $db;
     $results = $db->Query("SELECT * FROM users WHERE email = '$enteredEmail'");
-    $userObject = $result->fetch_object("User");
+    // $userObject = $result->fetch_object("User");
     echo $db->error;
 
     // save email and password from database into variables
@@ -129,37 +129,39 @@ if ($_GET['action'] == 'getUsers') {
         $databasePassword = $result['password'];
     }
 
-    // check is user exists
+    // check is user exists and the password matches
     if(userExists($enteredEmail) && verifyPassword($enteredPassword, $databasePassword)) {
         global $error;
         $error = "";
-        echo json_encode($error);
-        
+        // echo json_encode($error);
+        $response = json_encode(array($error, $enteredEmail));
+        echo $response;
     } else {
         global $error;
         echo json_encode($error);
     }
-    
-
-    // check if password from database and entered password match
-    // verifyPassword($enteredPassword, $databasePassword);
 
 }
 
 
 // $results1 = $db->Query("SELECT * FROM users");
-// $array = array(
-//     'name' => 'text'
-// );
+// $usersJsonArray = array();
+
 
 // foreach ($results1 as $result) {
 //     echo $result["username"];
 //     echo "<br/>";
-//     array_push($array['name'] = $result['username']);
+//     $usersArray = array(
+//         "username" => $result["username"],
+//         "email" => $result["email"],
+//         "password" => $result["password"]
+//     );
+//     array_push($usersJsonArray, $usersArray);
 // }
-// var_dump($array);
+
+// var_dump($usersJsonArray);
 // $fp = fopen('results.json', 'w');
-// fwrite($fp, json_encode($array, JSON_FORCE_OBJECT));
+// fwrite($fp, json_encode($usersJsonArray, JSON_FORCE_OBJECT));
 // fclose($fp);
 
 // if ($_GET['test2'] == 'Create user') {
