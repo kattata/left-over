@@ -21,8 +21,8 @@ function passwordsMatch($password, $rptPassword) {
     }
 }
 
-function allFieldsFilled($username, $email, $password, $rptPassword) {
-    if($username && $email && $password && $rptPassword) {
+function allFieldsFilled($username, $email, $password, $rptPassword, $phoneNumber, $address, $zipCode, $city) {
+    if($username && $email && $password && $rptPassword && $phoneNumber && $address && $zipCode && $city) {
         return true;
     } else {
         global $error;
@@ -90,6 +90,10 @@ if ($_GET['action'] == 'getUsers') {
     $newUser = json_decode(file_get_contents("php://input"));
     $username = $newUser->name;
     $email = $newUser->email;
+    $phoneNumber = $newUser->phoneNumber;
+    $address = $newUser->address;
+    $zipCode = $newUser->zipCode;
+    $city = $newUser->city;
 
     // hash the passwords
     $password = $newUser->password;
@@ -97,9 +101,9 @@ if ($_GET['action'] == 'getUsers') {
     $rptPassword = $newUser->rptPassword;
 
     // validation
-    if(passwordsMatch($password, $rptPassword) && allFieldsFilled($username, $email, $password, $rptPassword) && userIsUnique($email)) {
+    if(passwordsMatch($password, $rptPassword) && allFieldsFilled($username, $email, $password, $rptPassword, $phoneNumber, $address, $zipCode, $city) && userIsUnique($email)) {
         global $db;
-        $results = $db->Query("INSERT INTO users (username, email, password) VALUES ('$username', '$email', '$hashPassword')");
+        $results = $db->Query("INSERT INTO users (username, email, password, phone_number, address, zip_code, city) VALUES ('$username', '$email', '$hashPassword', '$phoneNumber', '$address', '$zipCode', '$city')");
         global $error;
         $error = "";
         echo json_encode($error);
@@ -116,7 +120,6 @@ if ($_GET['action'] == 'getUsers') {
     // select entered email from database
     global $db;
     $results = $db->Query("SELECT * FROM users WHERE email = '$enteredEmail'");
-    // $userObject = $result->fetch_object("User");
     echo $db->error;
 
     // save email and password from database into variables
@@ -133,7 +136,6 @@ if ($_GET['action'] == 'getUsers') {
     if(userExists($enteredEmail) && verifyPassword($enteredPassword, $databasePassword)) {
         global $error;
         $error = "";
-        // echo json_encode($error);
         $response = json_encode(array($error, $enteredEmail));
         echo $response;
     } else {

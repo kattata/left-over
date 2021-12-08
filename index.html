@@ -126,7 +126,7 @@
             placeholder="Enter password"
             class="login-password form-label"
           />
-          <p class="error"></p>
+          <p class="login-error"></p>
           <button type="submit" class="btn-primary">Log in</button>
           <button type="button" class="btn-text-green pt-5 go-to-signup">
             Sign up
@@ -140,24 +140,52 @@
       <div class="container">
         <form class="signup-form flex flex-col">
           <label>Name</label>
-          <input type="text" placeholder="Enter name" class="name form-label" />
+          <input
+            type="text"
+            placeholder="Enter name"
+            class="signup-name form-label"
+          />
           <label>Email</label>
           <input
             type="text"
             placeholder="Enter email"
-            class="email form-label"
+            class="signup-email form-label"
           />
           <label>Password</label>
           <input
             type="password"
             placeholder="Enter password"
-            class="password form-label"
+            class="signup-password form-label"
           />
           <label>Repeat password</label>
           <input
             type="password"
             placeholder="Repeat password"
-            class="rpt-password form-label"
+            class="signup-rpt-password form-label"
+          />
+          <label>Phone number</label>
+          <input
+            type="text"
+            placeholder="Enter phone number"
+            class="signup-phone-number form-label"
+          />
+          <label>Address</label>
+          <input
+            type="text"
+            placeholder="Enter address"
+            class="signup-address form-label"
+          />
+          <label>Zip code</label>
+          <input
+            type="text"
+            placeholder="Enter zip code"
+            class="signup-zip-code form-label"
+          />
+          <label>City</label>
+          <input
+            type="text"
+            placeholder="Enter city"
+            class="signup-city form-label"
           />
           <p class="signup-error"></p>
           <button type="submit" class="btn-primary">Sign up</button>
@@ -198,12 +226,33 @@
 
     <!-- PROFILE PAGE -->
     <section id="profile" class="page">
-      <h1 class="">Profile</h1>
-      <input type="text" />
+      <button class="btn-text-green" onclick="navigateTo('#/editProfile')">
+        Edit profile
+      </button>
+    </section>
+
+    <!-- EDIT PROFILE PAGE -->
+    <section id="editProfile" class="page">
+      <h1>Edit profile</h1>
+      <form class="edit-profile-form flex flex-col">
+        <label>Name</label>
+        <input type="text" placeholder="Enter name" class="name form-label" />
+        <label>Email</label>
+        <input type="text" placeholder="Enter email" class="email form-label" />
+        <label>Password</label>
+        <input
+          type="password"
+          placeholder="Enter password"
+          class="password form-label"
+        />
+        <button class="btn-text-green">Change password</button>
+        <p class="signup-error"></p>
+        <button type="submit" class="btn-primary">Save</button>
+      </form>
     </section>
 
     <script src="services/router.js"></script>
-    <script src="src/signup/login.js"></script>
-    <script src="src/signup/signup.js"></script>
+    <script src="src/frontend/login.js"></script>
+    <script src="src/frontend/signup.js"></script>
   </body>
 </html>

@@ -2,7 +2,7 @@
 
 const loginEmail = document.querySelector(".login-email");
 const loginPassword = document.querySelector(".login-password");
-let error = "";
+let loginError = "";
 let userEmail = "";
 
 async function login() {
@@ -16,10 +16,11 @@ async function login() {
     body: JSON.stringify(user),
   });
   const result = await response.json();
-  error = result[0];
+  loginError = result[0];
   userEmail = result[1];
-  if (error.length != "") {
-    document.querySelector(".error").innerHTML = error;
+  console.log(result);
+  if (loginError.length !== "") {
+    document.querySelector(".login-error").innerHTML = loginError;
   } else {
     searchForUser();
     navigateTo("#/");
