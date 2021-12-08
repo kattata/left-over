@@ -22,6 +22,10 @@ module.exports = {
       "light-black": "#2C2D2B",
       "green-custom": "#69B199",
       "light-green-custom": "#CBD6C9",
+      "light-blue": "#BCCBEA",
+      "light-orange": "#E7DCC8",
+      "light-red": "#F0AEA5",
+      "light-violet": "#B8B0EB",
 
       //Tailwind's default colors
       black: colors.black,

@@ -54,7 +54,7 @@
     <!-- ADD POST PAGE -->
     <section id="createPost" class="page container">
       <h1>Add post</h1>
-      <form class="flex w-full flex-col" action="backend.php" method="POST">
+      <form class="flex w-full flex-col" action="./src/backend/addPost.php" method="POST" enctype="multipart/form-data">
         <label class="form-label" for="product_name">Product name</label>
         <input class="form-input" type="text" name="product_name" placeholder="Product name" />
         <div class="flex w-full">
@@ -67,8 +67,8 @@
             <input class="form-input w-full" type="number" name="product_price" placeholder="Price" />
           </div>
         </div>
-        <label class="form-label" for="product_expiration-date">Expires in</label>
-        <input class="form-input w-full" type="date" name="product_expiration-date" placeholder="Expires in" />
+        <label class="form-label" for="product_expiration_date">Expires in</label>
+        <input class="form-input w-full" type="date" name="product_expiration_date" placeholder="Expires in" />
         <label class="form-label" for="product_categories">Category</label>
         <div id="product-category-wrapper">
           <input id="product_category_dish" type="radio" name="product_category" value="Dish" hidden />
@@ -77,7 +77,7 @@
           <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="product_category_fruits_vegetables"
             >Fruits & Vegetables</label
           >
-          <input id="product_category_diary" type="radio" name="product_category" value="Diray" hidden />
+          <input id="product_category_diary" type="radio" name="product_category" value="Diary" hidden />
           <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="product_category_diary">Diary</label>
           <input id="product_category_bread_pastery" type="radio" name="product_category" value="Bread & Pastry" hidden />
           <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="product_category_bread_pastery"
@@ -88,13 +88,13 @@
         </div>
         <label class="form-label pt-2">Diet</label>
         <div id="product-diet-wrapper">
-          <input id="product_diet_vegetarian" type="checkbox" name="product_diet" value="Vegetarian" hidden />
+          <input id="product_diet_vegetarian" type="radio" name="product_diet" value="Vegetarian" hidden />
           <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="product_diet_vegetarian">Vegetarian</label>
-          <input id="product_diet_vegan" type="checkbox" name="product_diet" value="Vegan" hidden />
+          <input id="product_diet_vegan" type="radio" name="product_diet" value="Vegan" hidden />
           <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="product_diet_vegan">Vegan</label>
-          <input id="product_diet_gluten_free" type="checkbox" name="product_diet" value="Gluten-free" hidden />
+          <input id="product_diet_gluten_free" type="radio" name="product_diet" value="Gluten-free" hidden />
           <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="product_diet_gluten_free">Gluten-free</label>
-          <input id="product_diet_diary_free" type="checkbox" name="product_diet" value="Diary-free" hidden />
+          <input id="product_diet_diary_free" type="radio" name="product_diet" value="Diary-free" hidden />
           <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="product_diet_diary_free">Diary-free</label>
         </div>
         <label class="form-label pt-2" for="product_collection_time">Collection day</label>
@@ -139,8 +139,10 @@
           <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="product_collection_time_18_20">18:00 - 20:00</label>
         </div>
         <label class="form-label" for="product_image">Upload image</label>
-        <input type="file" name="image" accept="image/*" capture="environment" />
-        <input class="btn-primary self-center mt-6" type="submit" value="Create Post" />
+        <input type="file" name="post_image" accept="image/*" capture="environment" />
+        <label class="form-label" for="product_description">Description</label>
+        <textarea name="product_description" class="rounded-3xl w-full p-3" id="product_description"></textarea>
+        <input class="btn-primary self-center mt-6" type="submit" name="create_post" value="Create Post" />
       </form>
     </section>
 
@@ -148,33 +150,12 @@
     <section id="browse" class="page container">
       <h1 class="">Browse</h1>
       <div class="filter-wrapper flex justify-between">
-        <input type="text" name="search-results" class="form-input w-full mr-2" placeholder="Search" />
+        <input onkeyup="search(this.value)" type="text" name="search-results" class="form-input w-full mr-2" placeholder="Search" />
         <button class="btn-tertiary rounded-full h-10 w-11 px-2 flex justify-center items-center">
           <img src="./src/media/icons/filter-icon.svg" class="h-5" alt="" />
         </button>
       </div>
-      <div class="posts-feed-container mt-4 w-full">
-        <article class="post-box border-2 mb-4 border-light-black rounded-3xl">
-          <img src="./src//media//posted/example-food-image.png" alt="image of sold food" />
-          <div class="post-content-wrapper mx-3">
-            <div class="flex justify-between mt-2">
-              <span class="food-category-badge bg-light-green-custom">Fruit & Vegetables</span>
-              <div class="flex">
-                <img src="./src/media/posted/avatar-test.png" alt="" />
-                <p>Piotr Pospiech</p>
-              </div>
-            </div>
-            <div class="flex justify-between font-bold mt-4">
-              <p>Banana</p>
-              <p>Dkk 5</p>
-            </div>
-            <div class="flex justify-between mt-1 mb-4 opacity-50 text-xs">
-              <p>Amount: 7</p>
-              <p>Expires in: 2 days</p>
-            </div>
-          </div>
-        </article>
-      </div>
+      <div id="posts-feed-container" class="mt-4 w-full"></div>
       <!-- <h1 class="">H1 tag</h1>
       <h2 class="">H2 tag</h2>
       <h3 class="">H3 tag</h3>

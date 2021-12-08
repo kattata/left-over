@@ -24,9 +24,7 @@ async function createUser() {
 // const response = fetch("../test/service.js");
 // // const users2 = response.json();
 // console.log("users array", response);
-async () => {
-  await getUsers();
-};
+
 let fetchData = fetch("../test/results.json")
   .then((res) => res.json())
   .then((data) => {

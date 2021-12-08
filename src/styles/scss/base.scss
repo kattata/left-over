@@ -10,7 +10,7 @@
   }
 }
 #product-diet-wrapper {
-  input[type="checkbox"]:checked + label {
+  input[type="radio"]:checked + label {
     background-color: #2c2d2b;
     color: #eef0eb;
   }
