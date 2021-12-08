@@ -2,6 +2,7 @@
 
 $error = "";
 require('mysql.php');
+require('../signup/user.php');
 
 $jsonFile = file_get_contents("users.json");
 $users = json_decode($jsonFile);
@@ -115,6 +116,7 @@ if ($_GET['action'] == 'getUsers') {
     // select entered email from database
     global $db;
     $results = $db->Query("SELECT * FROM users WHERE email = '$enteredEmail'");
+    $userObject = $result->fetch_object("User");
     echo $db->error;
 
     // save email and password from database into variables
@@ -135,7 +137,6 @@ if ($_GET['action'] == 'getUsers') {
     } else {
         global $error;
         echo json_encode($error);
-        
     }
     
 
