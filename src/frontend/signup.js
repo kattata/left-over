@@ -30,7 +30,7 @@ async function createUser() {
   const result = await response.json();
   console.log(result);
   signupError = result;
-  if (signupError.length !== "") {
+  if (signupError.length != "") {
     document.querySelector(".signup-error").innerHTML = signupError;
   } else {
     navigateTo("#/login");

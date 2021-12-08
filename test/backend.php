@@ -21,8 +21,18 @@ function passwordsMatch($password, $rptPassword) {
     }
 }
 
-function allFieldsFilled($username, $email, $password, $rptPassword, $phoneNumber, $address, $zipCode, $city) {
+function allFieldsFilledCreate($username, $email, $password, $rptPassword, $phoneNumber, $address, $zipCode, $city) {
     if($username && $email && $password && $rptPassword && $phoneNumber && $address && $zipCode && $city) {
+        return true;
+    } else {
+        global $error;
+        $error = "Fill out all fields";
+        return false;
+    }
+}
+
+function allFieldsFilledEdit($username, $email, $phoneNumber, $address, $zipCode, $city) {
+    if($username && $email && $phoneNumber && $address && $zipCode && $city) {
         return true;
     } else {
         global $error;
@@ -84,7 +94,7 @@ if ($_GET['action'] == 'getUsers') {
         echo $result['username'];
     }
     
-    // CREATE USER
+// CREATE USER
 } else if ($_GET['action'] == 'createUser') {
     // get user from frontend
     $newUser = json_decode(file_get_contents("php://input"));
@@ -101,7 +111,7 @@ if ($_GET['action'] == 'getUsers') {
     $rptPassword = $newUser->rptPassword;
 
     // validation
-    if(passwordsMatch($password, $rptPassword) && allFieldsFilled($username, $email, $password, $rptPassword, $phoneNumber, $address, $zipCode, $city) && userIsUnique($email)) {
+    if(passwordsMatch($password, $rptPassword) && allFieldsFilledCreate($username, $email, $password, $rptPassword, $phoneNumber, $address, $zipCode, $city) && userIsUnique($email)) {
         global $db;
         $results = $db->Query("INSERT INTO users (username, email, password, phone_number, address, zip_code, city) VALUES ('$username', '$email', '$hashPassword', '$phoneNumber', '$address', '$zipCode', '$city')");
         global $error;
@@ -111,6 +121,8 @@ if ($_GET['action'] == 'getUsers') {
         global $error;
         echo json_encode($error);
     }
+
+// LOGIN
 } else if ($_GET['action'] == 'login') {
     // get user from frontend
     $user = json_decode(file_get_contents("php://input"));
@@ -143,30 +155,36 @@ if ($_GET['action'] == 'getUsers') {
         echo json_encode($error);
     }
 
+
+// UPDATE USER
+} else if ($_GET['action'] == 'updateUser') {
+    // get user from frontend
+    $newUser = json_decode(file_get_contents("php://input"));
+    $username = $newUser->name;
+    $email = $newUser->email;
+    $phoneNumber = $newUser->phoneNumber;
+    $address = $newUser->address;
+    $zipCode = $newUser->zipCode;
+    $city = $newUser->city;
+
+    // validation
+    if(allFieldsFilledEdit($username, $email, $phoneNumber, $address, $zipCode, $city)) {
+        global $db;
+        $results = $db->Query("UPDATE users SET 
+        username = '$username',
+        email = '$email',
+        phone_number = '$phoneNumber',
+        address = '$address',
+        zip_code = '$zipCode',
+        city = '$city' 
+        WHERE email = '$email'");
+        global $error;
+        $error = "";
+        echo json_encode($error);
+        echo $db->error;
+    } else {
+        global $error;
+        echo json_encode($error);    
+    }
 }
 
-
-// $results1 = $db->Query("SELECT * FROM users");
-// $usersJsonArray = array();
-
-
-// foreach ($results1 as $result) {
-//     echo $result["username"];
-//     echo "<br/>";
-//     $usersArray = array(
-//         "username" => $result["username"],
-//         "email" => $result["email"],
-//         "password" => $result["password"]
-//     );
-//     array_push($usersJsonArray, $usersArray);
-// }
-
-// var_dump($usersJsonArray);
-// $fp = fopen('results.json', 'w');
-// fwrite($fp, json_encode($usersJsonArray, JSON_FORCE_OBJECT));
-// fclose($fp);
-
-// if ($_GET['test2'] == 'Create user') {
-//     $results2 = $db->Query("INSERT INTO users (name, email) VALUES ('form', 'works')");
-//     // header("location: ../index.html");
-// }

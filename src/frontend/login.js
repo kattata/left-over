@@ -18,8 +18,8 @@ async function login() {
   const result = await response.json();
   loginError = result[0];
   userEmail = result[1];
-  console.log(result);
-  if (loginError.length !== "") {
+  console.log(userEmail);
+  if (loginError.length != "") {
     document.querySelector(".login-error").innerHTML = loginError;
   } else {
     searchForUser();
