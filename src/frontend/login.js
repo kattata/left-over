@@ -61,13 +61,13 @@ async function appendUserInfo() {
   userSessionInfo = JSON.parse(sessionStorage.getItem("user"));
   username.innerHTML = userSessionInfo.username;
   // append posts to profile page
-  appendPosts();
+  appendProfilePosts();
 }
 
 // append user info in case of refresh
 appendUserInfo();
 
-async function appendPosts() {
+async function appendProfilePosts() {
   // fetch posts
   const response = await fetch("../../src/backend/json/posts.json");
   const posts = await response.json();
