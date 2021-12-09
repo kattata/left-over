@@ -46,6 +46,7 @@ function showPage(path) {
   hideAllPages(); // hide all pages
   document.querySelector(`#${_routes[path]}`).style.display = "block"; // show page by given path
   setActiveTab(path);
+  hideNav("#/login");
 }
 
 /**
@@ -75,6 +76,18 @@ function attachNavLinkEvents() {
   }
 }
 
+function hideNav() {
+  const nav = document.querySelector("nav");
+  const login = window.location.hash == "#/login";
+  const signup = window.location.hash == "#/signup";
+
+  if (login || signup) {
+    nav.style.display = "none";
+  } else {
+    nav.style.display = "flex";
+  }
+}
+
 /**
  * Initialising the router, calling attachNavLinkEvents(), popstate event and navigateTo()
  */
@@ -87,6 +100,7 @@ function initRouter() {
     path = location.hash;
   }
   navigateTo(path);
+  hideNav();
 }
 
 initRouter();

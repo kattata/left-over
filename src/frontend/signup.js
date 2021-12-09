@@ -1,5 +1,3 @@
-const baseUrl = "http://localhost:3000/src/backend/backend.php";
-
 const signupUsername = document.querySelector(".signup-name");
 const signupEmail = document.querySelector(".signup-email");
 const signupPassword = document.querySelector(".signup-password");
@@ -22,11 +20,14 @@ async function createUser() {
     zipCode: signupZipCode.value,
     city: signupCity.value,
   };
-  const response = await fetch(baseUrl + "?action=createUser", {
-    method: "POST",
-    headers: { "Content-Type": "application/json; charset=utf-8" },
-    body: JSON.stringify(newUser),
-  });
+  const response = await fetch(
+    "http://localhost:3000/src/backend/createUser.php?action=createUser",
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json; charset=utf-8" },
+      body: JSON.stringify(newUser),
+    }
+  );
   const result = await response.json();
   console.log(result);
   signupError = result;

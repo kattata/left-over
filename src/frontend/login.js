@@ -1,5 +1,3 @@
-// const baseUrl = "http://localhost:3000/test/backend.php";
-
 const loginEmail = document.querySelector(".login-email");
 const loginPassword = document.querySelector(".login-password");
 let loginError = "";
@@ -10,11 +8,14 @@ async function login() {
     email: loginEmail.value,
     password: loginPassword.value,
   };
-  const response = await fetch(baseUrl + "?action=login", {
-    method: "POST",
-    headers: { "Content-Type": "application/json; charset=utf-8" },
-    body: JSON.stringify(user),
-  });
+  const response = await fetch(
+    "http://localhost:3000/src/backend/login.php?action=login",
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json; charset=utf-8" },
+      body: JSON.stringify(user),
+    }
+  );
   const result = await response.json();
   console.log(result);
   loginError = result[0];
