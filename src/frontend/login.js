@@ -17,7 +17,6 @@ async function login() {
     }
   );
   const result = await response.json();
-  console.log(result);
   loginError = result[0];
   userEmail = result[1];
   if (loginError.length > 0) {
@@ -42,7 +41,6 @@ let userSessionInfo = {};
 async function searchForUser() {
   const response = await fetch("../../src/backend/json/users.json");
   const result = await response.json();
-  console.log(result);
   let userInfo = {};
   for (const user of result) {
     // change email to id
@@ -55,10 +53,12 @@ async function searchForUser() {
   appendUserInfo();
 }
 
+const username = document.querySelector(".profile-username");
+
 function appendUserInfo() {
+  // session
   userSessionInfo = JSON.parse(sessionStorage.getItem("user"));
-  document.querySelector(".username").innerHTML +=
-    " " + userSessionInfo.username;
+  username.innerHTML = userSessionInfo.username;
 }
 
 // append user info in case of refresh
