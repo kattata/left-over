@@ -72,10 +72,11 @@ async function appendProfilePosts() {
   const response = await fetch("../../src/backend/json/posts.json");
   const posts = await response.json();
   for (const post of posts) {
+    // append posted posts
     if (post.seller_id == userSessionInfo.user_id) {
       let html = "";
       html = `
-      <article class="post-box border-2 mb-4 border-light-black rounded-3xl overflow-hidden">
+      <article class="post-box border-2 mb-4 border-light-black rounded-3xl overflow-hidden" onclick="openPostDetails(post.post_id)">
       <img class="max-h-24 w-full object-cover" src="./src/media/posted/${
         post.image_name
       }" alt="image of sold food" />
@@ -112,6 +113,7 @@ async function appendProfilePosts() {
       document.querySelector(".posted").innerHTML += html;
     }
 
+    // append purchased posts
     if (post.buyer_id == userSessionInfo.user_id) {
       let html = "";
       html = `
@@ -158,4 +160,45 @@ function logout() {
   sessionStorage.clear();
   navigateTo("#/login");
   window.location.reload();
+}
+
+function openPostDetails(postId) {
+  navigateTo("#/myPostDetails");
+  console.log(postId);
+
+  let html = "";
+  html = `
+    <div class="container">
+    <img class="max-h-24 w-full object-cover" src="./src/media/posted/${
+      post.image_name
+    }" alt="image of sold food" />
+    <div class="post-content-wrapper mx-3">
+      <div class="flex justify-between mt-2">
+        <span class="food-category-badge
+        ${
+          post.category == "Fruits & Vegetables" ? "bg-light-green-custom" : ""
+        } ${post.category == "Dish" ? "bg-light-blue" : ""}
+        ${post.category == "Bread & Pastry" ? "bg-light-orange" : ""} ${
+    post.category == "Dessert" ? "bg-light-violet" : ""
+  }
+        ${post.category == "Diary" ? "bg-light-red" : ""}">${
+    post.category
+  }</span>
+        <div class="flex">
+          <img class=" pr-1" src="./src/media/posted/avatar-test.png" alt="" />
+          <p>Piotr Pospiech</p>
+        </div>
+      </div>
+      <div class="flex justify-between font-bold mt-4">
+        <p>${post.product_name}</p>
+        <p>DKK ${post.price}</p>
+      </div>
+      <div class="flex justify-between mt-1 mb-4 opacity-50 text-xs">
+        <p>Amount ${post.amount}</p>
+        <p>Expires: ${post.expires_in}</p>
+      </div>
+    </div>
+    </div>
+  `;
+  document.querySelector(".my-post-details").innerHTML = html;
 }
