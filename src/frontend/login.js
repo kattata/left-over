@@ -16,10 +16,10 @@ async function login() {
     body: JSON.stringify(user),
   });
   const result = await response.json();
+  console.log(result);
   loginError = result[0];
   userEmail = result[1];
-  console.log(userEmail);
-  if (loginError.length != "") {
+  if (loginError.length > 0) {
     document.querySelector(".login-error").innerHTML = loginError;
   } else {
     searchForUser();
@@ -39,7 +39,7 @@ document.querySelector(".go-to-signup").addEventListener("click", (e) => {
 let userSessionInfo = {};
 
 async function searchForUser() {
-  const response = await fetch("../../src/backend/json/users2.json");
+  const response = await fetch("../../src/backend/json/users.json");
   const result = await response.json();
   console.log(result);
   let userInfo = {};

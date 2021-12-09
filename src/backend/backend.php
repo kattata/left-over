@@ -130,11 +130,11 @@ if ($_GET['action'] == 'getUsers') {
         );
         array_push($usersJson, $users);
         }
-        $fp = fopen('users2.json', 'w');
+        $fp = fopen('users.json', 'w');
         fwrite($fp, json_encode($usersJson,));
         fclose($fp);
-        $source = "users2.json";
-        $destination = "./json/users2.json";
+        $source = "users.json";
+        $destination = "./json/users.json";
         rename($source, $destination) ? "OK" : "ERROR" ;
         global $error;
         $error = "";
@@ -174,7 +174,8 @@ if ($_GET['action'] == 'getUsers') {
         echo $response;
     } else {
         global $error;
-        echo json_encode($error);
+        $response = json_encode(array($error, $enteredEmail));
+        echo $response;
     }
 
 
