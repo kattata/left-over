@@ -5,7 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Josefin+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Josefin+Sans:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./public/styles/tailwind_output.css" />
     <link rel="stylesheet" href="/public/styles/bundle.css" />
 
@@ -15,7 +18,18 @@
   <body class="bg-light-grey">
     <!-- NAVIGATION -->
     <header class="bottom-0 left-0 w-full fixed z-30">
-      <nav class="bg-light-black relative flex rounded-t-3xl flex-row justify-between items-center p-4">
+      <nav
+        class="
+          bg-light-black
+          relative
+          flex
+          rounded-t-3xl
+          flex-row
+          justify-between
+          items-center
+          p-4
+        "
+      >
         <a
           class="
             rounded-full
@@ -31,22 +45,74 @@
           "
           href="#/createPost"
         >
-          <img src="./src/media/icons/create-post-icon.svg" alt="" class="h-8" />
+          <img
+            src="./src/media/icons/create-post-icon.svg"
+            alt=""
+            class="h-8"
+          />
         </a>
         <div class="flex">
-          <a class="font-jesefin-sans text-light-grey text-xs flex flex-col items-center" href="#/"
-            ><img src="./src/media/icons/browse-icon.svg" alt="" class="h-8 p-1" />Browse</a
+          <a
+            class="
+              font-jesefin-sans
+              text-light-grey text-xs
+              flex flex-col
+              items-center
+            "
+            href="#/"
+            ><img
+              src="./src/media/icons/browse-icon.svg"
+              alt=""
+              class="h-8 p-1"
+            />Browse</a
           >
-          <a class="font-jesefin-sans text-light-grey text-xs flex flex-col items-center ml-10 mr-6" href="#/blog"
-            ><img src="./src/media/icons/blog-icon.svg" alt="" class="h-8 p-1" />Blog</a
+          <a
+            class="
+              font-jesefin-sans
+              text-light-grey text-xs
+              flex flex-col
+              items-center
+              ml-10
+              mr-6
+            "
+            href="#/blog"
+            ><img
+              src="./src/media/icons/blog-icon.svg"
+              alt=""
+              class="h-8 p-1"
+            />Blog</a
           >
         </div>
         <div class="flex flex-row">
-          <a class="font-jesefin-sans text-light-grey text-xs flex flex-col items-center ml-6 mr-6" href="#/shoppingList"
-            ><img src="./src/media/icons/shopping-list-icon.svg" alt="" class="h-8 p-1" />Shopping List</a
+          <a
+            class="
+              font-jesefin-sans
+              text-light-grey text-xs
+              flex flex-col
+              items-center
+              ml-6
+              mr-6
+            "
+            href="#/shoppingList"
+            ><img
+              src="./src/media/icons/shopping-list-icon.svg"
+              alt=""
+              class="h-8 p-1"
+            />Shopping List</a
           >
-          <a class="font-jesefin-sans text-light-grey text-xs flex flex-col items-center" href="#/profile"
-            ><img src="./src/media/icons/profile-icon.svg" alt="" class="h-8 p-1" />Profile</a
+          <a
+            class="
+              font-jesefin-sans
+              text-light-grey text-xs
+              flex flex-col
+              items-center
+            "
+            href="#/profile"
+            ><img
+              src="./src/media/icons/profile-icon.svg"
+              alt=""
+              class="h-8 p-1"
+            />Profile</a
           >
         </div>
       </nav>
@@ -54,50 +120,228 @@
     <!-- ADD POST PAGE -->
     <section id="createPost" class="page container">
       <h1>Add post</h1>
-      <form class="flex w-full flex-col" action="./src/backend/addPost.php" method="POST" enctype="multipart/form-data">
+      <form
+        class="flex w-full flex-col"
+        action="./src/backend/addPost.php"
+        method="POST"
+        enctype="multipart/form-data"
+      >
         <label class="form-label" for="product_name">Product name</label>
-        <input class="form-input" type="text" name="product_name" placeholder="Product name" />
+        <input
+          class="form-input"
+          type="text"
+          name="product_name"
+          placeholder="Product name"
+        />
         <div class="flex w-full">
           <div class="w-1/2 pr-1 flex flex-col">
             <label class="form-label" for="product_amount">Amount</label>
-            <input class="form-input w-full" type="number" name="product_amount" placeholder="Amount" />
+            <input
+              class="form-input w-full"
+              type="number"
+              name="product_amount"
+              placeholder="Amount"
+            />
           </div>
           <div class="w-1/2 pl-1 flex flex-col">
             <label class="form-label" for="product_price">Price</label>
-            <input class="form-input w-full" type="number" name="product_price" placeholder="Price" />
+            <input
+              class="form-input w-full"
+              type="number"
+              name="product_price"
+              placeholder="Price"
+            />
           </div>
         </div>
-        <label class="form-label" for="product_expiration_date">Expires in</label>
-        <input class="form-input w-full" type="date" name="product_expiration_date" placeholder="Expires in" />
+        <label class="form-label" for="product_expiration_date"
+          >Expires in</label
+        >
+        <input
+          class="form-input w-full"
+          type="date"
+          name="product_expiration_date"
+          placeholder="Expires in"
+        />
         <label class="form-label" for="product_categories">Category</label>
         <div id="product-category-wrapper">
-          <input id="product_category_dish" type="radio" name="product_category" value="Dish" hidden />
-          <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="product_category_dish">Dish</label>
-          <input id="product_category_fruits_vegetables" type="radio" name="product_category" value="Fruits & Vegetables" hidden />
-          <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="product_category_fruits_vegetables"
+          <input
+            id="product_category_dish"
+            type="radio"
+            name="product_category"
+            value="Dish"
+            hidden
+          />
+          <label
+            class="
+              btn-secondary
+              inline-block
+              mb-2
+              mr-1
+              transition-colors
+              duration-200
+            "
+            for="product_category_dish"
+            >Dish</label
+          >
+          <input
+            id="product_category_fruits_vegetables"
+            type="radio"
+            name="product_category"
+            value="Fruits & Vegetables"
+            hidden
+          />
+          <label
+            class="
+              btn-secondary
+              inline-block
+              mb-2
+              mr-1
+              transition-colors
+              duration-200
+            "
+            for="product_category_fruits_vegetables"
             >Fruits & Vegetables</label
           >
-          <input id="product_category_diary" type="radio" name="product_category" value="Diary" hidden />
-          <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="product_category_diary">Diary</label>
-          <input id="product_category_bread_pastery" type="radio" name="product_category" value="Bread & Pastry" hidden />
-          <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="product_category_bread_pastery"
+          <input
+            id="product_category_diary"
+            type="radio"
+            name="product_category"
+            value="Diary"
+            hidden
+          />
+          <label
+            class="
+              btn-secondary
+              inline-block
+              mb-2
+              mr-1
+              transition-colors
+              duration-200
+            "
+            for="product_category_diary"
+            >Diary</label
+          >
+          <input
+            id="product_category_bread_pastery"
+            type="radio"
+            name="product_category"
+            value="Bread & Pastry"
+            hidden
+          />
+          <label
+            class="
+              btn-secondary
+              inline-block
+              mb-2
+              mr-1
+              transition-colors
+              duration-200
+            "
+            for="product_category_bread_pastery"
             >Bread & Pastry</label
           >
-          <input id="product_category_dessert" type="radio" name="product_category" value="Dessert" hidden />
-          <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="product_category_dessert">Dessert</label>
+          <input
+            id="product_category_dessert"
+            type="radio"
+            name="product_category"
+            value="Dessert"
+            hidden
+          />
+          <label
+            class="
+              btn-secondary
+              inline-block
+              mb-2
+              mr-1
+              transition-colors
+              duration-200
+            "
+            for="product_category_dessert"
+            >Dessert</label
+          >
         </div>
         <label class="form-label pt-2">Diet</label>
         <div id="product-diet-wrapper">
-          <input id="product_diet_vegetarian" type="radio" name="product_diet" value="Vegetarian" hidden />
-          <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="product_diet_vegetarian">Vegetarian</label>
-          <input id="product_diet_vegan" type="radio" name="product_diet" value="Vegan" hidden />
-          <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="product_diet_vegan">Vegan</label>
-          <input id="product_diet_gluten_free" type="radio" name="product_diet" value="Gluten-free" hidden />
-          <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="product_diet_gluten_free">Gluten-free</label>
-          <input id="product_diet_diary_free" type="radio" name="product_diet" value="Diary-free" hidden />
-          <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="product_diet_diary_free">Diary-free</label>
+          <input
+            id="product_diet_vegetarian"
+            type="radio"
+            name="product_diet"
+            value="Vegetarian"
+            hidden
+          />
+          <label
+            class="
+              btn-secondary
+              inline-block
+              mb-2
+              mr-1
+              transition-colors
+              duration-200
+            "
+            for="product_diet_vegetarian"
+            >Vegetarian</label
+          >
+          <input
+            id="product_diet_vegan"
+            type="radio"
+            name="product_diet"
+            value="Vegan"
+            hidden
+          />
+          <label
+            class="
+              btn-secondary
+              inline-block
+              mb-2
+              mr-1
+              transition-colors
+              duration-200
+            "
+            for="product_diet_vegan"
+            >Vegan</label
+          >
+          <input
+            id="product_diet_gluten_free"
+            type="radio"
+            name="product_diet"
+            value="Gluten-free"
+            hidden
+          />
+          <label
+            class="
+              btn-secondary
+              inline-block
+              mb-2
+              mr-1
+              transition-colors
+              duration-200
+            "
+            for="product_diet_gluten_free"
+            >Gluten-free</label
+          >
+          <input
+            id="product_diet_diary_free"
+            type="radio"
+            name="product_diet"
+            value="Diary-free"
+            hidden
+          />
+          <label
+            class="
+              btn-secondary
+              inline-block
+              mb-2
+              mr-1
+              transition-colors
+              duration-200
+            "
+            for="product_diet_diary_free"
+            >Diary-free</label
+          >
         </div>
-        <label class="form-label pt-2" for="product_collection_time">Collection day</label>
+        <label class="form-label pt-2" for="product_collection_time"
+          >Collection day</label
+        >
         <!-- <input type="button" onclick="showTimeSlots()" class="btn-text-green outline-none self-start" value="+ Add time" /> -->
         <!-- <div class="time-slots hidden flex-col justify-end fixed z-40 left-0 top-0 w-full h-screen bg-light-black bg-opacity-30">
           <div class="slot-wrapper container bg-light-green-custom absolute -bottom-full rounded-tl-3xl rounded-tr-3xl flex-col flex">
@@ -122,27 +366,149 @@
           </div>
         </div>
           -->
-        <input class="form-input w-1/2" type="date" name="product_expiration-date" />
-        <label class="form-label pt-2" for="product_collection_time">Time slots</label>
+        <input
+          class="form-input w-1/2"
+          type="date"
+          name="product_expiration-date"
+        />
+        <label class="form-label pt-2" for="product_collection_time"
+          >Time slots</label
+        >
         <div id="product-time-slots-wrapper">
-          <input id="product_collection_time_8_10" type="checkbox" name="product_collection_time" value="8:00 - 10:00" hidden />
-          <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="product_collection_time_8_10">8:00 - 10:00</label>
-          <input id="product_collection_time_10_12" type="checkbox" name="product_collection_time" value="10:00 - 12:00" hidden />
-          <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="product_collection_time_10_12">10:00 - 12:00</label>
-          <input id="product_collection_time_12_14" type="checkbox" name="product_collection_time" value="12:00 - 14:00" hidden />
-          <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="product_collection_time_12_14">12:00 - 14:00</label>
-          <input id="product_collection_time_14_16" type="checkbox" name="product_collection_time" value="14:00 - 16:00" hidden />
-          <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="product_collection_time_14_16">14:00 - 16:00</label>
-          <input id="product_collection_time_16_18" type="checkbox" name="product_collection_time" value="16:00 - 18:00" hidden />
-          <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="product_collection_time_16_18">16:00 - 18:00</label>
-          <input id="product_collection_time_18_20" type="checkbox" name="product_collection_time" value="18:00 - 20:00" hidden />
-          <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="product_collection_time_18_20">18:00 - 20:00</label>
+          <input
+            id="product_collection_time_8_10"
+            type="checkbox"
+            name="product_collection_time"
+            value="8:00 - 10:00"
+            hidden
+          />
+          <label
+            class="
+              btn-secondary
+              inline-block
+              mb-2
+              mr-1
+              transition-colors
+              duration-200
+            "
+            for="product_collection_time_8_10"
+            >8:00 - 10:00</label
+          >
+          <input
+            id="product_collection_time_10_12"
+            type="checkbox"
+            name="product_collection_time"
+            value="10:00 - 12:00"
+            hidden
+          />
+          <label
+            class="
+              btn-secondary
+              inline-block
+              mb-2
+              mr-1
+              transition-colors
+              duration-200
+            "
+            for="product_collection_time_10_12"
+            >10:00 - 12:00</label
+          >
+          <input
+            id="product_collection_time_12_14"
+            type="checkbox"
+            name="product_collection_time"
+            value="12:00 - 14:00"
+            hidden
+          />
+          <label
+            class="
+              btn-secondary
+              inline-block
+              mb-2
+              mr-1
+              transition-colors
+              duration-200
+            "
+            for="product_collection_time_12_14"
+            >12:00 - 14:00</label
+          >
+          <input
+            id="product_collection_time_14_16"
+            type="checkbox"
+            name="product_collection_time"
+            value="14:00 - 16:00"
+            hidden
+          />
+          <label
+            class="
+              btn-secondary
+              inline-block
+              mb-2
+              mr-1
+              transition-colors
+              duration-200
+            "
+            for="product_collection_time_14_16"
+            >14:00 - 16:00</label
+          >
+          <input
+            id="product_collection_time_16_18"
+            type="checkbox"
+            name="product_collection_time"
+            value="16:00 - 18:00"
+            hidden
+          />
+          <label
+            class="
+              btn-secondary
+              inline-block
+              mb-2
+              mr-1
+              transition-colors
+              duration-200
+            "
+            for="product_collection_time_16_18"
+            >16:00 - 18:00</label
+          >
+          <input
+            id="product_collection_time_18_20"
+            type="checkbox"
+            name="product_collection_time"
+            value="18:00 - 20:00"
+            hidden
+          />
+          <label
+            class="
+              btn-secondary
+              inline-block
+              mb-2
+              mr-1
+              transition-colors
+              duration-200
+            "
+            for="product_collection_time_18_20"
+            >18:00 - 20:00</label
+          >
         </div>
         <label class="form-label" for="product_image">Upload image</label>
-        <input type="file" name="post_image" accept="image/*" capture="environment" />
+        <input
+          type="file"
+          name="post_image"
+          accept="image/*"
+          capture="environment"
+        />
         <label class="form-label" for="product_description">Description</label>
-        <textarea name="product_description" class="rounded-3xl w-full p-3" id="product_description"></textarea>
-        <input class="btn-primary self-center mt-6" type="submit" name="create_post" value="Create Post" />
+        <textarea
+          name="product_description"
+          class="rounded-3xl w-full p-3"
+          id="product_description"
+        ></textarea>
+        <input
+          class="btn-primary self-center mt-6"
+          type="submit"
+          name="create_post"
+          value="Create Post"
+        />
       </form>
     </section>
 
@@ -150,8 +516,25 @@
     <section id="browse" class="page container">
       <h1 class="">Browse</h1>
       <div class="filter-wrapper flex justify-between">
-        <input onkeyup="search(this.value)" type="text" name="search-results" class="form-input w-full mr-2" placeholder="Search" />
-        <button class="btn-tertiary rounded-full h-10 w-11 px-2 flex justify-center items-center">
+        <input
+          onkeyup="search(this.value)"
+          type="text"
+          name="search-results"
+          class="form-input w-full mr-2"
+          placeholder="Search"
+        />
+        <button
+          class="
+            btn-tertiary
+            rounded-full
+            h-10
+            w-11
+            px-2
+            flex
+            justify-center
+            items-center
+          "
+        >
           <img src="./src/media/icons/filter-icon.svg" class="h-5" alt="" />
         </button>
       </div>
@@ -172,18 +555,130 @@
       <span class="food-category-badge bg-red-300">Dish</span> -->
     </section>
 
+    <!-- CREATE POST -->
+    <section id="createPost" class="page container">
+      <h1>Create post</h1>
+    </section>
+
     <!-- BLOG PAGE -->
-    <section id="blog" class="page">
+    <section id="blog" class="page container">
       <h1>Blog</h1>
+      <!-- TIPS & TRICKS -->
+      <div class="flex justify-between mb-2">
+        <h4>Tips & Tricks</h4>
+        <button class="btn-text-green">SEE ALL</button>
+      </div>
+
+      <div
+        class="border-light-black border-solid border bg-light-grey rounded-3xl"
+      >
+        <img
+          src="./src/media/images/tipsandtrick.png"
+          alt=""
+          class="rounded-t-3xl"
+        />
+        <p class="p-4">How to store food properly and enjoy it for longer</p>
+      </div>
+
+      <!-- NEWS -->
+      <div class="flex justify-between mb-2 mt-6">
+        <h4>News</h4>
+        <button class="btn-text-green">SEE ALL</button>
+      </div>
+
+      <div class="overflow-auto whitespace-nowrap">
+        <div
+          class="
+            border-light-black border-solid border
+            bg-light-grey
+            rounded-3xl
+            inline-block
+            w-52
+            mr-4
+          "
+        >
+          <img
+            src="./src/media/images/news1.png"
+            alt=""
+            class="rounded-t-3xl"
+          />
+          <p class="p-4 whitespace-pre-line">
+            Major brand promised to reduce their food waste by 20%
+          </p>
+        </div>
+        <div
+          class="
+            border-light-black border-solid border
+            bg-light-grey
+            rounded-3xl
+            inline-block
+            w-52
+          "
+        >
+          <img
+            src="./src/media/images/news2.png"
+            alt=""
+            class="rounded-t-3xl"
+          />
+          <p class="p-4 whitespace-pre-line">
+            Livestock or livestock feed occupies 1/3 of the earth’s ice-free
+            land
+          </p>
+        </div>
+      </div>
+
+      <!-- RECIPES -->
+      <div class="flex justify-between mb-2 mt-6">
+        <h4>Recipes</h4>
+        <button class="btn-text-green">SEE ALL</button>
+      </div>
+
+      <div class="overflow-auto whitespace-nowrap">
+        <div
+          class="
+            border-light-black border-solid border
+            bg-light-grey
+            rounded-3xl
+            inline-block
+            w-52
+            mr-4
+          "
+        >
+          <img
+            src="./src/media/images/recipes1.png"
+            alt=""
+            class="rounded-t-3xl"
+          />
+          <p class="p-4 whitespace-pre-line">Red curry with tofu and carrot</p>
+        </div>
+        <div
+          class="
+            border-light-black border-solid border
+            bg-light-grey
+            rounded-3xl
+            inline-block
+            w-52
+          "
+        >
+          <img
+            src="./src/media/images/recipes2.png"
+            alt=""
+            class="rounded-t-3xl"
+          />
+          <p class="p-4 whitespace-pre-line">
+            Vegetable stock from leftover ingredients
+          </p>
+        </div>
+      </div>
     </section>
 
     <!-- SHOPPING LIST PAGE -->
-    <section id="shoppingList" class="page">
+    <section id="shoppingList" class="page container">
       <h1>Shopping List</h1>
     </section>
 
     <!-- PROFILE PAGE -->
-    <section id="profile" class="page">
+    <section id="profile" class="page container">
       <h1 class="">Profile</h1>
       <input type="text" />
     </section>
