@@ -114,27 +114,28 @@ if ($_GET['action'] == 'getUsers') {
     if(passwordsMatch($password, $rptPassword) && allFieldsFilledCreate($username, $email, $password, $rptPassword, $phoneNumber, $address, $zipCode, $city) && userIsUnique($email)) {
         global $db;
         $results = $db->Query("INSERT INTO users (username, email, password, phone_number, address, zip_code, city) VALUES ('$username', '$email', '$hashPassword', '$phoneNumber', '$address', '$zipCode', '$city')");
-        // $dbResults = $db->Query("SELECT * FROM users");
-        // $usersJson = array();
-        // foreach ($dbResults as $result) {
-        // $users = array(
-        //     "user_id" => $result["user_id"],
-        //     "username" => $result["username"],
-        //     "email" => $result["email"],
-        //     "password" => $result["password"],
-        //     "phone_number" => $result["phone_number"],
-        //     "address" => $result["address"],
-        //     "zip_code" => $result["zip_code"],
-        //     "city" => $result["city"]
-        // );
-        // array_push($usersJson, $users);
-        // }
-        // $fp = fopen('users2.json', 'w');
-        // fwrite($fp, json_encode($usersJson,));
-        // fclose($fp);
-        // $source = "users2.json";
-        // $destination = "./json/users2.json";
-        // echo rename($source, $destination) ? "OK" : "ERROR" ;
+        // save users data in db
+        $dbResults = $db->Query("SELECT * FROM users");
+        $usersJson = array();
+        foreach ($dbResults as $result) {
+        $users = array(
+            "user_id" => $result["user_id"],
+            "username" => $result["username"],
+            "email" => $result["email"],
+            "password" => $result["password"],
+            "phone_number" => $result["phone_number"],
+            "address" => $result["address"],
+            "zip_code" => $result["zip_code"],
+            "city" => $result["city"]
+        );
+        array_push($usersJson, $users);
+        }
+        $fp = fopen('users2.json', 'w');
+        fwrite($fp, json_encode($usersJson,));
+        fclose($fp);
+        $source = "users2.json";
+        $destination = "./json/users2.json";
+        rename($source, $destination) ? "OK" : "ERROR" ;
         global $error;
         $error = "";
         echo json_encode($error);
