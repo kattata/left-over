@@ -1,14 +1,3 @@
-// function filterActive(event) {
-//   event.target.classList.toggle("btn-secondary");
-//   event.target.classList.toggle("btn-tertiary");
-// }
-// function showTimeSlots() {
-//   document.querySelector(".time-slots").classList.remove("hidden");
-//   document.querySelector(".time-slots").classList.add("flex");
-//   document.querySelector(".slot-wrapper").classList.remove("-bottom-full");
-//   document.querySelector(".slot-wrapper").classList.add("bottom-0");
-// }
-
 async function init() {
   fetchPosts();
   let allPostsJson = await fetchPosts();
@@ -29,19 +18,13 @@ function appendPosts(posts) {
   for (post of posts) {
     htnlTemplate = `
     <article class="post-box border-2 mb-4 border-light-black rounded-3xl overflow-hidden">
-    <img src="./src/media/posted/${post.image_name}" alt="image of sold food" />
+    <img class="max-h-24 w-full object-cover" src="./src/media/posted/${post.image_name}" alt="image of sold food" />
     <div class="post-content-wrapper mx-3">
       <div class="flex justify-between mt-2">
         <span class="food-category-badge 
-        ${
-          post.category == "Fruits & Vegetables" ? "bg-light-green-custom" : ""
-        } ${post.category == "Dish" ? "bg-light-blue" : ""}
-        ${post.category == "Bread & Pastry" ? "bg-light-orange" : ""} ${
-      post.category == "Dessert" ? "bg-light-violet" : ""
-    }
-        ${post.category == "Diary" ? "bg-light-red" : ""}">${
-      post.category
-    }</span>
+        ${post.category == "Fruits & Vegetables" ? "bg-light-green-custom" : ""} ${post.category == "Dish" ? "bg-light-blue" : ""}
+        ${post.category == "Bread & Pastry" ? "bg-light-orange" : ""} ${post.category == "Dessert" ? "bg-light-violet" : ""}
+        ${post.category == "Diary" ? "bg-light-red" : ""}">${post.category}</span>
         <div class="flex">
           <img class=" pr-1" src="./src/media/posted/avatar-test.png" alt="" />
           <p>Piotr Pospiech</p>

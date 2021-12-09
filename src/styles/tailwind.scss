@@ -43,7 +43,7 @@
     @apply font-jesefin-sans text-sm font-semibold text-black-custom pb-1 pt-4;
   }
   .form-input {
-    @apply outline-none font-jesefin-sans text-base text-light-black py-1.5 px-4 border-2 border-light-black rounded-3xl;
+    @apply outline-none font-jesefin-sans text-base bg-light-grey text-light-black py-1.5 px-4 border-2 border-light-black rounded-3xl;
   }
   .food-category-badge {
     @apply font-abril text-xs text-light-black py-1 px-2;
