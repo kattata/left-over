@@ -21,3 +21,11 @@
     color: #eef0eb;
   }
 }
+
+.nav-link.active {
+  opacity: 1;
+}
+
+.nav-link {
+  opacity: .45;
+}
