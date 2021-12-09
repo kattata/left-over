@@ -51,3 +51,10 @@
 .profile-picture {
   // background-image: url(../../media/posted/img.jpg);
 }
+.nav-link.active {
+  opacity: 1;
+}
+
+.nav-link {
+  opacity: .45;
+}
