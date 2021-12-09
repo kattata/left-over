@@ -39,7 +39,7 @@ document.querySelector(".go-to-signup").addEventListener("click", (e) => {
 let userSessionInfo = {};
 
 async function searchForUser() {
-  const response = await fetch("../../test/results2.json");
+  const response = await fetch("../../src/backend/json/users2.json");
   const result = await response.json();
   console.log(result);
   let userInfo = {};

@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:3000/test/backend.php";
+const baseUrl = "http://localhost:3000/src/backend/backend.php";
 
 const signupUsername = document.querySelector(".signup-name");
 const signupEmail = document.querySelector(".signup-email");
