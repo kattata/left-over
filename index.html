@@ -189,12 +189,94 @@
           <img src="./src/media/icons/filter-icon.svg" class="h-5" alt="" />
         </button>
       </div>
+      <div id="selected-filters-wrapper"></div>
       <div id="filters-wrapper" class="w-full transition-all duration-300 h-screen fixed z-30 top-0 left-full bg-light-grey container">
         <div class="flex justify-between items-center pb-6">
           <h1 class="flex pb-0"><img onclick="showFiltersPage()" src="./src/media/icons/close-icon.svg" alt="closing icon" />Filters</h1>
           <div>
-            <button class="btn-text-black">Reset</button>
-            <button class="btn-text-green ml-2">Apply</button>
+            <button onclick="resetFilters()" class="btn-text-black">Reset</button>
+            <button onclick="applyFilters()" class="btn-text-green ml-2">Apply</button>
+          </div>
+        </div>
+        <div class="filter-buttons-container">
+          <label class="form-label pt-0">Categories</label>
+          <div id="filter-category">
+            <input onclick="filterProduct(this.value, event)" id="filter_category_dish" type="checkbox" name="filter_category" value="Dish" hidden />
+            <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="filter_category_dish">Dish</label>
+            <input
+              onclick="filterProduct(this.value, event)"
+              id="filter_category_fruits_vegetables"
+              type="checkbox"
+              name="filter_category"
+              value="Fruits & Vegetables"
+              hidden
+            />
+            <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="filter_category_fruits_vegetables"
+              >Fruits & Vegetables</label
+            >
+            <input
+              onclick="filterProduct(this.value, event)"
+              id="filter_category_diary"
+              type="checkbox"
+              name="filter_category"
+              value="Diary"
+              hidden
+            />
+            <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="filter_category_diary">Diary</label>
+            <input
+              onclick="filterProduct(this.value, event)"
+              id="filter_category_bread_pastery"
+              type="checkbox"
+              name="filter_category"
+              value="Bread & Pastry"
+              hidden
+            />
+            <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="filter_category_bread_pastery"
+              >Bread & Pastry</label
+            >
+            <input
+              onclick="filterProduct(this.value, event)"
+              id="filter_category_dessert"
+              type="checkbox"
+              name="filter_category"
+              value="Dessert"
+              hidden
+            />
+            <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="filter_category_dessert">Dessert</label>
+          </div>
+        </div>
+        <div class="filter-buttons-container">
+          <label class="form-label pt-0">Diet</label>
+          <div id="filter-diet">
+            <input
+              onclick="filterProduct(this.value, event)"
+              id="filter_diet_vegetarian"
+              type="checkbox"
+              name="filter_diet"
+              value="Vegetarian"
+              hidden
+            />
+            <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="filter_diet_vegetarian">Vegetarian</label>
+            <input onclick="filterProduct(this.value, event)" id="filter_diet_vegan" type="checkbox" name="filter_diet" value="Vegan" hidden />
+            <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="filter_diet_vegan">Vegan</label>
+            <input
+              onclick="filterProduct(this.value, event)"
+              id="filter_diet_gluten_free"
+              type="checkbox"
+              name="filter_diet"
+              value="Gluten-free"
+              hidden
+            />
+            <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="filter_diet_gluten_free">Gluten-free</label>
+            <input
+              onclick="filterProduct(this.value, event)"
+              id="filter_diet_diary_free"
+              type="checkbox"
+              name="filter_diet"
+              value="Diary-free"
+              hidden
+            />
+            <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="filter_diet_diary_free">Diary-free</label>
           </div>
         </div>
       </div>
@@ -348,11 +430,11 @@
     </section>
 
     <script src="src/frontend/router.js"></script>
+    <script src="src/frontend/main.js"></script>
     <script src="src/frontend/modules/filters.js"></script>
     <script src="src/frontend/login.js"></script>
     <script src="src/frontend/signup.js"></script>
     <script src="src/frontend/profile.js"></script>
     <script src="src/frontend/editProfile.js"></script>
-    <script src="src/frontend/main.js"></script>
   </body>
 </html>
