@@ -15,7 +15,7 @@ async function fetchPosts() {
 function appendPosts(posts) {
   document.querySelector("#posts-feed-container").innerHTML = "";
   let htnlTemplate = ``;
-  for (post of posts) {
+  for (let post of posts) {
     htnlTemplate = `
     <article class="post-box border-2 mb-4 border-light-black rounded-3xl overflow-hidden">
     <img class="max-h-24 w-full object-cover" src="./src/media/posted/${post.image_name}" alt="image of sold food" />
