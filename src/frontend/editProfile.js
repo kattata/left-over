@@ -11,6 +11,7 @@ const editProfileImg = document.querySelector(".edit-profile-picture");
 
 let editProfileError = "";
 let uploadedEditImgName = "";
+let userId = 0;
 
 editProfileImg.addEventListener("change", (e) => {
   uploadedEditImgName = e.target.files[0].name;
@@ -37,8 +38,8 @@ async function updateUser() {
     }
   );
   const result = await response.json();
-  console.log(result);
-  editProfileError = result;
+  editProfileError = result[0];
+  userId = result[1];
   if (editProfileError != "") {
     document.querySelector(".edit-profile-error").innerHTML = editProfileError;
   } else {
@@ -58,9 +59,10 @@ async function updateSession() {
   let userInfo = {};
   for (const user of result) {
     // change email to id
-    if (user.email == userEmail) {
+    if (user.user_id == userId) {
       userInfo = user;
     }
   }
   sessionStorage.user = JSON.stringify(userInfo);
+  window.location.reload();
 }

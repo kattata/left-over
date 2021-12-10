@@ -60,10 +60,11 @@ if ($_GET['action'] == 'updateUser') {
         // errors
         global $error;
         $error = "";
-        echo json_encode($error);
+        echo json_encode(array($error, $id));
     } else {
         global $error;
-        echo json_encode($error);    
+        echo json_encode(array($error, $id));
+        // echo json_encode($error);    
     }
 }
 

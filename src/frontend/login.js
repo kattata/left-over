@@ -10,7 +10,7 @@ const profileCity = document.querySelector(".edit-profile-city");
 const profileImg = document.querySelector(".edit-profile-picture");
 // import { appendUserInfoToEditProfile } from "./editProfile";
 let loginError = "";
-let userEmail = "";
+let loginUserId = 0;
 let _posts = "";
 
 async function login() {
@@ -28,7 +28,7 @@ async function login() {
   );
   const result = await response.json();
   loginError = result[0];
-  userEmail = result[1];
+  loginUserId = result[1];
   if (loginError.length > 0) {
     document.querySelector(".login-error").innerHTML = loginError;
   } else {
@@ -52,7 +52,7 @@ async function searchForUser() {
   let userInfo = {};
   for (const user of result) {
     // change email to id
-    if (user.email == userEmail) {
+    if (user.user_id == loginUserId) {
       userInfo = user;
     }
   }
