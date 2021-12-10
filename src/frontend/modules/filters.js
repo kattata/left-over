@@ -170,7 +170,11 @@ async function applyFilters() {
   if (_filteredJson.length === 0 && _appliedFilters.length === 0) {
     appendPosts(allPostsJson);
   } else if (_filteredJson.length === 0 && _appliedFilters.length !== 0) {
-    document.querySelector("#posts-feed-container").innerHTML = ` <div class=" text-center">There has been no results matching your filters :(</div>`;
+    document.querySelector("#posts-feed-container").innerHTML = ` <div class="w-full mt-20 flex flex-col justify-center items-center text-center">
+    <img class=" w-2/3" src="./src/media/icons/no-results.svg" alt="No results icon" />
+    <h3>No results to show</h3>
+    <p>Please, check spelling or try different keyword</p>
+   </div>`;
   } else {
     appendPosts(_filteredJson);
   }
