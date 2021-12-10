@@ -210,9 +210,16 @@
             placeholder="Enter city"
             class="signup-city form-input"
           />
-          <div class="flex items-center mt-4">
+          <label class="form-label">Profile picture</label>
+          <input
+            type="file"
+            accept="image/*"
+            capture="environment"
+            class="signup-picture"
+          />
+          <div class="flex items-center mt-6">
             <input type="checkbox" />
-            <p class="ml-2">I agree with <b>Terms and Conditions</b></p>
+            <p class="ml-2">* I agree with <b>Terms and Conditions</b></p>
           </div>
           <p class="signup-error mt-6"></p>
           <button type="submit" class="btn-primary mt-6">Sign up</button>

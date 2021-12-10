@@ -63,6 +63,7 @@ if ($_GET['action'] == 'createUser') {
     $address = $newUser->address;
     $zipCode = $newUser->zipCode;
     $city = $newUser->city;
+    $img = $newUser->img;
 
     // hash the passwords
     $password = $newUser->password;
@@ -72,9 +73,11 @@ if ($_GET['action'] == 'createUser') {
     // validation
     if(passwordsMatch($password, $rptPassword) && allFieldsFilledCreate($username, $email, $password, $rptPassword, $phoneNumber, $address, $zipCode, $city) && userIsUnique($email)) {
         global $db;
-        $results = $db->Query("INSERT INTO users (username, email, password, phone_number, address, zip_code, city) VALUES ('$username', '$email', '$hashPassword', '$phoneNumber', '$address', '$zipCode', '$city')");
-        // save users data in db
+        // push user to db
+        $results = $db->Query("INSERT INTO users (username, email, password, phone_number, address, zip_code, city, image_name) VALUES ('$username', '$email', '$hashPassword', '$phoneNumber', '$address', '$zipCode', '$city', '$img')");
+        // fetch users data from db
         $dbResults = $db->Query("SELECT * FROM users");
+        // save users data in json
         $usersJson = array();
         foreach ($dbResults as $result) {
         $users = array(
@@ -85,7 +88,8 @@ if ($_GET['action'] == 'createUser') {
             "phone_number" => $result["phone_number"],
             "address" => $result["address"],
             "zip_code" => $result["zip_code"],
-            "city" => $result["city"]
+            "city" => $result["city"],
+            "image_name" => $result["image_name"]
         );
         array_push($usersJson, $users);
         }
@@ -95,6 +99,7 @@ if ($_GET['action'] == 'createUser') {
         $source = "users.json";
         $destination = "./json/users.json";
         rename($source, $destination) ? "OK" : "ERROR" ;
+        // errors
         global $error;
         $error = "";
         echo json_encode($error);

@@ -6,8 +6,14 @@ const signupPhoneNumber = document.querySelector(".signup-phone-number");
 const signupAddress = document.querySelector(".signup-address");
 const signupZipCode = document.querySelector(".signup-zip-code");
 const signupCity = document.querySelector(".signup-city");
+const signupImg = document.querySelector(".signup-picture");
 
 let signupError = "";
+let uploadedImgName = "";
+
+signupImg.addEventListener("change", (e) => {
+  uploadedImgName = e.target.files[0].name;
+});
 
 async function createUser() {
   const newUser = {
@@ -19,6 +25,7 @@ async function createUser() {
     address: signupAddress.value,
     zipCode: signupZipCode.value,
     city: signupCity.value,
+    img: uploadedImgName,
   };
   const response = await fetch(
     "http://localhost:3000/src/backend/createUser.php?action=createUser",
