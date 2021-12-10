@@ -43,10 +43,13 @@ function appendPosts(posts) {
     `;
     document.querySelector("#posts-feed-container").innerHTML += htnlTemplate;
   }
-  console.log(posts);
+  console.log("Appended posts", posts);
 }
 
 async function search(value) {
+  _appliedFilters = [];
+  appendCheckedFilter(_appliedFilters);
+  resetAllFilters();
   let searchValue = value.toLowerCase();
   let filteredPosts = [];
   const allPosts = await fetchPosts();
@@ -56,7 +59,7 @@ async function search(value) {
       filteredPosts.push(post);
     }
   }
-  console.log(filteredPosts);
+
   appendPosts(filteredPosts);
 }
 

@@ -42,24 +42,28 @@ function appendPosts(posts) {
     `;
     document.querySelector("#posts-feed-container").innerHTML += htnlTemplate;
   }
-  console.log("Appended posts", posts);
+  // console.log("Appended posts", posts);
 }
 function appendCheckedFilter(filters) {
+  document.querySelector("#selected-filters-wrapper").innerHTML = ``;
+  let allCheckedFilters = filters;
+
   let htnlTemplate = ``;
-  for (let filter of filters) {
+  for (let filter of allCheckedFilters) {
     htnlTemplate = `
     <input
     onclick="removeFilterChecked(this.value, event)"
-    id="checked_${Date.now()}"
+    id="checked_browse_${filter}"
     type="checkbox"
     value="${filter}"
-    hidden
     checked
+    hidden
   />  
-  <label class="btn-tertiary inline-block mt-2 mb-2 mr-1 transition-colors duration-200" for="checked_${Date.now()}">${filter}</label>  
+  <label  class="btn-tertiary inline-block mt-2 mb-2 mr-1 transition-colors duration-200" for="checked_browse_${filter}">${filter} X</label>  
     `;
+    document.querySelector("#selected-filters-wrapper").innerHTML += htnlTemplate;
   }
-  document.querySelector("#selected-filters-wrapper").innerHTML += htnlTemplate;
+  // console.log("appended filters", allCheckedFilters);
 }
 // end of block
 
@@ -76,18 +80,19 @@ function removeDuplicates(array) {
       if (element.post_id === elementInside.post_id && index != i) {
         arrayToValidate.splice(i, 1);
       } else if (index === i) {
-        console.log("Removed post with id and position", "id:", element.post_id, "position:", i + 1);
+        // console.log("Removed post with id and position", "id:", element.post_id, "position:", i + 1);
       }
     }
   }
 }
 function removeFilterChecked(value, event) {
+  // showFiltersPage();
+  resetCheckedFilter(value);
   filterProduct(value, event);
-  applyFilters();
-  showFiltersPage();
-
   appendCheckedFilter(_appliedFilters);
-  console.log("filters", _appliedFilters);
+  applyFilters();
+
+  // console.log("filters", _appliedFilters);
 }
 
 function filterProduct(value, event) {
@@ -120,18 +125,32 @@ function filterProduct(value, event) {
     for (let i = 0; i < _appliedFilters.length; i++) {
       if (checkboxValue === _appliedFilters[i]) {
         _appliedFilters.splice(i, 1);
-        _clickedFilters.splice(i, 1);
       }
     }
   }
-  console.log("filters to apply", _appliedFilters);
+  // console.log("filters to apply", _appliedFilters);
 }
-async function resetFilters() {
+function resetCheckedFilter(value) {
+  let checkedFilterValue = value;
+  for (const clickedFilter of _clickedFilters) {
+    if (checkedFilterValue == clickedFilter.value) {
+      clickedFilter.checked = false;
+    }
+  }
+  _clickedFilters;
+}
+
+async function resetAllFilters() {
   let allPostsJson = await fetchPosts();
   _clickedFilters.forEach((checkbox) => (checkbox.checked = false));
   _appliedFilters = [];
-  console.log("reset filters", _appliedFilters);
+  // console.log("reset filters", _appliedFilters);
   appendPosts(allPostsJson);
+}
+function resetAllFiltersAndClose() {
+  resetAllFilters();
+  _appliedFilters = [];
+  appendCheckedFilter(_appliedFilters);
   setTimeout(() => {
     showFiltersPage();
   }, 150);
@@ -147,7 +166,7 @@ async function applyFilters() {
       }
     }
   }
-  console.log("After all checks", _filteredJson);
+  // console.log("After all checks", _filteredJson);
   if (_filteredJson.length === 0 && _appliedFilters.length === 0) {
     appendPosts(allPostsJson);
   } else if (_filteredJson.length === 0 && _appliedFilters.length !== 0) {
@@ -155,6 +174,9 @@ async function applyFilters() {
   } else {
     appendPosts(_filteredJson);
   }
+}
+function applyFiltersAndClose() {
+  applyFilters();
   appendCheckedFilter(_appliedFilters);
   showFiltersPage();
 }
