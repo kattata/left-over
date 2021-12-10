@@ -909,7 +909,7 @@
             placeholder="Enter password"
             class="edit-profile-password form-input"
           />
-          <button class="btn-text-green">Change password</button>
+          <button class="btn-text-green mt-2 text-left">Change password</button>
           <label class="form-label">Phone number</label>
           <input
             type="text"
@@ -934,8 +934,15 @@
             placeholder="Enter city"
             class="edit-profile-city form-input"
           />
+          <label class="form-label">Profile picture</label>
+          <input
+            type="file"
+            accept="image/*"
+            capture="environment"
+            class="edit-profile-picture"
+          />
           <p class="edit-profile-error"></p>
-          <button type="submit" class="btn-primary">Save</button>
+          <button type="submit" class="btn-primary mt-6">Save</button>
         </form>
       </div>
     </section>
