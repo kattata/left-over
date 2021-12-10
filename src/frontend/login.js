@@ -1,5 +1,14 @@
 const loginEmail = document.querySelector(".login-email");
 const loginPassword = document.querySelector(".login-password");
+const profileUsername = document.querySelector(".edit-profile-name");
+const profileEmail = document.querySelector(".edit-profile-email");
+const profilePassword = document.querySelector(".edit-profile-password");
+const profilePhoneNumber = document.querySelector(".edit-profile-phone-number");
+const profileAddress = document.querySelector(".edit-profile-address");
+const profileZipCode = document.querySelector(".edit-profile-zip-code");
+const profileCity = document.querySelector(".edit-profile-city");
+const profileImg = document.querySelector(".edit-profile-picture");
+// import { appendUserInfoToEditProfile } from "./editProfile";
 let loginError = "";
 let userEmail = "";
 let _posts = "";
@@ -37,8 +46,6 @@ document.querySelector(".go-to-signup").addEventListener("click", (e) => {
   navigateTo("#/signup");
 });
 
-let userSessionInfo = {};
-
 async function searchForUser() {
   const response = await fetch("../../src/backend/json/users.json");
   const result = await response.json();
@@ -52,20 +59,39 @@ async function searchForUser() {
   sessionStorage.setItem("user", JSON.stringify(userInfo));
   // append user info after log in
   appendUserInfo();
+  appendUserInfoToEditProfile(); // this function is in editProfile.js
 }
 
 const username = document.querySelector(".profile-username");
 
 async function appendUserInfo() {
+  let userSessionInfo = JSON.parse(sessionStorage.getItem("user"));
   // session
-  userSessionInfo = JSON.parse(sessionStorage.getItem("user"));
-  username.innerHTML = userSessionInfo.username;
+  if (userSessionInfo) {
+    username.innerHTML = userSessionInfo.username;
+  }
   // append posts to profile page
   appendProfilePosts();
+  appendUserInfoToEditProfile(userSessionInfo);
 }
 
+let userSessionInfo = JSON.parse(sessionStorage.getItem("user"));
 // append user info in case of refresh
 appendUserInfo();
+appendUserInfoToEditProfile(userSessionInfo);
+
+function appendUserInfoToEditProfile(userSession) {
+  if (userSession) {
+    profileUsername.value = userSession.username;
+    profileEmail.value = userSession.email;
+    profilePassword.value = userSession.password;
+    profilePhoneNumber.value = userSession.phone_number;
+    profileAddress.value = userSession.address;
+    profileZipCode.value = userSession.zip_code;
+    profileCity.value = userSession.city;
+    // profileImg.value = userSession.image_name;
+  }
+}
 
 async function appendProfilePosts() {
   // fetch posts
@@ -73,7 +99,7 @@ async function appendProfilePosts() {
   const posts = await response.json();
   for (const post of posts) {
     // append posted posts
-    if (post.seller_id == userSessionInfo.user_id) {
+    if (userSessionInfo && post.seller_id == userSessionInfo.user_id) {
       let html = "";
       html = `
       <article class="post-box border-2 mb-4 border-light-black rounded-3xl overflow-hidden" onclick="openPostDetails(post.post_id)">
@@ -114,7 +140,7 @@ async function appendProfilePosts() {
     }
 
     // append purchased posts
-    if (post.buyer_id == userSessionInfo.user_id) {
+    if (userSessionInfo && post.buyer_id == userSessionInfo.user_id) {
       let html = "";
       html = `
       <article class="post-box border-2 mb-4 border-light-black rounded-3xl overflow-hidden">
