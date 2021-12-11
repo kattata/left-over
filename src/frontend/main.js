@@ -64,3 +64,84 @@ async function search(value) {
 }
 
 init();
+
+// SPLASH SCREEN
+const splash = document.querySelector(".splash");
+document.addEventListener("DOMContentLoaded", (e)=>{
+  setTimeout(()=>{
+    splash.classList.add("display-none");
+  }, 1000);
+})
+
+// SHOPING LIST
+const itemToAdd = document.getElementById("itemToAdd");
+const productAmount = document.getElementById("productAmount");
+const addButton = document.getElementById("addButton");
+const itemList = document.getElementById("list");
+
+class Item {
+	constructor (itemName, itemAmount) {
+		this.name = itemName;
+    this.amount = itemAmount;
+		this.create();
+	}
+
+	create () {
+		let listItem = document.createElement("div");
+		listItem.classList.add("list-item");
+
+		let input = document.createElement("input");
+		input.type = "text";
+		input.classList.add("item-name");
+    input.value = this.name;
+		// input.value = this.name + this.amount;
+    // input.value = this.amount;
+		input.disabled = true;
+
+    let amountInput = document.createElement("input");
+    amountInput.type = "text";
+    amountInput.classList.add("item-name");
+    amountInput.value = this.amount;
+    amountInput.disabled = true;
+
+		// let actions = document.createElement("div");
+		// actions.classList.add("item-actions");
+
+		// let updateButton = document.createElement("button");
+		// updateButton.classList.add("update");
+		// updateButton.innerText = "Update";
+		// updateButton.addEventListener("click", () => this.update(input));
+
+		let removeButton = document.createElement("button");
+		removeButton.classList.add("remove");
+    // removeButton.type = "radio";
+		removeButton.innerText = "Remove";
+		removeButton.addEventListener("click", () => this.remove(listItem));
+
+		// actions.appendChild(updateButton);
+		actions.appendChild(removeButton);
+    
+		listItem.appendChild(input);
+    listItem.appendChild(amountInput);
+		listItem.appendChild(actions);
+		itemList.appendChild(listItem);
+	}
+
+	// update (input) {
+	// 	input.disabled = !input.disabled;
+	// }
+
+	remove (listItem) {
+		listItem.parentNode.removeChild(listItem);
+	}
+}
+
+addButton.addEventListener("click", () => newItem());
+
+function newItem () {
+	if (itemToAdd.value != "" || productAmount.value != "") {
+		new Item(itemToAdd.value, productAmount.value);
+		itemToAdd.value = "";
+    productAmount.value = "";
+	}
+}

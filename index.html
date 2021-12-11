@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <title>Left Over App</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -51,6 +52,11 @@
         </div>
       </nav>
     </header>
+
+    <!-- SPLASH SCREEN -->
+    <div class="splash">
+      <img src="./src/media/images/splash-screen.png" alt="Splash screen" class="fade-in">
+    </div>
 
     <!-- LOGIN PAGE -->
     <section id="login" class="page">
@@ -337,6 +343,21 @@
     <!-- SHOPPING LIST PAGE -->
     <section id="shoppingList" class="page container">
       <h1>Shopping List</h1>
+
+        <div class="form">
+          <form class="flex w-full flex-col">
+            <label class="form-label">Product name</label>
+            <input class="form-input" id="itemToAdd" type="text" name="itemToAdd" placeholder="Product name" />
+            
+            <label class="form-label">Amount</label>
+            <input class="form-input" id="productAmount" type="number" name="productAmount" placeholder="Amount" />
+
+            <!-- <button class="btn-primary self-center mt-6" id="addButton" name="add_product_sl" value="Add product">Add product</button> -->
+            <input class="btn-primary self-center mt-6" id="addButton" name="add_product_sl" value="Add product" />
+          </form>
+        </div>
+        <div class="list" id="list"></div>
+
     </section>
 
     <!-- PROFILE PAGE -->
