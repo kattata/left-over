@@ -66,7 +66,7 @@
           <p class="text-center mt-2">Forgot your password?</p>
           <div class="flex items-center mt-20 m-auto">
             <p>Not a member yet?</p>
-            <button type="button" class="btn-text-green go-to-signup ml-2">Sign up</button>
+            <button type="button" class="btn-text-green ml-2" onclick="navigateTo('#/signup')">Sign up</button>
           </div>
         </form>
       </div>
@@ -94,7 +94,7 @@
           <input type="text" placeholder="Enter zip code" class="signup-zip-code form-input" />
           <label class="form-label">City</label>
           <input type="text" placeholder="Enter city" class="signup-city form-input" />
-          <label class="form-label">Profile picture</label>
+          <label class="form-label">Profile picture (max. 2 GB)</label>
           <input type="file" accept="image/*" capture="environment" class="signup-picture" />
           <div class="flex items-center mt-6">
             <input type="checkbox" />
@@ -344,8 +344,8 @@
       <div class="container mb-10">
         <!-- header -->
         <header class="flex mb-4">
-          <img src=""
-            class="profile-picture rounded-full bg-light-black h-20 w-20"
+          <img src="src/media/profile/default.jpg"
+            class="profile-picture rounded-full h-20 w-20 object-cover"
           ></img>
           <div class="ml-4">
             <p class="profile-username"></p>
@@ -426,9 +426,9 @@
           <input type="text" placeholder="Enter zip code" class="edit-profile-zip-code form-input" />
           <label class="form-label">City</label>
           <input type="text" placeholder="Enter city" class="edit-profile-city form-input" />
-          <label class="form-label">Profile picture</label>
+          <label class="form-label">Profile picture (max. 2 GB)</label>
           <input type="file" accept="image/*" capture="environment" class="edit-profile-picture" />
-          <p class="edit-profile-error"></p>
+          <p class="edit-profile-error mt-6"></p>
           <button type="submit" class="btn-primary mt-6">Save</button>
         </form>
       </div>

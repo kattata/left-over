@@ -18,6 +18,8 @@ signupImg.addEventListener("change", (e) => {
 async function createUser() {
   const formData = new FormData();
   formData.append("file", uploadedImg);
+  console.log(uploadedImg);
+  formData.append("fileSize", uploadedImg.size);
   formData.append("name", signupUsername.value);
   formData.append("email", signupEmail.value);
   formData.append("password", signupPassword.value);

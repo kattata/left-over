@@ -17,8 +17,8 @@ function passwordsMatch($password, $rptPassword) {
     }
 }
 
-function allFieldsFilledCreate($username, $email, $password, $rptPassword, $phoneNumber, $address, $zipCode, $city) {
-    if($username && $email && $password && $rptPassword && $phoneNumber && $address && $zipCode && $city) {
+function allFieldsFilledCreate($username, $email, $password, $rptPassword, $phoneNumber, $address, $zipCode, $city, $imgName) {
+    if($username && $email && $password && $rptPassword && $phoneNumber && $address && $zipCode && $city && $imgName) {
         return true;
     } else {
         global $error;
@@ -44,6 +44,16 @@ function userIsUnique($email) {
     }
 }
 
+function correctFileSize($allowedMaxFileSize, $imgSize) {
+    if($imgSize < $allowedMaxFileSize) {
+        return true;
+    } else {
+        global $error;
+        $error = "File is too big";
+        return false;
+    }
+}
+
 if ($_GET['action'] == 'createUser') {
 
     // get user from frontend (form data)
@@ -61,9 +71,11 @@ if ($_GET['action'] == 'createUser') {
     $targetFolder = "../media/profile/";
     $imgName = $_FILES['file']['name'];
     $fileName = basename($imgName);
+    $allowedMaxFileSize = 1024 * 1024 * 5;
+    $imgSize = $_POST['fileSize'];
 
     // // validation
-    if(passwordsMatch($password, $rptPassword) && allFieldsFilledCreate($username, $email, $password, $rptPassword, $phoneNumber, $address, $zipCode, $city) && userIsUnique($email)) {
+    if(passwordsMatch($password, $rptPassword) && allFieldsFilledCreate($username, $email, $password, $rptPassword, $phoneNumber, $address, $zipCode, $city, $imgName) && userIsUnique($email) && correctFileSize($allowedMaxFileSize, $imgSize)) {
         global $db;
         // push user to db
         $results = $db->Query("INSERT INTO users (username, email, password, phone_number, address, zip_code, city, image_name) VALUES ('$username', '$email', '$hashPassword', '$phoneNumber', '$address', '$zipCode', '$city', '$imgName')");

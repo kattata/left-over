@@ -10,33 +10,37 @@ const editProfileCity = document.querySelector(".edit-profile-city");
 const editProfileImg = document.querySelector(".edit-profile-picture");
 
 let editProfileError = "";
-let uploadedEditImgName = "";
+let uploadedEditImg = "";
 let userId = 0;
 
 editProfileImg.addEventListener("change", (e) => {
-  uploadedEditImgName = e.target.files[0].name;
+  uploadedEditImg = e.target.files[0];
 });
 
 async function updateUser() {
   const currentUser = JSON.parse(sessionStorage.getItem("user"));
-  const user = {
-    id: currentUser.user_id,
-    name: editProfileUsername.value,
-    email: editProfileEmail.value,
-    phoneNumber: editProfilePhoneNumber.value,
-    address: editProfileAddress.value,
-    zipCode: editProfileZipCode.value,
-    city: editProfileCity.value,
-    img: uploadedEditImgName,
-  };
+
+  const formData = new FormData();
+  formData.append("file", uploadedEditImg);
+  formData.append("fileSize", uploadedEditImg.size);
+  formData.append("currentImg", currentUser.image_name);
+  formData.append("id", currentUser.user_id);
+  formData.append("name", editProfileUsername.value);
+  formData.append("email", editProfileEmail.value);
+  formData.append("password", editProfilePassword.value);
+  formData.append("phoneNumber", editProfilePhoneNumber.value);
+  formData.append("address", editProfileAddress.value);
+  formData.append("zipCode", editProfileZipCode.value);
+  formData.append("city", editProfileCity.value);
+
   const response = await fetch(
     "http://localhost:3000/src/backend/updateUser.php?action=updateUser",
     {
       method: "POST",
-      headers: { "Content-Type": "application/json; charset=utf-8" },
-      body: JSON.stringify(user),
+      body: formData,
     }
   );
+
   const result = await response.json();
   editProfileError = result[0];
   userId = result[1];
@@ -58,7 +62,6 @@ async function updateSession() {
   const result = await response.json();
   let userInfo = {};
   for (const user of result) {
-    // change email to id
     if (user.user_id == userId) {
       userInfo = user;
     }
