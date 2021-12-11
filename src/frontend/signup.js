@@ -9,11 +9,9 @@ const signupCity = document.querySelector(".signup-city");
 const signupImg = document.querySelector(".signup-picture");
 
 let signupError = "";
-let uploadedImgName = "";
 let uploadedImg = "";
 
 signupImg.addEventListener("change", (e) => {
-  uploadedImgName = e.target.files[0].name;
   uploadedImg = e.target.files[0];
 });
 
@@ -29,26 +27,6 @@ async function createUser() {
   formData.append("zipCode", signupZipCode.value);
   formData.append("city", signupCity.value);
 
-  const newUser = {
-    name: signupUsername.value,
-    email: signupEmail.value,
-    password: signupPassword.value,
-    rptPassword: signupRptPassword.value,
-    phoneNumber: signupPhoneNumber.value,
-    address: signupAddress.value,
-    zipCode: signupZipCode.value,
-    city: signupCity.value,
-    img: uploadedImgName,
-  };
-
-  // const response = await fetch(
-  //   "http://localhost:3000/src/backend/createUser.php?action=createUser",
-  //   {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json; charset=utf-8" },
-  //     body: JSON.stringify(newUser),
-  //   }
-  // );
   const response = await fetch(
     "http://localhost:3000/src/backend/createUser.php?action=createUser",
     {
@@ -56,6 +34,7 @@ async function createUser() {
       body: formData,
     }
   );
+
   const result = await response.json();
   console.log(result);
   signupError = result;
