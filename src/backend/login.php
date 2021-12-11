@@ -46,24 +46,21 @@ if ($_GET['action'] == 'login') {
     echo $db->error;
 
     // save email and password from database into variables
-    $databaseEmail;
-    $databasePassword;
     foreach($results as $result) {
-        global $databaseEmail;
-        global $databasePassword;
         $databaseEmail = $result['email'];
         $databasePassword = $result['password'];
+        $databaseId = $result['user_id'];
     }
 
     // check is user exists and the password matches
     if(userExists($enteredEmail) && verifyPassword($enteredPassword, $databasePassword)) {
         global $error;
         $error = "";
-        $response = json_encode(array($error, $enteredEmail));
+        $response = json_encode(array($error, $databaseId));
         echo $response;
     } else {
         global $error;
-        $response = json_encode(array($error, $enteredEmail));
+        $response = json_encode(array($error, $databaseId));
         echo $response;
     }
 }

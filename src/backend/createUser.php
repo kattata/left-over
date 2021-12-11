@@ -27,16 +27,6 @@ function allFieldsFilledCreate($username, $email, $password, $rptPassword, $phon
     }
 }
 
-function allFieldsFilledEdit($username, $email, $phoneNumber, $address, $zipCode, $city) {
-    if($username && $email && $phoneNumber && $address && $zipCode && $city) {
-        return true;
-    } else {
-        global $error;
-        $error = "Fill out all fields";
-        return false;
-    }
-}
-
 function userIsUnique($email) {
     global $db;
     $results = $db->Query("SELECT * FROM users WHERE email = '$email'");
@@ -55,26 +45,28 @@ function userIsUnique($email) {
 }
 
 if ($_GET['action'] == 'createUser') {
-    // get user from frontend
-    $newUser = json_decode(file_get_contents("php://input"));
-    $username = $newUser->name;
-    $email = $newUser->email;
-    $phoneNumber = $newUser->phoneNumber;
-    $address = $newUser->address;
-    $zipCode = $newUser->zipCode;
-    $city = $newUser->city;
-    $img = $newUser->img;
 
-    // hash the passwords
-    $password = $newUser->password;
+    // get user from frontend (form data)
+    $username = $_POST['name'];
+    $email = $_POST['email'];
+    $phoneNumber = $_POST['phoneNumber'];
+    $address = $_POST['address'];
+    $zipCode = $_POST['zipCode'];
+    $city = $_POST['city'];
+    $password = $_POST['password'];
+    $rptPassword = $_POST['rptPassword'];
+    // hash the password
     $hashPassword = password_hash($password, PASSWORD_DEFAULT);
-    $rptPassword = $newUser->rptPassword;
 
-    // validation
+    $targetFolder = "../media/profile/";
+    $imgName = $_FILES['file']['name'];
+    $fileName = basename($imgName);
+
+    // // validation
     if(passwordsMatch($password, $rptPassword) && allFieldsFilledCreate($username, $email, $password, $rptPassword, $phoneNumber, $address, $zipCode, $city) && userIsUnique($email)) {
         global $db;
         // push user to db
-        $results = $db->Query("INSERT INTO users (username, email, password, phone_number, address, zip_code, city, image_name) VALUES ('$username', '$email', '$hashPassword', '$phoneNumber', '$address', '$zipCode', '$city', '$img')");
+        $results = $db->Query("INSERT INTO users (username, email, password, phone_number, address, zip_code, city, image_name) VALUES ('$username', '$email', '$hashPassword', '$phoneNumber', '$address', '$zipCode', '$city', '$imgName')");
         // fetch users data from db
         $dbResults = $db->Query("SELECT * FROM users");
         // save users data in json
@@ -99,6 +91,8 @@ if ($_GET['action'] == 'createUser') {
         $source = "users.json";
         $destination = "./json/users.json";
         rename($source, $destination) ? "OK" : "ERROR" ;
+        // upload image
+        move_uploaded_file($_FILES['file']["tmp_name"], $targetFolder . $fileName);
         // errors
         global $error;
         $error = "";
@@ -108,3 +102,4 @@ if ($_GET['action'] == 'createUser') {
         echo json_encode($error);
     }
 }
+

@@ -77,7 +77,7 @@
       <div class="container mb-40">
         <button class="btn-text-green" onclick="navigateTo('#/login')">Back</button>
         <h1 class="text-center mb-6">Sign up</h1>
-        <form class="signup-form flex flex-col">
+        <form class="signup-form flex flex-col" enctype="multipart/form-data">
           <label class="form-label">Name</label>
           <input type="text" placeholder="Enter name" class="signup-name form-input" />
           <label class="form-label">Email</label>
@@ -342,8 +342,11 @@
     <!-- PROFILE PAGE -->
     <section id="profile" class="page">
       <div class="container mb-10">
+        <!-- header -->
         <header class="flex mb-4">
-          <div class="profile-picture rounded-full bg-light-black h-20 w-20"></div>
+          <img src=""
+            class="profile-picture rounded-full bg-light-black h-20 w-20"
+          ></img>
           <div class="ml-4">
             <p class="profile-username"></p>
             <p class="grey-text pb-2">Joined 5 months ago</p>
