@@ -30,7 +30,7 @@ function filterTimeSlot(value, event) {
       }
     }
   }
-  console.log("filters to apply", _appliedTimeSlots);
+  // console.log("filters to apply", _appliedTimeSlots);
 }
 const uploadedImage = document.querySelector("#product-uploaded-image");
 
@@ -50,6 +50,7 @@ async function createPost() {
     name: userDetails.username,
     profileImage: userDetails.image_name,
   };
+
   const newPost = {
     postId: Date.now(),
     sellerId: currentUser.id,
@@ -70,6 +71,7 @@ async function createPost() {
   formData.append("postId", newPost.postId);
   formData.append("sellerId", newPost.sellerId);
   formData.append("sellerImage", newPost.sellerImage);
+  formData.append("sellerUserName", newPost.sellerUsername);
   formData.append("productName", newPost.productName);
   formData.append("productAmount", newPost.productAmount);
   formData.append("productPrice", newPost.productPrice);
