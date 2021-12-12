@@ -191,18 +191,28 @@ async function appendProfilePosts(userSessionInfo) {
   }
 }
 
+let currentPostId = 0;
+
 function openPostDetails(postId) {
   navigateTo("#/myPostDetails");
   for (const post of _posts) {
     if (postId == post.post_id) {
+      currentPostId = postId;
+
       let html = "";
       html = `
     <div class="container">
+    <div class="flex justify-between">
     <button class="btn-text-green" onclick="navigateTo("#/profile")">Back</button>
-    <button class="btn-text-green" onclick="editPost()">Edit</button>
-    <button class="btn-text-green" onclick="deletePost(${
-      post.post_id
-    })">Delete</button>
+    <div>
+      <button class="btn-text-green mr-2" onclick="editPost(${
+        post.post_id
+      })">Edit</button>
+      <button class="btn-text-green" onclick="deletePost(${
+        post.post_id
+      })">Delete</button>
+      </div>
+    </div>
     <img class="max-h-24 w-full object-cover" src="./src/media/posted/${
       post.image_name
     }" alt="image of sold food" />
@@ -239,10 +249,66 @@ function openPostDetails(postId) {
   }
 }
 
-function editPost() {
+const editPostName = document.querySelector(".edit-post-product-name");
+const editPostAmount = document.querySelector(".edit-post-amount");
+const editPostPrice = document.querySelector(".edit-post-price");
+const editPostExpirationDate = document.querySelector(
+  ".edit-post-expiration-date"
+);
+const editPostDescription = document.querySelector(".edit-post-description");
+const editPostImg = document.querySelector(".edit-post-img");
+
+let uploadedEditPostImg = "";
+
+appendToEditPost();
+
+// edit post
+editPostImg.addEventListener("change", (e) => {
+  uploadedEditPostImg = e.target.files[0];
+});
+
+async function editPost(postId) {
   navigateTo("#/editPost");
+  const formData = new FormData();
+  formData.append("postId", postId);
+  formData.append("file", uploadedEditPostImg);
+  formData.append("fileSize", uploadedEditPostImg.size);
+  formData.append("productName", editPostName.value);
+  formData.append("amount", editPostAmount.value);
+  formData.append("price", editPostPrice.value);
+  formData.append("expirationDate", editPostExpirationDate.value);
+  formData.append("description", editPostDescription.value);
+
+  const response = await fetch(
+    "http://localhost:3000/src/backend/updatePost.php?action=updatePost",
+    {
+      method: "POST",
+      body: formData,
+    }
+  );
+
+  const result = await response.json();
 }
 
+document.querySelector(".edit-post-form").addEventListener("submit", (e) => {
+  e.preventDefault();
+  editPost();
+});
+
+function appendToEditPost() {
+  for (const post of _posts) {
+    if (currentPostId == post.post_id) {
+      console.log(post);
+      editPostName.value = post.product_name;
+      editPostAmount.value = post.amount;
+      editPostPrice.value = post.price;
+      editPostExpirationDate.value = post.expires_in;
+      editPostDescription.value = post.description;
+    }
+  }
+}
+
+// delete post
 async function deletePost(postId) {
   const response = await fetch(
     "http://localhost:3000/src/backend/deletePost.php?action=deletePost",

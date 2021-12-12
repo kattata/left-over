@@ -3,19 +3,22 @@
   padding: 0;
   box-sizing: border-box;
 }
-#product-category-wrapper {
+#product-category-wrapper,
+#edit-product-category-wrapper {
   input[type="radio"]:checked + label {
     background-color: #2c2d2b;
     color: #eef0eb;
   }
 }
-#product-diet-wrapper {
+#product-diet-wrapper,
+#edit-product-diet-wrapper {
   input[type="radio"]:checked + label {
     background-color: #2c2d2b;
     color: #eef0eb;
   }
 }
-#product-time-slots-wrapper {
+#product-time-slots-wrapper,
+#edit-product-time-slots-wrapper {
   input[type="checkbox"]:checked + label {
     background-color: #2c2d2b;
     color: #eef0eb;
@@ -66,9 +69,6 @@
   }
 }
 
-.profile-picture {
-  // background-image: url(../../media/posted/img.jpg);
-}
 .nav-link.active {
   opacity: 1;
 }
