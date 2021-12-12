@@ -6,11 +6,15 @@ $db = new MySQL();
 $db->Connect();
 
 
-
-
-
+if ($_GET['action'] == 'newPost') {
+  // get user from frontend
+  $productDetails = json_decode(file_get_contents("php://input"));
+  
+  var_dump($productDetails);
+}
 
 if ($_POST['create_post'] == 'Create Post') {
+      $postId = time();
       $productName = $_POST['product_name'];
       $productAmount = $_POST['product_amount'];
       $productPrice = $_POST['product_price'];
@@ -24,10 +28,11 @@ if ($_POST['create_post'] == 'Create Post') {
       $targetFolder = "../media/posted/";
       $fileName = basename($file["name"]);
       move_uploaded_file($file["tmp_name"], $targetFolder . $fileName);
+     
   
 
-      $results2 = $db->Query("INSERT INTO posts (product_name, amount, price, expires_in, category_name, diet_name, image_name, product_description)
-       VALUES ('$productName', '$productAmount', '$productPrice', '$productExpirationDate', '$productCategory' , '$productDiet', '$fileName', '$productDescription')");
+      $results2 = $db->Query("INSERT INTO posts (post_id, product_name, amount, price, expires_in, category_name, diet_name, image_name, product_description)
+       VALUES ('$postId','$productName', '$productAmount', '$productPrice', '$productExpirationDate', '$productCategory' , '$productDiet', '$fileName', '$productDescription')");
     $results1 = $db->Query("SELECT * FROM posts");
     $usersJsonArray = array();
     foreach ($results1 as $result) {

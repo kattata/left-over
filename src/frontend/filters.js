@@ -1,7 +1,13 @@
 let _appliedFilters = [];
 let _filteredJson = [];
 let _clickedFilters = [];
+let _clickedPostId = undefined;
 //Needs to be here modules have issues with bindings
+function appendAndGoPostDetails(postId) {
+  navigateTo("#/postDetials");
+  _clickedPostId = postId;
+  appendPostDetails(postId);
+}
 async function fetchPosts() {
   const fetchData = await fetch("../../src/backend/json/posts.json")
     .then((res) => res.json())
@@ -16,7 +22,7 @@ function appendPosts(posts) {
   let htnlTemplate = ``;
   for (let post of posts) {
     htnlTemplate = `
-    <article class="post-box border-2 mb-4 border-light-black rounded-3xl overflow-hidden">
+    <article onclick = "appendAndGoPostDetails(${post.post_id})" class="post-box border-2 mb-4 border-light-black rounded-3xl overflow-hidden">
     <img class="max-h-24 w-full object-cover" src="./src/media/posted/${post.image_name}" alt="image of sold food" />
     <div class="post-content-wrapper mx-3">
       <div class="flex justify-between mt-2">

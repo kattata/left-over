@@ -9,14 +9,11 @@ async function login() {
     email: loginEmail.value,
     password: loginPassword.value,
   };
-  const response = await fetch(
-    "http://localhost:3000/src/backend/login.php?action=login",
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/json; charset=utf-8" },
-      body: JSON.stringify(user),
-    }
-  );
+  const response = await fetch("http://localhost:3000/src/backend/login.php?action=login", {
+    method: "POST",
+    headers: { "Content-Type": "application/json; charset=utf-8" },
+    body: JSON.stringify(user),
+  });
   const result = await response.json();
   loginError = result[0];
   userEmail = result[1];
@@ -77,23 +74,13 @@ async function appendProfilePosts() {
       let html = "";
       html = `
       <article class="post-box border-2 mb-4 border-light-black rounded-3xl overflow-hidden" onclick="openPostDetails(post.post_id)">
-      <img class="max-h-24 w-full object-cover" src="./src/media/posted/${
-        post.image_name
-      }" alt="image of sold food" />
+      <img class="max-h-24 w-full object-cover" src="./src/media/posted/${post.image_name}" alt="image of sold food" />
       <div class="post-content-wrapper mx-3">
         <div class="flex justify-between mt-2">
           <span class="food-category-badge 
-          ${
-            post.category == "Fruits & Vegetables"
-              ? "bg-light-green-custom"
-              : ""
-          } ${post.category == "Dish" ? "bg-light-blue" : ""}
-          ${post.category == "Bread & Pastry" ? "bg-light-orange" : ""} ${
-        post.category == "Dessert" ? "bg-light-violet" : ""
-      }
-          ${post.category == "Diary" ? "bg-light-red" : ""}">${
-        post.category
-      }</span>
+          ${post.category == "Fruits & Vegetables" ? "bg-light-green-custom" : ""} ${post.category == "Dish" ? "bg-light-blue" : ""}
+          ${post.category == "Bread & Pastry" ? "bg-light-orange" : ""} ${post.category == "Dessert" ? "bg-light-violet" : ""}
+          ${post.category == "Diary" ? "bg-light-red" : ""}">${post.category}</span>
           <div class="flex">
             <img class=" pr-1" src="./src/media/posted/avatar-test.png" alt="" />
             <p>Piotr Pospiech</p>
@@ -118,23 +105,13 @@ async function appendProfilePosts() {
       let html = "";
       html = `
       <article class="post-box border-2 mb-4 border-light-black rounded-3xl overflow-hidden">
-      <img class="max-h-24 w-full object-cover" src="./src/media/posted/${
-        post.image_name
-      }" alt="image of sold food" />
+      <img class="max-h-24 w-full object-cover" src="./src/media/posted/${post.image_name}" alt="image of sold food" />
       <div class="post-content-wrapper mx-3">
         <div class="flex justify-between mt-2">
           <span class="food-category-badge 
-          ${
-            post.category == "Fruits & Vegetables"
-              ? "bg-light-green-custom"
-              : ""
-          } ${post.category == "Dish" ? "bg-light-blue" : ""}
-          ${post.category == "Bread & Pastry" ? "bg-light-orange" : ""} ${
-        post.category == "Dessert" ? "bg-light-violet" : ""
-      }
-          ${post.category == "Diary" ? "bg-light-red" : ""}">${
-        post.category
-      }</span>
+          ${post.category == "Fruits & Vegetables" ? "bg-light-green-custom" : ""} ${post.category == "Dish" ? "bg-light-blue" : ""}
+          ${post.category == "Bread & Pastry" ? "bg-light-orange" : ""} ${post.category == "Dessert" ? "bg-light-violet" : ""}
+          ${post.category == "Diary" ? "bg-light-red" : ""}">${post.category}</span>
           <div class="flex">
             <img class=" pr-1" src="./src/media/posted/avatar-test.png" alt="" />
             <p>Piotr Pospiech</p>
@@ -169,21 +146,13 @@ function openPostDetails(postId) {
   let html = "";
   html = `
     <div class="container">
-    <img class="max-h-24 w-full object-cover" src="./src/media/posted/${
-      post.image_name
-    }" alt="image of sold food" />
+    <img class="max-h-24 w-full object-cover" src="./src/media/posted/${post.image_name}" alt="image of sold food" />
     <div class="post-content-wrapper mx-3">
       <div class="flex justify-between mt-2">
         <span class="food-category-badge
-        ${
-          post.category == "Fruits & Vegetables" ? "bg-light-green-custom" : ""
-        } ${post.category == "Dish" ? "bg-light-blue" : ""}
-        ${post.category == "Bread & Pastry" ? "bg-light-orange" : ""} ${
-    post.category == "Dessert" ? "bg-light-violet" : ""
-  }
-        ${post.category == "Diary" ? "bg-light-red" : ""}">${
-    post.category
-  }</span>
+        ${post.category == "Fruits & Vegetables" ? "bg-light-green-custom" : ""} ${post.category == "Dish" ? "bg-light-blue" : ""}
+        ${post.category == "Bread & Pastry" ? "bg-light-orange" : ""} ${post.category == "Dessert" ? "bg-light-violet" : ""}
+        ${post.category == "Diary" ? "bg-light-red" : ""}">${post.category}</span>
         <div class="flex">
           <img class=" pr-1" src="./src/media/posted/avatar-test.png" alt="" />
           <p>Piotr Pospiech</p>

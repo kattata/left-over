@@ -27,14 +27,11 @@ async function createUser() {
     city: signupCity.value,
     img: uploadedImgName,
   };
-  const response = await fetch(
-    "http://localhost:3000/src/backend/createUser.php?action=createUser",
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/json; charset=utf-8" },
-      body: JSON.stringify(newUser),
-    }
-  );
+  const response = await fetch("http://localhost:3000/src/backend/createUser.php?action=createUser", {
+    method: "POST",
+    headers: { "Content-Type": "application/json; charset=utf-8" },
+    body: JSON.stringify(newUser),
+  });
   const result = await response.json();
   console.log(result);
   signupError = result;
