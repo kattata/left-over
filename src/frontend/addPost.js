@@ -61,6 +61,7 @@ async function createPost() {
     productCategory: document.querySelector('input[name="product_category"]:checked').value,
     productDiet: document.querySelector('input[name="product_diet"]:checked').value,
     productDescription: document.querySelector("#product_description").value,
+    productExpirationDate: document.querySelector("#create-post-product-expiration-date").value,
     reservedDay: document.querySelector("#product-pick-up-day").value,
     reservedTimeSlots: _appliedTimeSlots,
   };
@@ -75,13 +76,13 @@ async function createPost() {
   formData.append("productCategory", newPost.productCategory);
   formData.append("productDiet", newPost.productDiet);
   formData.append("productDescription", newPost.productDescription);
+  formData.append("productExpirationDate", newPost.productExpirationDate);
   formData.append("reservedDay", newPost.reservedDay);
   formData.append("reservedTimeSlots", newPost.reservedTimeSlots);
 
   console.log(formData);
   await fetch("../../src/backend/addPost.php?action=newPost", {
     method: "POST",
-    headers: { "Content-Type": "application/json; charset=utf-8" },
     body: formData,
   });
 }
