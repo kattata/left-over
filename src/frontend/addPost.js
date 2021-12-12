@@ -52,7 +52,6 @@ async function createPost() {
   };
 
   const newPost = {
-    postId: Date.now(),
     sellerId: currentUser.id,
     sellerUsername: currentUser.name,
     sellerImage: currentUser.profileImage,
@@ -68,7 +67,6 @@ async function createPost() {
   };
   const formData = new FormData();
   formData.append("file", uploadedImg);
-  formData.append("postId", newPost.postId);
   formData.append("sellerId", newPost.sellerId);
   formData.append("sellerImage", newPost.sellerImage);
   formData.append("sellerUserName", newPost.sellerUsername);
