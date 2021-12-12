@@ -127,6 +127,7 @@
           id="create-post-product-expiration-date"
           class="form-input w-full"
           type="date"
+          pattern="\d{2}-\d{2}-\d{4}"
           name="product_expiration_date"
           placeholder="Expires in"
         />
@@ -160,7 +161,7 @@
         </div>
         <label class="form-label pt-2" for="product_collection_time">Collection day</label>
 
-        <input id="product-pick-up-day" class="form-input w-1/2" type="date" name="product_expiration-date" />
+        <input id="product-pick-up-day" class="form-input w-1/2" type="date" pattern="\d{2}-\d{2}-\d{4}" name="product_expiration-date" />
         <label class="form-label pt-2" for="product_collection_time">Time slots</label>
         <div id="product-time-slots-wrapper">
           <input

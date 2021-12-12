@@ -64,7 +64,7 @@ async function createPost() {
     productDescription: document.querySelector("#product_description").value,
     productExpirationDate: document.querySelector("#create-post-product-expiration-date").value,
     reservedDay: document.querySelector("#product-pick-up-day").value,
-    reservedTimeSlots: _appliedTimeSlots,
+    reservedTimeSlots: JSON.stringify(_appliedTimeSlots),
   };
   const formData = new FormData();
   formData.append("file", uploadedImg);
