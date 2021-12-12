@@ -32,6 +32,16 @@ function filterTimeSlot(value, event) {
   }
   console.log("filters to apply", _appliedTimeSlots);
 }
+const uploadedImage = document.querySelector("#product-uploaded-image");
+
+let uploadedImg = "";
+
+uploadedImage.addEventListener("change", (e) => {
+  uploadedImg = e.target.files[0];
+});
+
+const formData = new FormData();
+formData.append("file", uploadedImg);
 
 async function createPost() {
   let userDetails = JSON.parse(sessionStorage.getItem("user"));
@@ -52,15 +62,27 @@ async function createPost() {
     productDiet: document.querySelector('input[name="product_diet"]:checked').value,
     productDescription: document.querySelector("#product_description").value,
     reservedDay: document.querySelector("#product-pick-up-day").value,
-    uploadedImage: document.querySelector("#product-uploaded-image").value,
     reservedTimeSlots: _appliedTimeSlots,
   };
+  const formData = new FormData();
+  formData.append("file", uploadedImg);
+  formData.append("postId", newPost.postId);
+  formData.append("sellerId", newPost.sellerId);
+  formData.append("sellerImage", newPost.sellerImage);
+  formData.append("productName", newPost.productName);
+  formData.append("productAmount", newPost.productAmount);
+  formData.append("productPrice", newPost.productPrice);
+  formData.append("productCategory", newPost.productCategory);
+  formData.append("productDiet", newPost.productDiet);
+  formData.append("productDescription", newPost.productDescription);
+  formData.append("reservedDay", newPost.reservedDay);
+  formData.append("reservedTimeSlots", newPost.reservedTimeSlots);
 
-  console.log(newPost);
+  console.log(formData);
   await fetch("../../src/backend/addPost.php?action=newPost", {
     method: "POST",
     headers: { "Content-Type": "application/json; charset=utf-8" },
-    body: JSON.stringify(newPost),
+    body: JSON.stringify(formData),
   });
 }
 document.querySelector("#add-post-form").addEventListener("submit", (e) => {
