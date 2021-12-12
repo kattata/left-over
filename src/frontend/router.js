@@ -10,6 +10,7 @@ const _routes = {
   "#/login": "login",
   "#/signup": "signup",
   "#/createPost": "createPost",
+  "#/editPost": "editPost",
   "#/postDetials": "postDetails",
   "#/buyProduct": "buyProduct",
   "#/summary": "summary",
