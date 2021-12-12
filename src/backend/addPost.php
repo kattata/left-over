@@ -10,40 +10,42 @@ $db->Connect();
 if ($_GET['action'] == 'newPost') {
   // get user from frontend
   $postId = $_POST['postId'];
-  echo "Post id" . $postId;
+  echo "Post id" . gettype($postId)  . "</br>";
   $sellerId = $_POST['sellerId'];
-  echo "Seller id" . $sellerId;
+  echo "Seller id" . $sellerId  . "</br>";
   $productName = $_POST['productName'];
-  echo "product name" . $productName;
+  echo "product name" . $productName  . "</br>";
   $productAmount = $_POST['productAmount'];
-  echo "product amount" .  $productAmount;
+  echo "product amount" .  $productAmount  . "</br>";
   $productPrice = $_POST['productPrice'];
-  echo "product price" .  $productPrice;
+  echo "product price" .  $productPrice  . "</br>"; 
   $productExpirationDate = $_POST['productExpirationDate'];
-  echo "productExpirationDate" .  $productExpirationDate;
+  echo "productExpirationDate" .  $productExpirationDate  . "</br>";
   $productCategory = $_POST['productCategory'];
-  echo "productCategory" .  $productCategory;
+  echo "productCategory" .  $productCategory  . "</br>";
   $productDiet = $_POST['productDiet'];
-  echo "productDiet" .  $productDiet;
+  echo "productDiet" .  $productDiet  . "</br>";
   $productDescription = $_POST['productDescription'];
-  echo "productDescription" .  $productDescription;
+  echo "productDescription" .  $productDescription  . "</br>";
   $reservedDay = $_POST['reservedDay'];
-  echo "reservedDay" .  $reservedDay;
+  echo "reservedDay" .  $reservedDay  . "</br>";
   $reservedTimeSlots = $_POST['reservedTimeSlots'];
   $sellerImageName = $_POST['sellerImage'];
-  echo "sellerImageName" .  $sellerImageName;
+  echo "sellerImageName" .  $sellerImageName  . "</br>";
   $sellerUserName = $_POST['sellerUserName'];
-  echo "sellerUserName" .  $sellerUserName;
+  echo "sellerUserName" .  $sellerUserName  . "</br>";
   $file = $_FILES['file'];
   $uploadedImageName = $file["name"];
-  echo "uploadedImageName" .  $uploadedImageName;
+  echo "uploadedImageName" .  $uploadedImageName  . "</br>";
 
   $targetFolder = "../media/posted/";
   $fileName = basename($file["name"]);
   move_uploaded_file($file["tmp_name"], $targetFolder . $fileName);
  
-  $results2 = $db->Query("INSERT INTO posts (post_id, seller_id, product_name, amount, price, expires_in, category_name, diet_name, image_name, product_description, seller_image, seller_username)
-  VALUES ('$postId', '$sellerId', '$productName', '$productAmount', '$productPrice', '$productExpirationDate', '$productCategory', '$productDiet', '$uploadedImageName', '$productDescription', '$sellerImageName', '$sellerUserName')");
+  $results2 = $db->Query("INSERT INTO posts (post_id, seller_id, product_name, amount, price,
+   expires_in, category_name, diet_name, image_name, product_description, seller_image, seller_username)
+  VALUES ('$postId', '1', 'test', '1', '2', '20-10-1999',
+   'fafsd', 'test', 'test', 'test', 'fff', 'fff')");
  var_dump($db-> error);
   
   $results1 = $db->Query("SELECT * FROM posts");
