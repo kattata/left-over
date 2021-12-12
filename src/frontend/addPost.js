@@ -82,7 +82,7 @@ async function createPost() {
   await fetch("../../src/backend/addPost.php?action=newPost", {
     method: "POST",
     headers: { "Content-Type": "application/json; charset=utf-8" },
-    body: JSON.stringify(formData),
+    body: formData,
   });
 }
 document.querySelector("#add-post-form").addEventListener("submit", (e) => {
