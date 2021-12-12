@@ -9,6 +9,8 @@ $db->Connect();
 if ($_GET['action'] == 'newPost') {
   // get user from frontend
   $productDetails = json_decode(file_get_contents("php://input"));
+  $username = $_POST['productName'];
+  echo $username;
   
   var_dump($productDetails);
 }
