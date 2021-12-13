@@ -211,7 +211,7 @@ function appendMyPostDetails(post) {
   html = `
   <div class="container">
   <div class="flex justify-between">
-  <button class="btn-text-green" onclick="navigateTo("#/profile">Back</button>
+  <button class="btn-text-green" onclick="navigateTo('#/profile')">Back</button>
   <div>
   <button class="btn-text-green mr-2" onclick="editPost(${
     post.post_id
@@ -234,8 +234,10 @@ function appendMyPostDetails(post) {
     post.category == "Dessert" ? "bg-light-violet" : ""
   }
     ${post.category == "Diary" ? "bg-light-red" : ""}">${post.category}</span>
-    <div class="flex">
-      <img class=" pr-1" src="./src/media/posted/avatar-test.png" alt="" />
+    <div class="flex justify-between">
+      <img class="seller-img" src="./src/media/profile/${
+        post.seller_image
+      }" alt="" />
       <p>${post.seller_username}</p>
     </div>
   </div>

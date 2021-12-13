@@ -7,8 +7,8 @@ $db = new MySQL();
 $db->Connect();
 
 // VALIDATION
-function allFieldsFilledEdit($productName, $amount, $price, $expirationDate, $description, $collectionDay, $collectionTime, $category, $diet, $imgName) {
-    if($productName && $amount && $price && $expirationDate && $description && $collectionDay && $collectionTime && $category && $diet && $imgName) {
+function allFieldsFilledEdit($productName, $amount, $price, $expirationDate, $collectionDay, $collectionTime, $category, $diet, $imgName) {
+    if($productName && $amount && $price && $expirationDate && $collectionDay && $collectionTime && $category && $diet && $imgName) {
         return true;
     } else {
         global $error;
@@ -49,7 +49,7 @@ if ($_GET['action'] == 'updatePost') {
 
     global $db;
 
-    if(allFieldsFilledEdit($productName, $amount, $price, $expirationDate, $description, $collectionDay, $collectionTime, $category, $diet, $imgName) && correctFileSize($allowedMaxFileSize, $imgSize)) {
+    if(allFieldsFilledEdit($productName, $amount, $price, $expirationDate, $collectionDay, $collectionTime, $category, $diet, $imgName) && correctFileSize($allowedMaxFileSize, $imgSize)) {
 
         // insert post
         $updatePosts = $db->Query("UPDATE posts SET product_name = '$productName', amount = '$amount', price = '$price', expires_in = '$expirationDate', product_description = '$description', category_name = '$category', diet_name = '$diet', image_name = '$imgName' WHERE post_id = '$postId'");
