@@ -9,16 +9,16 @@ const signupCity = document.querySelector(".signup-city");
 const signupImg = document.querySelector(".signup-picture");
 
 let signupError = "";
-let uploadedImg = "";
+let uploadedCreateImg = "";
 
 signupImg.addEventListener("change", (e) => {
-  uploadedImg = e.target.files[0];
+  uploadedCreateImg = e.target.files[0];
 });
 
 async function createUser() {
   const formData = new FormData();
   formData.append("file", uploadedImg);
-  console.log(uploadedImg);
+  console.log(uploadedCreateImg);
   formData.append("fileSize", uploadedImg.size);
   formData.append("name", signupUsername.value);
   formData.append("email", signupEmail.value);

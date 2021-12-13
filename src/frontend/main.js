@@ -3,6 +3,7 @@ async function init() {
   let allPostsJson = await fetchPosts();
   appendPosts(allPostsJson);
 }
+
 async function fetchPosts() {
   const fetchData = await fetch("../../src/backend/json/posts.json")
     .then((res) => res.json())

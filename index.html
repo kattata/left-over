@@ -109,21 +109,28 @@
     <!-- ADD POST PAGE -->
     <section id="createPost" class="page container">
       <h1>Create post</h1>
-      <form class="flex w-full flex-col" action="./src/backend/addPost.php" method="POST" enctype="multipart/form-data">
+      <form id="add-post-form" class="flex w-full flex-col" method="POST" enctype="multipart/form-data">
         <label class="form-label" for="product_name">Product name</label>
-        <input class="form-input" type="text" name="product_name" placeholder="Product name" />
+        <input id="create-post-product-name" class="form-input" type="text" name="product_name" placeholder="Product name" />
         <div class="flex w-full">
           <div class="w-1/2 pr-1 flex flex-col">
             <label class="form-label" for="product_amount">Amount</label>
-            <input class="form-input w-full" type="number" name="product_amount" placeholder="Amount" />
+            <input id="create-post-product-amount" class="form-input w-full" type="number" name="product_amount" placeholder="Amount" />
           </div>
           <div class="w-1/2 pl-1 flex flex-col">
             <label class="form-label" for="product_price">Price</label>
-            <input class="form-input w-full" type="number" name="product_price" placeholder="Price" />
+            <input id="create-post-product-price" class="form-input w-full" type="number" name="product_price" placeholder="Price" />
           </div>
         </div>
         <label class="form-label" for="product_expiration_date">Expires in</label>
-        <input class="form-input w-full" type="date" name="product_expiration_date" placeholder="Expires in" />
+        <input
+          id="create-post-product-expiration-date"
+          class="form-input w-full"
+          type="date"
+          pattern="\d{2}-\d{2}-\d{4}"
+          name="product_expiration_date"
+          placeholder="Expires in"
+        />
         <label class="form-label" for="product_categories">Category</label>
         <div id="product-category-wrapper">
           <input id="product_category_dish" type="radio" name="product_category" value="Dish" hidden />
@@ -154,31 +161,74 @@
         </div>
         <label class="form-label pt-2" for="product_collection_time">Collection day</label>
 
-        <input class="form-input w-1/2" type="date" name="product_expiration-date" />
+        <input id="product-pick-up-day" class="form-input w-1/2" type="date" pattern="\d{2}-\d{2}-\d{4}" name="product_expiration-date" />
         <label class="form-label pt-2" for="product_collection_time">Time slots</label>
         <div id="product-time-slots-wrapper">
-          <input id="product_collection_time_8_10" type="checkbox" name="product_collection_time" value="8:00 - 10:00" hidden />
+          <input
+            onclick="filterTimeSlot(this.value, event)"
+            id="product_collection_time_8_10"
+            type="checkbox"
+            name="product_collection_time"
+            value="8:00 - 10:00"
+            hidden
+          />
           <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="product_collection_time_8_10">8:00 - 10:00</label>
-          <input id="product_collection_time_10_12" type="checkbox" name="product_collection_time" value="10:00 - 12:00" hidden />
+          <input
+            onclick="filterTimeSlot(this.value, event)"
+            id="product_collection_time_10_12"
+            type="checkbox"
+            name="product_collection_time"
+            value="10:00 - 12:00"
+            hidden
+          />
           <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="product_collection_time_10_12">10:00 - 12:00</label>
-          <input id="product_collection_time_12_14" type="checkbox" name="product_collection_time" value="12:00 - 14:00" hidden />
+          <input
+            onclick="filterTimeSlot(this.value, event)"
+            id="product_collection_time_12_14"
+            type="checkbox"
+            name="product_collection_time"
+            value="12:00 - 14:00"
+            hidden
+          />
           <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="product_collection_time_12_14">12:00 - 14:00</label>
-          <input id="product_collection_time_14_16" type="checkbox" name="product_collection_time" value="14:00 - 16:00" hidden />
+          <input
+            onclick="filterTimeSlot(this.value, event)"
+            id="product_collection_time_14_16"
+            type="checkbox"
+            name="product_collection_time"
+            value="14:00 - 16:00"
+            hidden
+          />
           <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="product_collection_time_14_16">14:00 - 16:00</label>
-          <input id="product_collection_time_16_18" type="checkbox" name="product_collection_time" value="16:00 - 18:00" hidden />
+          <input
+            onclick="filterTimeSlot(this.value, event)"
+            id="product_collection_time_16_18"
+            type="checkbox"
+            name="product_collection_time"
+            value="16:00 - 18:00"
+            hidden
+          />
           <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="product_collection_time_16_18">16:00 - 18:00</label>
-          <input id="product_collection_time_18_20" type="checkbox" name="product_collection_time" value="18:00 - 20:00" hidden />
+          <input
+            onclick="filterTimeSlot(this.value, event)"
+            id="product_collection_time_18_20"
+            type="checkbox"
+            name="product_collection_time"
+            value="18:00 - 20:00"
+            hidden
+          />
           <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="product_collection_time_18_20">18:00 - 20:00</label>
         </div>
         <label class="form-label" for="product_image">Upload image</label>
-        <input type="file" name="post_image" accept="image/*" capture="environment" />
+        <input id="product-uploaded-image" type="file" name="post_image" accept="image/*" capture="environment" />
         <label class="form-label" for="product_description">Description</label>
         <textarea
           name="product_description"
           class="rounded-3xl bg-light-grey outline-none border-2 border-light-black w-full p-3"
           id="product_description"
         ></textarea>
-        <input class="btn-primary self-center mt-6" type="submit" name="create_post" value="Create Post" />
+        <div id="user-data-wrapper"></div>
+        <input id="add-post-btn" class="btn-primary self-center mt-6" type="submit" name="create_post" value="Create Post" />
       </form>
     </section>
 
@@ -258,6 +308,14 @@
         <input class="btn-primary self-center mt-6" type="submit" name="create_post" value="Create Post" />
       </form>
       </div>
+    </section>
+    
+    <!--  POST DETAILS PAGE -->
+
+    <section id="postDetails" class="page container">
+      <button onclick="navigateTo('#/')" class="btn-text-green flex items-center">
+        <img src="./src/media/icons/back-arrow-icon.svg" alt="arrow back" /> Back
+      </button>
     </section>
 
     <!-- BROWSE PAGE -->
@@ -519,7 +577,9 @@
 
     <script src="src/frontend/router.js"></script>
     <script src="src/frontend/main.js"></script>
-    <script src="src/frontend/modules/filters.js"></script>
+    <script src="src/frontend/filters.js"></script>
+    <script src="src/frontend/addPost.js"></script>
+    <script src="src/frontend/postDetails.js"></script>
     <script src="src/frontend/login.js"></script>
     <script src="src/frontend/signup.js"></script>
     <script src="src/frontend/profile.js"></script>
