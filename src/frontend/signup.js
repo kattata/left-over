@@ -30,7 +30,7 @@ async function createUser() {
   formData.append("city", signupCity.value);
 
   const response = await fetch(
-    "http://localhost:3000/src/backend/createUser.php?action=createUser",
+    "../../src/backend/createUser.php?action=createUser",
     {
       method: "POST",
       body: formData,

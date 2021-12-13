@@ -34,7 +34,7 @@ async function updateUser() {
   formData.append("city", editProfileCity.value);
 
   const response = await fetch(
-    "http://localhost:3000/src/backend/updateUser.php?action=updateUser",
+    "../../src/backend/updateUser.php?action=updateUser",
     {
       method: "POST",
       body: formData,

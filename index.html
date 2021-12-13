@@ -235,7 +235,7 @@
     <!-- EDIT POST PAGE -->
     <section id="editPost" class="page">
       <div class="container">
-        <button class="btn-text-green" onclick="history.back()">Back</button>
+        <button class="btn-text-green" onclick="navigateTo('#/profile')">Back</button>
         <h1>Edit post</h1>
       <form class="flex w-full flex-col edit-post-form" enctype="multipart/form-data">
         <label class="form-label" for="product_name">Product name</label>
@@ -252,49 +252,53 @@
         </div>
         <label class="form-label" for="product_expiration_date">Expires in</label>
         <input class="form-input w-full edit-post-expiration-date" type="date" name="product_expiration_date" placeholder="Expires in" />
+
         <label class="form-label" for="product_categories">Category</label>
         <div id="edit-product-category-wrapper">
-          <input id="edit-product_category_dish" type="radio" name="product_category" value="Dish" hidden />
+          <input id="edit-product_category_dish" type="radio" name="edit_product_category" value="Dish" hidden />
           <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="edit-product_category_dish">Dish</label>
-          <input id="edit-product_category_fruits_vegetables" type="radio" name="product_category" value="Fruits & Vegetables" hidden />
+          <input id="edit-product_category_fruits_vegetables" type="radio" name="edit_product_category" value="Fruits & Vegetables" hidden />
           <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="edit-product_category_fruits_vegetables"
             >Fruits & Vegetables</label
           >
-          <input id="edit-product_category_diary" type="radio" name="product_category" value="Diary" hidden />
+          <input id="edit-product_category_diary" type="radio" name="edit_product_category" value="Diary" hidden />
           <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="edit-product_category_diary">Diary</label>
-          <input id="edit-product_category_bread_pastery" type="radio" name="product_category" value="Bread & Pastry" hidden />
+          <input id="edit-product_category_bread_pastery" type="radio" name="edit_product_category" value="Bread & Pastry" hidden />
           <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="edit-product_category_bread_pastery"
             >Bread & Pastry</label
           >
-          <input id="edit-product_category_dessert" type="radio" name="product_category" value="Dessert" hidden />
+          <input id="edit-product_category_dessert" type="radio" name="edit_product_category" value="Dessert" hidden />
           <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="edit-product_category_dessert">Dessert</label>
         </div>
+
         <label class="form-label pt-2">Diet</label>
         <div id="edit-product-diet-wrapper">
-          <input id="edit-product_diet_vegetarian" type="radio" name="product_diet" value="Vegetarian" hidden />
+          <input id="edit-product_diet_vegetarian" type="radio" name="edit_product_diet" value="Vegetarian" hidden />
           <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="edit-product_diet_vegetarian">Vegetarian</label>
-          <input id="edit-product_diet_vegan" type="radio" name="product_diet" value="Vegan" hidden />
+          <input id="edit-product_diet_vegan" type="radio" name="edit_product_diet" value="Vegan" hidden />
           <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="edit-product_diet_vegan">Vegan</label>
-          <input id="edit-product_diet_gluten_free" type="radio" name="product_diet" value="Gluten-free" hidden />
+          <input id="edit-product_diet_gluten_free" type="radio" name="edit_product_diet" value="Gluten-free" hidden />
           <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="edit-product_diet_gluten_free">Gluten-free</label>
-          <input id="edit-product_diet_diary_free" type="radio" name="product_diet" value="Diary-free" hidden />
+          <input id="edit-product_diet_diary_free" type="radio" name="edit_product_diet" value="Diary-free" hidden />
           <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="edit-product_diet_diary_free">Diary-free</label>
         </div>
-        <label class="form-label pt-2" for="product_collection_time">Collection day</label>
-        <input class="form-input w-1/2 edit-post-collection-date" type="date" name="product_expiration-date" />
-        <label class="form-label pt-2" for="product_collection_time">Time slots</label>
+
+        <label class="form-label pt-2" for="edit_product_collection_day">Collection day</label>
+        <input class="form-input w-1/2" type="date" name="edit_product_collection_day" />
+
+        <label class="form-label pt-2" for="edit_product_collection_time">Time slots</label>
         <div id="edit-product-time-slots-wrapper">
-          <input id="edit-product_collection_time_8_10" type="checkbox" name="product_collection_time" value="8:00 - 10:00" hidden />
+          <input onclick="filterTimeSlotEdit(this.value, event)" id="edit-product_collection_time_8_10" type="checkbox" name="edit_product_collection_time" value="8:00 - 10:00" hidden />
           <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="edit-product_collection_time_8_10">8:00 - 10:00</label>
-          <input id="edit-product_collection_time_10_12" type="checkbox" name="product_collection_time" value="10:00 - 12:00" hidden />
+          <input onclick="filterTimeSlotEdit(this.value, event)" id="edit-product_collection_time_10_12" type="checkbox" name="edit_product_collection_time" value="10:00 - 12:00" hidden />
           <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="edit-product_collection_time_10_12">10:00 - 12:00</label>
-          <input id="edit-product_collection_time_12_14" type="checkbox" name="product_collection_time" value="12:00 - 14:00" hidden />
+          <input onclick="filterTimeSlotEdit(this.value, event)" id="edit-product_collection_time_12_14" type="checkbox" name="edit_product_collection_time" value="12:00 - 14:00" hidden />
           <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="edit-product_collection_time_12_14">12:00 - 14:00</label>
-          <input id="edit-product_collection_time_14_16" type="checkbox" name="product_collection_time" value="14:00 - 16:00" hidden />
+          <input onclick="filterTimeSlotEdit(this.value, event)" id="edit-product_collection_time_14_16" type="checkbox" name="edit_product_collection_time" value="14:00 - 16:00" hidden />
           <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="edit-product_collection_time_14_16">14:00 - 16:00</label>
-          <input id="edit-product_collection_time_16_18" type="checkbox" name="product_collection_time" value="16:00 - 18:00" hidden />
+          <input onclick="filterTimeSlotEdit(this.value, event)" id="edit-product_collection_time_16_18" type="checkbox" name="edit_product_collection_time" value="16:00 - 18:00" hidden />
           <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="edit-product_collection_time_16_18">16:00 - 18:00</label>
-          <input id="edit-product_collection_time_18_20" type="checkbox" name="product_collection_time" value="18:00 - 20:00" hidden />
+          <input onclick="filterTimeSlotEdit(this.value, event)" id="edit-product_collection_time_18_20" type="checkbox" name="edit_product_collection_time" value="18:00 - 20:00" hidden />
           <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="edit-product_collection_time_18_20">18:00 - 20:00</label>
         </div>
         <label class="form-label" for="product_image">Upload image</label>
@@ -305,7 +309,7 @@
           class="rounded-3xl bg-light-grey outline-none border-2 border-light-black w-full p-3 edit-post-description"
           id="edit-product_description"
         ></textarea>
-        <input class="btn-primary self-center mt-6" type="submit" name="create_post" value="Create Post" />
+        <input class="btn-primary self-center mt-6" type="submit" name="create_post" value="Update Post" />
       </form>
       </div>
     </section>

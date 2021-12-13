@@ -22,14 +22,24 @@ function appendPosts(posts) {
   let htnlTemplate = ``;
   for (let post of posts) {
     htnlTemplate = `
-    <article onclick = "appendAndGoPostDetails(${post.post_id})" class="post-box border-2 mb-4 border-light-black rounded-3xl overflow-hidden">
-    <img class="max-h-24 w-full object-cover" src="./src/media/posted/${post.image_name}" alt="image of sold food" />
+    <article onclick = "appendAndGoPostDetails(${
+      post.post_id
+    })" class="post-box border-2 mb-4 border-light-black rounded-3xl overflow-hidden">
+    <img class="max-h-24 w-full object-cover" src="./src/media/posted/${
+      post.image_name
+    }" alt="image of sold food" />
     <div class="post-content-wrapper mx-3">
       <div class="flex justify-between mt-2">
         <span class="food-category-badge 
-        ${post.category == "Fruits & Vegetables" ? "bg-light-green-custom" : ""} ${post.category == "Dish" ? "bg-light-blue" : ""}
-        ${post.category == "Bread & Pastry" ? "bg-light-orange" : ""} ${post.category == "Dessert" ? "bg-light-violet" : ""}
-        ${post.category == "Diary" ? "bg-light-red" : ""}">${post.category}</span>
+        ${
+          post.category == "Fruits & Vegetables" ? "bg-light-green-custom" : ""
+        } ${post.category == "Dish" ? "bg-light-blue" : ""}
+        ${post.category == "Bread & Pastry" ? "bg-light-orange" : ""} ${
+      post.category == "Dessert" ? "bg-light-violet" : ""
+    }
+        ${post.category == "Diary" ? "bg-light-red" : ""}">${
+      post.category
+    }</span>
         <div class="flex">
           <img class=" pr-1" src="./src/media/posted/avatar-test.png" alt="" />
           <p>Piotr Pospiech</p>
@@ -67,7 +77,8 @@ function appendCheckedFilter(filters) {
   />  
   <label  class="btn-tertiary inline-block mt-2 mb-2 mr-1 transition-colors duration-200" for="checked_browse_${filter}">${filter} X</label>  
     `;
-    document.querySelector("#selected-filters-wrapper").innerHTML += htnlTemplate;
+    document.querySelector("#selected-filters-wrapper").innerHTML +=
+      htnlTemplate;
   }
   // console.log("appended filters", allCheckedFilters);
 }
@@ -136,6 +147,7 @@ function filterProduct(value, event) {
   }
   // console.log("filters to apply", _appliedFilters);
 }
+
 function resetCheckedFilter(value) {
   let checkedFilterValue = value;
   for (const clickedFilter of _clickedFilters) {
@@ -176,7 +188,9 @@ async function applyFilters() {
   if (_filteredJson.length === 0 && _appliedFilters.length === 0) {
     appendPosts(allPostsJson);
   } else if (_filteredJson.length === 0 && _appliedFilters.length !== 0) {
-    document.querySelector("#posts-feed-container").innerHTML = ` <div class="w-full mt-20 flex flex-col justify-center items-center text-center">
+    document.querySelector(
+      "#posts-feed-container"
+    ).innerHTML = ` <div class="w-full mt-20 flex flex-col justify-center items-center text-center">
     <img class=" w-2/3" src="./src/media/icons/no-results.svg" alt="No results icon" />
     <h3>No results to show</h3>
     <p>Please, check spelling or try different keyword</p>

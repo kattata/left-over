@@ -16,12 +16,3 @@ function openPurchased() {
   purchasedTab.classList.add("active-profile-tab");
   postedTab.classList.remove("active-profile-tab");
 }
-
-function appendPosted() {
-  let html = `
-        <div>
-            <p>Bananas</p>
-            <p>DKK 7</p>
-        </div>
-    `;
-}

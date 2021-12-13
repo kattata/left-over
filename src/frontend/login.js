@@ -29,14 +29,11 @@ async function login() {
     email: loginEmail.value,
     password: loginPassword.value,
   };
-  const response = await fetch(
-    "http://localhost:3000/src/backend/login.php?action=login",
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/json; charset=utf-8" },
-      body: JSON.stringify(user),
-    }
-  );
+  const response = await fetch("../../src/backend/login.php?action=login", {
+    method: "POST",
+    headers: { "Content-Type": "application/json; charset=utf-8" },
+    body: JSON.stringify(user),
+  });
   const result = await response.json();
   loginError = result[0];
   loginUserId = result[1];
@@ -130,8 +127,10 @@ async function appendProfilePosts(userSessionInfo) {
         post.category
       }</span>
           <div class="flex">
-            <img class=" pr-1" src="./src/media/posted/avatar-test.png" alt="" />
-            <p>Piotr Pospiech</p>
+            <img class="seller-img" src="./src/media/profile/${
+              post.seller_image
+            }" alt="" />
+            <p>${post.seller_username}</p>
           </div>
         </div>
         <div class="flex justify-between font-bold mt-4">
@@ -171,8 +170,10 @@ async function appendProfilePosts(userSessionInfo) {
         post.category
       }</span>
           <div class="flex">
-            <img class=" pr-1" src="./src/media/posted/avatar-test.png" alt="" />
-            <p>Piotr Pospiech</p>
+          <img class="seller-img" src="./src/media/profile/${
+            post.seller_image
+          }" alt="" />
+          <p>${post.seller_username}</p>
           </div>
         </div>
         <div class="flex justify-between font-bold mt-4">
@@ -191,67 +192,65 @@ async function appendProfilePosts(userSessionInfo) {
   }
 }
 
-let currentPostId = 0;
-
 function openPostDetails(postId) {
   navigateTo("#/myPostDetails");
+  // find the selected post information
   for (const post of _posts) {
     if (postId == post.post_id) {
-      currentPostId = postId;
       sessionStorage.setItem("currentPost", JSON.stringify(post));
-
-      // html template for post details
-      let html = "";
-      html = `
-    <div class="container">
-    <div class="flex justify-between">
-    <button class="btn-text-green" onclick="navigateTo("#/profile")">Back</button>
-    <div>
-      <button class="btn-text-green mr-2" onclick="editPost(${
-        post.post_id
-      })">Edit</button>
-      <button class="btn-text-green" onclick="deletePost(${
-        post.post_id
-      })">Delete</button>
-      </div>
-    </div>
-    <img class="max-h-24 w-full object-cover" src="./src/media/posted/${
-      post.image_name
-    }" alt="image of sold food" />
-    <div class="post-content-wrapper mx-3">
-      <div class="flex justify-between mt-2">
-        <span class="food-category-badge
-        ${
-          post.category == "Fruits & Vegetables" ? "bg-light-green-custom" : ""
-        } ${post.category == "Dish" ? "bg-light-blue" : ""}
-        ${post.category == "Bread & Pastry" ? "bg-light-orange" : ""} ${
-        post.category == "Dessert" ? "bg-light-violet" : ""
-      }
-        ${post.category == "Diary" ? "bg-light-red" : ""}">${
-        post.category
-      }</span>
-        <div class="flex">
-          <img class=" pr-1" src="./src/media/posted/avatar-test.png" alt="" />
-          <p>${post.seller_username}</p>
-        </div>
-      </div>
-      <div class="flex justify-between font-bold mt-4">
-        <p>${post.product_name}</p>
-        <p>DKK ${post.price}</p>
-      </div>
-      <div class="flex justify-between mt-1 mb-4 opacity-50 text-xs">
-        <p>Amount ${post.amount}</p>
-        <p>Expires: ${post.expires_in}</p>
-      </div>
-    </div>
-    </div>
-  `;
-      document.querySelector(".my-post-details").innerHTML = html;
+      appendMyPostDetails(post);
     }
   }
-  let postInfo = sessionStorage.getItem("currentPost");
-  // console.log(JSON.parse(postInfo));
-  appendToEditPost(JSON.parse(postInfo));
+  let postInfo = JSON.parse(sessionStorage.getItem("currentPost"));
+  appendToEditPost(postInfo);
+  console.log(postInfo);
+}
+
+function appendMyPostDetails(post) {
+  let html = "";
+  html = `
+  <div class="container">
+  <div class="flex justify-between">
+  <button class="btn-text-green" onclick="navigateTo("#/profile">Back</button>
+  <div>
+  <button class="btn-text-green mr-2" onclick="editPost(${
+    post.post_id
+  })">Edit</button>
+  <button class="btn-text-green" onclick="deletePost(${
+    post.post_id
+  })">Delete</button>
+  </div>
+  </div>
+  <img class="max-h-24 w-full object-cover" src="./src/media/posted/${
+    post.image_name
+  }" alt="image of sold food" />
+  <div class="post-content-wrapper mx-3">
+  <div class="flex justify-between mt-2">
+    <span class="food-category-badge
+    ${post.category == "Fruits & Vegetables" ? "bg-light-green-custom" : ""} ${
+    post.category == "Dish" ? "bg-light-blue" : ""
+  }
+    ${post.category == "Bread & Pastry" ? "bg-light-orange" : ""} ${
+    post.category == "Dessert" ? "bg-light-violet" : ""
+  }
+    ${post.category == "Diary" ? "bg-light-red" : ""}">${post.category}</span>
+    <div class="flex">
+      <img class=" pr-1" src="./src/media/posted/avatar-test.png" alt="" />
+      <p>${post.seller_username}</p>
+    </div>
+  </div>
+  <div class="flex justify-between font-bold mt-4">
+    <p>${post.product_name}</p>
+    <p>DKK ${post.price}</p>
+  </div>
+  <div class="flex justify-between mt-1 mb-4 opacity-50 text-xs">
+    <p>Amount ${post.amount}</p>
+    <p>Expires: ${post.expires_in}</p>
+  </div>
+  </div>
+  </div>
+  `;
+  document.querySelector(".my-post-details").innerHTML = html;
 }
 
 const editPostName = document.querySelector(".edit-post-product-name");
@@ -261,11 +260,23 @@ const editPostExpirationDate = document.querySelector(
   ".edit-post-expiration-date"
 );
 const editPostDescription = document.querySelector(".edit-post-description");
+const editPostCategory = document.querySelector(
+  'input[name="edit_product_category"]'
+);
+const editPostDiet = document.querySelector('input[name="edit_product_diet"]');
+const editPostCollectionDay = document.querySelector(
+  'input[name="edit_product_collection_day"]'
+);
+const editPostCollectionTime = document.querySelector(
+  'input[name="edit_product_collection_time"]'
+);
 const editPostImg = document.querySelector(".edit-post-img");
 
 let uploadedEditPostImg = "";
 
-appendToEditPost();
+let postInfo = sessionStorage.getItem("currentPost");
+appendToEditPost(JSON.parse(postInfo));
+appendMyPostDetails(JSON.parse(postInfo));
 
 // edit post
 editPostImg.addEventListener("change", (e) => {
@@ -283,33 +294,44 @@ async function editPost(postId) {
   formData.append("price", editPostPrice.value);
   formData.append("expirationDate", editPostExpirationDate.value);
   formData.append("description", editPostDescription.value);
+  formData.append(
+    "category",
+    document.querySelector('input[name="edit_product_category"]:checked').value
+  );
+  formData.append(
+    "diet",
+    document.querySelector('input[name="edit_product_diet"]:checked').value
+  );
+  formData.append("collectionDay", editPostCollectionDay.value);
+  formData.append("collectionTime", JSON.stringify(editTimeSlots));
 
-  // const response = await fetch(
-  //   "http://localhost:3000/src/backend/updatePost.php?action=updatePost",
-  //   {
-  //     method: "POST",
-  //     body: formData,
-  //   }
-  // );
-
-  // const result = await response.json();
+  const response = await fetch(
+    "../../src/backend/updatePost.php?action=updatePost",
+    {
+      method: "POST",
+      body: formData,
+    }
+  );
+  const result = await response.json();
 }
 
 document.querySelector(".edit-post-form").addEventListener("submit", (e) => {
   e.preventDefault();
-  editPost();
+  let postId = JSON.parse(sessionStorage.getItem("currentPost")).post_id;
+  editPost(postId);
 });
 
-function appendToEditPost() {
-  for (const post of _posts) {
-    if (currentPostId == post.post_id) {
-      editPostName.value = post.product_name;
-      editPostAmount.value = post.amount;
-      editPostPrice.value = post.price;
-      editPostExpirationDate.value = post.expires_in;
-      editPostDescription.value = post.description;
-    }
-  }
+function appendToEditPost(postInfo) {
+  editPostName.value = postInfo.product_name;
+  editPostAmount.value = postInfo.amount;
+  editPostPrice.value = postInfo.price;
+  editPostExpirationDate.value = postInfo.expires_in;
+  editPostDescription.value = postInfo.description;
+  // document.querySelector('input[name="edit_product_category"]:checked').value =
+  //   postInfo.category_name;
+  editPostCategory.checked = postInfo.category;
+  editPostDiet.checked = postInfo.diet;
+  // editPostCollectionTime.checked = post.;
 }
 
 // delete post
@@ -325,4 +347,42 @@ async function deletePost(postId) {
   navigateTo("#/profile");
   window.location.reload();
   appendProfilePosts(userSessionInfo);
+}
+
+let editTimeSlots = [];
+
+function filterTimeSlotEdit(value, event) {
+  let checkboxValue = value;
+  if (event.target.checked === true) {
+  }
+  if (event.target.checked === true && editTimeSlots.length === 0) {
+    //actual array
+    editTimeSlots.push(checkboxValue);
+    //check clicked ones targets
+    _clickedFilters.push(event.target);
+  }
+  // when there is more elemnts in the return array then one do the check
+  // of a clicked product if item is different from any other
+  // already in the array add that element to the array
+  if (event.target.checked === true && editTimeSlots.length >= 1) {
+    for (let i = 0; i < editTimeSlots.length; i++) {
+      if (checkboxValue !== editTimeSlots[i]) {
+        editTimeSlots.push(checkboxValue);
+        _clickedFilters.push(event.target);
+        // console.log("added filters in if", editTimeSlots, "iterator:", i);
+        break;
+      } else {
+        // console.log("else output", editTimeSlots, "iterator:", i);
+      }
+    }
+  }
+  // if the checkbox is unchecked false remove the elemnt form the array
+  else if (event.target.checked === false) {
+    for (let i = 0; i < editTimeSlots.length; i++) {
+      if (checkboxValue === editTimeSlots[i]) {
+        editTimeSlots.splice(i, 1);
+      }
+    }
+  }
+  console.log("filters to apply", editTimeSlots);
 }
