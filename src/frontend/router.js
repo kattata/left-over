@@ -83,8 +83,9 @@ function hideNav() {
   const signup = window.location.hash == "#/signup";
   const editProfile = window.location.hash == "#/editProfile";
   const editPost = window.location.hash == "#/editPost";
+  const createPost = window.location.hash == "#/createPost";
 
-  if (login || signup || editPost || editProfile) {
+  if (login || signup || editPost || editProfile || createPost) {
     nav.style.display = "none";
   } else {
     nav.style.display = "flex";

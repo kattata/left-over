@@ -13,6 +13,25 @@ const profileImg = document.querySelector(".edit-profile-picture");
 // profile elements
 const username = document.querySelector(".profile-username");
 const profilePicture = document.querySelector(".profile-picture");
+// edit post elements
+const editPostName = document.querySelector(".edit-post-product-name");
+const editPostAmount = document.querySelector(".edit-post-amount");
+const editPostPrice = document.querySelector(".edit-post-price");
+const editPostExpirationDate = document.querySelector(
+  ".edit-post-expiration-date"
+);
+const editPostDescription = document.querySelector(".edit-post-description");
+const editPostCategory = document.querySelector(
+  'input[name="edit_product_category"]'
+);
+const editPostDiet = document.querySelector('input[name="edit_product_diet"]');
+const editPostCollectionDay = document.querySelector(
+  'input[name="edit_product_collection_day"]'
+);
+const editPostCollectionTime = document.querySelector(
+  'input[name="edit_product_collection_time"]'
+);
+const editPostImg = document.querySelector(".edit-post-img");
 // global variables
 let loginError = "";
 let loginUserId = 0;
@@ -209,9 +228,10 @@ function openPostDetails(postId) {
 function appendMyPostDetails(post) {
   let html = "";
   html = `
-  <div class="container">
   <div class="flex justify-between">
-  <button class="btn-text-green" onclick="navigateTo('#/profile')">Back</button>
+  <button onclick="navigateTo('#/profile')" class="btn-text-green flex items-center">
+    <img src="./src/media/icons/back-arrow-icon.svg" alt="arrow back" /> Back
+  </button>
   <div>
   <button class="btn-text-green mr-2" onclick="editPost(${
     post.post_id
@@ -220,59 +240,39 @@ function appendMyPostDetails(post) {
     post.post_id
   })">Delete</button>
   </div>
+
   </div>
-  <img class="max-h-24 w-full object-cover" src="./src/media/posted/${
-    post.image_name
-  }" alt="image of sold food" />
-  <div class="post-content-wrapper mx-3">
-  <div class="flex justify-between mt-2">
-    <span class="food-category-badge
-    ${post.category == "Fruits & Vegetables" ? "bg-light-green-custom" : ""} ${
+  <h1>${post.product_name}</h1>
+  <div class="flex justify-between mb-2 items-center">
+  <span class="food-category-badge
+  ${post.category == "Fruits & Vegetables" ? "bg-light-green-custom" : ""} ${
     post.category == "Dish" ? "bg-light-blue" : ""
   }
-    ${post.category == "Bread & Pastry" ? "bg-light-orange" : ""} ${
+  ${post.category == "Bread & Pastry" ? "bg-light-orange" : ""} ${
     post.category == "Dessert" ? "bg-light-violet" : ""
   }
-    ${post.category == "Diary" ? "bg-light-red" : ""}">${post.category}</span>
-    <div class="flex justify-between">
-      <img class="seller-img" src="./src/media/profile/${
-        post.seller_image
-      }" alt="" />
-      <p>${post.seller_username}</p>
-    </div>
+  ${post.category == "Diary" ? "bg-light-red" : ""}">${post.category}</span>
+  <p class="grey-text">Expires: ${post.expires_in}</p>
   </div>
-  <div class="flex justify-between font-bold mt-4">
-    <p>${post.product_name}</p>
+  <img class="max-h-24 w-full object-cover mb-4" src="./src/media/posted/${
+    post.image_name
+  }" alt="image of sold food" />
+  <div class="flex justify-between">
+    <p>Amount ${post.amount}</p>
     <p>DKK ${post.price}</p>
   </div>
-  <div class="flex justify-between mt-1 mb-4 opacity-50 text-xs">
-    <p>Amount ${post.amount}</p>
-    <p>Expires: ${post.expires_in}</p>
+  <span class="h-px w-full block bg-light-green-custom mt-2 mb-2"></span>
+  <div class="flex">
+    <img class="seller-img" src="./src/media/profile/${
+      post.seller_image
+    }" alt="" />
+    <p>${post.seller_username}</p>
   </div>
   </div>
-  </div>
+  <p class="mt-6">${post.description}</p>
   `;
   document.querySelector(".my-post-details").innerHTML = html;
 }
-
-const editPostName = document.querySelector(".edit-post-product-name");
-const editPostAmount = document.querySelector(".edit-post-amount");
-const editPostPrice = document.querySelector(".edit-post-price");
-const editPostExpirationDate = document.querySelector(
-  ".edit-post-expiration-date"
-);
-const editPostDescription = document.querySelector(".edit-post-description");
-const editPostCategory = document.querySelector(
-  'input[name="edit_product_category"]'
-);
-const editPostDiet = document.querySelector('input[name="edit_product_diet"]');
-const editPostCollectionDay = document.querySelector(
-  'input[name="edit_product_collection_day"]'
-);
-const editPostCollectionTime = document.querySelector(
-  'input[name="edit_product_collection_time"]'
-);
-const editPostImg = document.querySelector(".edit-post-img");
 
 let uploadedEditPostImg = "";
 
@@ -341,6 +341,7 @@ document.querySelector(".edit-post-form").addEventListener("submit", (e) => {
 
 async function updateCurrentPostSession(currentPost) {
   sessionStorage.currentPost = JSON.stringify(currentPost);
+  appendToEditPost(currentPost);
   window.location.reload();
 }
 

@@ -86,6 +86,7 @@ if ($_GET['action'] == 'updatePost') {
                 "seller_username" => $result["seller_username"],
             );
             array_push($postsJsonArray, $postsArray);
+
             
             $timeSlotsJsonArray = array();
             $allCollectionTimes = $db->Query("SELECT * FROM Collection_time");
@@ -95,7 +96,6 @@ if ($_GET['action'] == 'updatePost') {
                     "collectionTime_id" => $timeSlot["collectionTime_id"],
                     "day" => $timeSlot["day"],
                     "timeSlot" => $timeSlot["timeSlot"]
-                
             );
             array_push($timeSlotsJsonArray, $timeSlotsArray);
         }
@@ -117,27 +117,27 @@ if ($_GET['action'] == 'updatePost') {
     rename($source, $destination) ? "OK" : "ERROR" ;
 
     // upload image
-        move_uploaded_file($_FILES['file']["tmp_name"], $targetFolder . $fileName);
-        
-        $updatedPost = array(
-            "post_id" => $postId,
-            "product_name" => $productName,
-            "amount" => $amount,
-            "price" => $price,
-            "expires_in" => $expirationDate,
-            "category" => $category,
-            "diet" => $diet,
-            "image_name" => $imgName,
-            "description" => $description,
-            "seller_image" => $sellerImage,
-            "seller_username" => $sellerUsername,
-        );
-        // echo json_encode($updatedPost);
+    move_uploaded_file($_FILES['file']["tmp_name"], $targetFolder . $fileName);
+    
+    $updatedPost = array(
+        "post_id" => $postId,
+        "product_name" => $productName,
+        "amount" => $amount,
+        "price" => $price,
+        "expires_in" => $expirationDate,
+        "category" => $category,
+        "diet" => $diet,
+        "image_name" => $imgName,
+        "description" => $description,
+        "seller_image" => $sellerImage,
+        "seller_username" => $sellerUsername,
+    );
+    // echo json_encode($updatedPost);
+    global $error;
+    $error = "";
+    echo json_encode(array($error, $updatedPost));
+    } else {
         global $error;
-        $error = "";
         echo json_encode(array($error, $updatedPost));
-        } else {
-            global $error;
-            echo json_encode(array($error, $updatedPost));
-        }
+    }
 }

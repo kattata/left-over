@@ -108,6 +108,9 @@
 
     <!-- ADD POST PAGE -->
     <section id="createPost" class="page container">
+      <button onclick="navigateTo('#/')" class="btn-text-green flex items-center">
+        <img src="./src/media/icons/back-arrow-icon.svg" alt="arrow back" /> Back
+      </button>
       <h1>Create post</h1>
       <form id="add-post-form" class="flex w-full flex-col" method="POST" enctype="multipart/form-data">
         <label class="form-label" for="product_name">Product name</label>
@@ -235,7 +238,9 @@
     <!-- EDIT POST PAGE -->
     <section id="editPost" class="page">
       <div class="container">
-        <button class="btn-text-green" onclick="navigateTo('#/profile')">Back</button>
+        <button onclick="navigateTo('#/profile')" class="btn-text-green flex items-center">
+          <img src="./src/media/icons/back-arrow-icon.svg" alt="arrow back" /> Back
+        </button>
         <h1>Edit post</h1>
       <form class="flex w-full flex-col edit-post-form" enctype="multipart/form-data">
         <label class="form-label" for="product_name">Product name</label>
@@ -549,7 +554,9 @@
     <!-- EDIT PROFILE PAGE -->
     <section id="editProfile" class="page">
       <div class="container">
-        <button class="btn-text-green" onclick="navigateTo('#/profile')">Back</button>
+        <button onclick="navigateTo('#/profile')" class="btn-text-green flex items-center">
+          <img src="./src/media/icons/back-arrow-icon.svg" alt="arrow back" /> Back
+        </button>
         <h1>Edit profile</h1>
         <form class="edit-profile-form flex flex-col">
           <label class="form-label">Name</label>
