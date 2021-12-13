@@ -283,7 +283,11 @@ editPostImg.addEventListener("change", (e) => {
   uploadedEditPostImg = e.target.files[0];
 });
 
+let editPostError = "";
+let updatedPost = "";
+
 async function editPost(postId) {
+  let currentPost = JSON.parse(sessionStorage.getItem("currentPost"));
   navigateTo("#/editPost");
   const formData = new FormData();
   formData.append("postId", postId);
@@ -304,6 +308,8 @@ async function editPost(postId) {
   );
   formData.append("collectionDay", editPostCollectionDay.value);
   formData.append("collectionTime", JSON.stringify(editTimeSlots));
+  formData.append("sellerUsername", currentPost.seller_username);
+  formData.append("sellerImage", currentPost.seller_image);
 
   const response = await fetch(
     "../../src/backend/updatePost.php?action=updatePost",
@@ -313,6 +319,16 @@ async function editPost(postId) {
     }
   );
   const result = await response.json();
+  editPostError = result[0];
+  updatedPost = result[1];
+  if (editPostError != "") {
+    document.querySelector(".edit-post-profile-error").innerHTML =
+      editPostError;
+  } else {
+    console.log(updatedPost);
+    navigateTo("#/myPostDetails");
+    updateCurrentPostSession(updatedPost);
+  }
 }
 
 document.querySelector(".edit-post-form").addEventListener("submit", (e) => {
@@ -321,17 +337,20 @@ document.querySelector(".edit-post-form").addEventListener("submit", (e) => {
   editPost(postId);
 });
 
+async function updateCurrentPostSession(currentPost) {
+  sessionStorage.currentPost = JSON.stringify(currentPost);
+  window.location.reload();
+}
+
 function appendToEditPost(postInfo) {
   editPostName.value = postInfo.product_name;
   editPostAmount.value = postInfo.amount;
   editPostPrice.value = postInfo.price;
   editPostExpirationDate.value = postInfo.expires_in;
   editPostDescription.value = postInfo.description;
-  // document.querySelector('input[name="edit_product_category"]:checked').value =
-  //   postInfo.category_name;
   editPostCategory.checked = postInfo.category;
   editPostDiet.checked = postInfo.diet;
-  // editPostCollectionTime.checked = post.;
+  // editPostCollectionDay.value = postInfo.
 }
 
 // delete post
