@@ -73,6 +73,37 @@ if ($_GET['action'] == 'updateUser') {
         $source = "users.json";
         $destination = "./json/users.json";
         rename($source, $destination) ? "OK" : "ERROR" ;
+        
+        // update image in posts
+        $db->Query("UPDATE posts SET seller_image = '$imgName' WHERE seller_id = '$id'");
+        // fetch users data from db
+        $allPosts = $db->Query("SELECT * FROM posts");
+        $postsJsonArray = array();
+        foreach ($allPosts as $result) {
+            $postsArray = array(
+                "post_id" => $result["post_id"],
+                "seller_id" => $result["seller_id"],
+                "buyer_id" => $result["buyer_id"],
+                "created_at" => $result["created_at"],
+                "product_name" => $result["product_name"],
+                "amount" => $result["amount"],
+                "price" => $result["price"],
+                "expires_in" => $result["expires_in"],
+                "category" => $result["category_name"],
+                "diet" => $result["diet_name"],
+                "image_name" => $result["image_name"],
+                "description" => $result["product_description"],
+                "seller_image" => $result["seller_image"],
+                "seller_username" => $result["seller_username"],
+            );
+            array_push($postsJsonArray, $postsArray);
+        }
+        $fp = fopen('posts.json', 'w');
+        fwrite($fp, json_encode($postsJsonArray));
+        fclose($fp);
+        $source = "posts.json";
+        $destination = "./json/posts.json";
+        rename($source, $destination) ? "OK" : "ERROR";
         // upload image
         move_uploaded_file($_FILES['file']["tmp_name"], $targetFolder . $fileName);
         // errors

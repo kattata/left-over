@@ -57,11 +57,11 @@ if ($_GET['action'] == 'updatePost') {
         $allPosts = $db->Query("SELECT * FROM posts");
         
         $postsJsonArray = array();
-        
+
         // delete old time slots
         $db->Query("DELETE FROM Collection_time WHERE post_id = $postId");
         
-        // // insert time slots
+        // insert time slots
         $timeSlotsArray = json_decode($collectionTime, true);
         foreach( $timeSlotsArray as $timeSlot) {
             $insertCollectionTime = $db->Query("INSERT INTO Collection_time (day, timeSlot, post_id)
