@@ -1,7 +1,7 @@
 const colors = require("tailwindcss/colors");
 
 module.exports = {
-  purge: ["./src/**/*.html", "./**/*.html", "./src/**/*.vue", "./src/**/*.jsx", "./src/styles/scss/*.scss", "./public/styles/*.css"],
+  purge: ["*.html", "./**/*.html", ".src/frontend/*.js", "./src/styles/scss/*.scss", "./public/styles/*.css"],
   presets: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
@@ -165,6 +165,7 @@ module.exports = {
     borderWidth: {
       DEFAULT: "1px",
       0: "0px",
+      1: "1px",
       2: "2px",
       4: "4px",
       8: "8px",

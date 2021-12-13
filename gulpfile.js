@@ -1,4 +1,4 @@
-const { src, dest, watch, series } = require("gulp");
+const { src, dest, watch, series, task } = require("gulp");
 const sass = require("gulp-sass")(require("sass"));
 const prefix = require("gulp-autoprefixer");
 const minify = require("gulp-clean-css");
@@ -13,6 +13,11 @@ function compilescss() {
     .pipe(concat("bundle.css"))
     .pipe(dest("public/styles/")); // change to your final/public directory
 }
+//minify tailwind
+function minifyTailwind() {
+  return src("./public/styles/tailwind_output.css").pipe(minify());
+}
+task(minifyTailwind);
 
 //watchtask
 function watchTask() {
@@ -20,4 +25,4 @@ function watchTask() {
 }
 
 // Default Gulp task
-exports.default = series(compilescss, watchTask);
+exports.default = series(compilescss, watchTask, minifyTailwind);

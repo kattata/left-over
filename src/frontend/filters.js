@@ -2,11 +2,14 @@ let _appliedFilters = [];
 let _filteredJson = [];
 let _clickedFilters = [];
 let _clickedPostId = undefined;
+let _clickedPostSellerId = undefined;
+
 //Needs to be here modules have issues with bindings
-function appendAndGoPostDetails(postId) {
+function appendAndGoPostDetails(postId, sellerId) {
   navigateTo("#/postDetials");
   _clickedPostId = postId;
-  appendPostDetails(postId);
+  _clickedPostSellerId = sellerId;
+  appendPostDetails(postId, sellerId);
 }
 async function fetchPosts() {
   const fetchData = await fetch("../../src/backend/json/posts.json")
@@ -22,7 +25,9 @@ function appendPosts(posts) {
   let htnlTemplate = ``;
   for (let post of posts) {
     htnlTemplate = `
-    <article onclick = "appendAndGoPostDetails(${post.post_id})" class="post-box border-2 mb-4 border-light-black rounded-3xl overflow-hidden">
+    <article onclick = "appendAndGoPostDetails(${post.post_id},${
+      post.seller_id
+    })" class="post-box border-2 mb-4 border-light-black rounded-3xl overflow-hidden">
     <img class="max-h-24 w-full object-cover" src="./src/media/posted/${post.image_name}" alt="image of sold food" />
     <div class="post-content-wrapper mx-3">
       <div class="flex justify-between mt-2">
@@ -31,8 +36,8 @@ function appendPosts(posts) {
         ${post.category == "Bread & Pastry" ? "bg-light-orange" : ""} ${post.category == "Dessert" ? "bg-light-violet" : ""}
         ${post.category == "Diary" ? "bg-light-red" : ""}">${post.category}</span>
         <div class="flex">
-          <img class=" pr-1" src="./src/media/posted/avatar-test.png" alt="" />
-          <p>Piotr Pospiech</p>
+          <img class="pr-1 w-6 h-6 object-cover object-center rounded-full" src="./src/media/posted/${post.seller_image}" alt="" />
+          <p>${post.seller_username}</p>
         </div>
       </div>
       <div class="flex justify-between font-bold mt-4">

@@ -4,9 +4,9 @@
   "description": "Package for Left over app Web dev 1st semester by Kasia, Ola and Piotr",
   "main": "index.js",
   "scripts": {
-    "build-tailwind": "tailwindcss build -i ./src/styles/tailwind.scss -o ./public/styles/tailwind_output.css",
+    "build-tailwind": "tailwindcss build -o ./src/styles/tailwind.scss -o ./public/styles/tailwind_output.css",
     "gulp-watch": "gulp",
-    "build": "NODE_ENV=production npm run dev"
+    "build": "NODE_ENV=production postcss ./src/styles/tailwind.scss -o ./public/styles/tailwind_output.css"
   },
   "repository": {
     "type": "git",
@@ -25,7 +25,8 @@
     "gulp-clean-css": "^4.3.0",
     "gulp-concat": "^2.6.1",
     "gulp-sass": "^5.0.0",
-    "postcss-cli": "^9.0.2",
+    "postcss": "^8.4.5",
+    "postcss-cli": "^9.1.0",
     "sass": "^1.44.0",
     "tailwindcss": "^2.2.19"
   }

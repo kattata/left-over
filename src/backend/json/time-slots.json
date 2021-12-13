@@ -14,5 +14,11 @@
   { "post_id": "1639352980", "collectionTime_id": "63", "day": "2021-12-15", "timeSlot": "16:00 - 18:00" },
   { "post_id": "1639352980", "collectionTime_id": "64", "day": "2021-12-15", "timeSlot": "18:00 - 20:00" },
   { "post_id": "1639352980", "collectionTime_id": "65", "day": "2021-12-15", "timeSlot": "14:00 - 16:00" },
-  { "post_id": "1639352980", "collectionTime_id": "66", "day": "2021-12-15", "timeSlot": "10:00 - 12:00" }
+  { "post_id": "1639352980", "collectionTime_id": "66", "day": "2021-12-15", "timeSlot": "10:00 - 12:00" },
+  { "post_id": "1639384932", "collectionTime_id": "67", "day": "2021-12-16", "timeSlot": "8:00 - 10:00" },
+  { "post_id": "1639398532", "collectionTime_id": "68", "day": "2021-12-24", "timeSlot": "8:00 - 10:00" },
+  { "post_id": "1639410582", "collectionTime_id": "69", "day": "2021-12-10", "timeSlot": "12:00 - 14:00" },
+  { "post_id": "1639415874", "collectionTime_id": "70", "day": "2021-12-15", "timeSlot": "8:00 - 10:00" },
+  { "post_id": "1639415874", "collectionTime_id": "71", "day": "2021-12-15", "timeSlot": "12:00 - 14:00" },
+  { "post_id": "1639415874", "collectionTime_id": "72", "day": "2021-12-15", "timeSlot": "14:00 - 16:00" }
 ]

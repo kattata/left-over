@@ -7,6 +7,8 @@ $db->Connect();
 
 
 
+
+
 if ($_GET['action'] == 'newPost') {
   // get user from frontend
   $postId =time();
@@ -111,4 +113,62 @@ if ($_GET['action'] == 'newPost') {
    $destination = "./json/time-slots.json";
    echo rename($source, $destination) ? "OK" : "ERROR" ;
     // header("location: ../index.html");
+}
+
+if ($_GET['action'] == 'newTransaction'){
+  $transactionId = time();
+  $transactionPostId = $_POST['ts-postId'];
+  $transactionSellerId = $_POST['ts-sellerId'];
+  $transactionSellerUserName = $_POST['ts-sellerUsername'];
+  $transactionBuyerId = $_POST['ts-buyerId'];
+  $transactionBuyerUserName = $_POST['ts-buyerUsername'];
+  $transactionProductName = $_POST['ts-product_name'];
+  $transactionAmount = $_POST['ts-amount'];
+  $transactionPrice = $_POST['ts-price'];
+  $transactionAddress = $_POST['ts-address'];
+  $transactionZipCode = $_POST['ts-zip_code'];
+  $transactionCity = $_POST['ts-city'];
+  $transactionCollectionDay = $_POST['ts-collection_date'];
+  $transactionPhone = $_POST['ts-phone_number'];
+  $transactionTime = $_POST['ts-time_slot'];
+
+
+  $transactionQuery = $db->Query("INSERT INTO Transactions 
+  (transaction_id, post_id, seller_id, seller_username, buyer_id, buyer_username, product_name, amount, price, address, zip_code, city,	collection_day, phone_number, time_slot)
+  VALUES ('$transactionId', '$transactionPostId', '$transactionSellerId', '$transactionSellerUserName', '$transactionBuyerId', '$transactionBuyerUserName', '$transactionProductName', '$transactionAmount'
+  ,'$transactionPrice', '$transactionAddress', '$transactionZipCod', '$transactionCity', '$transactionCollectionDay', '$transactionPhone','$transactionTime')");
+  echo $db -> error;
+  
+  $TransactionArray = $db->Query("SELECT * FROM Transactions");
+  $TransactionJsonArray = array();
+  foreach ($TransactionArray as $result) {
+    $transactionsArray = array(
+        "transaction_id" => $result["transaction_id"],
+        "post_id" => $result["post_id"],
+        "seller_id" => $result["seller_id"],
+        "seller_username" => $result["seller_username"],
+        "buyer_id" => $result["buyer_id"],
+        "buyer_username" => $result["buyer_username"],
+        "product_name" => $result["product_name"],
+        "amount" => $result["amount"],
+        "price" => $result["price"],
+        "address" => $result["address"],
+        "zip_code" => $result["zip_code"],
+        "city" => $result["city"],
+        "collection_day" => $result["collection_day"],
+        "phone_number" => $result["phone_number"],
+        "time_slot" => $result["time_slot"],
+
+
+
+
+    );
+    array_push($TransactionJsonArray, $transactionsArray);
+}
+$fp3 = fopen('transactions.json', 'w');
+fwrite($fp3, json_encode($TransactionJsonArray));
+fclose($fp3);
+$source3 = "transactions.json";
+$destination3 = "./json/transactions.json";
+echo rename($source3, $destination3) ? "OK" : "ERROR" ;
 }
