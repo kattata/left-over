@@ -198,7 +198,9 @@ function openPostDetails(postId) {
   for (const post of _posts) {
     if (postId == post.post_id) {
       currentPostId = postId;
+      sessionStorage.setItem("currentPost", JSON.stringify(post));
 
+      // html template for post details
       let html = "";
       html = `
     <div class="container">
@@ -247,6 +249,9 @@ function openPostDetails(postId) {
       document.querySelector(".my-post-details").innerHTML = html;
     }
   }
+  let postInfo = sessionStorage.getItem("currentPost");
+  // console.log(JSON.parse(postInfo));
+  appendToEditPost(JSON.parse(postInfo));
 }
 
 const editPostName = document.querySelector(".edit-post-product-name");
@@ -279,15 +284,15 @@ async function editPost(postId) {
   formData.append("expirationDate", editPostExpirationDate.value);
   formData.append("description", editPostDescription.value);
 
-  const response = await fetch(
-    "http://localhost:3000/src/backend/updatePost.php?action=updatePost",
-    {
-      method: "POST",
-      body: formData,
-    }
-  );
+  // const response = await fetch(
+  //   "http://localhost:3000/src/backend/updatePost.php?action=updatePost",
+  //   {
+  //     method: "POST",
+  //     body: formData,
+  //   }
+  // );
 
-  const result = await response.json();
+  // const result = await response.json();
 }
 
 document.querySelector(".edit-post-form").addEventListener("submit", (e) => {
@@ -298,7 +303,6 @@ document.querySelector(".edit-post-form").addEventListener("submit", (e) => {
 function appendToEditPost() {
   for (const post of _posts) {
     if (currentPostId == post.post_id) {
-      console.log(post);
       editPostName.value = post.product_name;
       editPostAmount.value = post.amount;
       editPostPrice.value = post.price;
