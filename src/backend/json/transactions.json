@@ -1,1 +1,23 @@
-[{"transaction_id":"1639511322","post_id":"1639510737","seller_id":"57","seller_username":"Kasia Laniecka","buyer_id":"99","buyer_username":"Sofie Nielsen","product_name":"Eggs","amount":"5","price":"10","address":"Damtoften 27B","zip_code":"0","city":"Viby J","collection_day":"2021-12-17","phone_number":"50349398","time_slot":"10:00 - 12:00","seller_image":"IMG_5718.jpeg","post_image":"image.jfif","category":"Diary","expires_in":"2021-12-23"}]
+[
+  {
+    "transaction_id": "1639511322",
+    "post_id": "1639510737",
+    "seller_id": "57",
+    "seller_username": "Kasia Laniecka",
+    "buyer_id": "99",
+    "buyer_username": "Sofie Nielsen",
+    "product_name": "Eggs",
+    "amount": "5",
+    "price": "10",
+    "address": "Damtoften 27B",
+    "zip_code": "0",
+    "city": "Viby J",
+    "collection_day": "2021-12-17",
+    "phone_number": "50349398",
+    "time_slot": "10:00 - 12:00",
+    "seller_image": "IMG_5718.jpeg",
+    "post_image": "image.jfif",
+    "category": "Diary",
+    "expires_in": "2021-12-23"
+  }
+]

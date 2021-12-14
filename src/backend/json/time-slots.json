@@ -1,1 +1,50 @@
-[{"post_id":"1639510048","collectionTime_id":"217","day":"2021-12-16","timeSlot":"18:00 - 20:00"},{"post_id":"1639510308","collectionTime_id":"220","day":"2021-12-17","timeSlot":"18:00 - 20:00"},{"post_id":"1639510563","collectionTime_id":"221","day":"2021-12-17","timeSlot":"10:00 - 12:00"},{"post_id":"1639510662","collectionTime_id":"222","day":"2021-12-16","timeSlot":"10:00 - 12:00"},{"post_id":"1639510737","collectionTime_id":"223","day":"2021-12-17","timeSlot":"10:00 - 12:00"},{"post_id":"1639510809","collectionTime_id":"224","day":"2021-12-10","timeSlot":"14:00 - 16:00"},{"post_id":"1639510969","collectionTime_id":"225","day":"2021-12-17","timeSlot":"14:00 - 16:00"},{"post_id":"1639511244","collectionTime_id":"226","day":"2021-12-17","timeSlot":"14:00 - 16:00"}]
+[
+  {
+    "post_id": "1639510048",
+    "collectionTime_id": "217",
+    "day": "2021-12-16",
+    "timeSlot": "18:00 - 20:00"
+  },
+  {
+    "post_id": "1639510308",
+    "collectionTime_id": "220",
+    "day": "2021-12-17",
+    "timeSlot": "18:00 - 20:00"
+  },
+  {
+    "post_id": "1639510563",
+    "collectionTime_id": "221",
+    "day": "2021-12-17",
+    "timeSlot": "10:00 - 12:00"
+  },
+  {
+    "post_id": "1639510662",
+    "collectionTime_id": "222",
+    "day": "2021-12-16",
+    "timeSlot": "10:00 - 12:00"
+  },
+  {
+    "post_id": "1639510737",
+    "collectionTime_id": "223",
+    "day": "2021-12-17",
+    "timeSlot": "10:00 - 12:00"
+  },
+  {
+    "post_id": "1639510809",
+    "collectionTime_id": "224",
+    "day": "2021-12-10",
+    "timeSlot": "14:00 - 16:00"
+  },
+  {
+    "post_id": "1639510969",
+    "collectionTime_id": "225",
+    "day": "2021-12-17",
+    "timeSlot": "14:00 - 16:00"
+  },
+  {
+    "post_id": "1639511244",
+    "collectionTime_id": "226",
+    "day": "2021-12-17",
+    "timeSlot": "14:00 - 16:00"
+  }
+]
