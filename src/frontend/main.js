@@ -77,3 +77,76 @@ async function search(value) {
 }
 
 init();
+
+// SPLASH SCREEN
+const splash = document.querySelector(".splash");
+document.addEventListener("DOMContentLoaded", (e) => {
+  setTimeout(() => {
+    splash.classList.add("display-none");
+  }, 1000);
+});
+
+// SHOPING LIST
+const itemToAdd = document.getElementById("itemToAdd");
+const productAmount = document.getElementById("productAmount");
+const productUnit = document.getElementById("productUnit");
+const addButton = document.getElementById("addButton");
+const itemList = document.getElementById("list");
+
+let shoppingListItems = [];
+
+function addShoppingListItem() {
+  itemList.innerHTML = "";
+  let htmlShoppingListTemplate = ``;
+  shoppingListItems.push({
+    itemId: Date.now(),
+    productName: itemToAdd.value,
+    productAmount: productAmount.value,
+    productUnit: productUnit.value,
+  });
+  for (const shoppingListItem of shoppingListItems) {
+    htmlShoppingListTemplate = `
+      <div class="flex items-center justify-between form-input mb-3" >
+        <div class=" flex items-center">
+          <input onClick="removeItem(${shoppingListItem.itemId})" class=" mr-2" type="radio" name="discard-item">
+          <p>${shoppingListItem.productName}</p>
+        </div>
+        <p>${shoppingListItem.productAmount} ${shoppingListItem.productUnit}</p>
+      </div>
+      
+    `;
+    itemList.innerHTML += htmlShoppingListTemplate;
+  }
+}
+function removeItem(clickedItemId) {
+  console.log(clickedItemId);
+  for (let index = 0; index < shoppingListItems.length; index++) {
+    const element = shoppingListItems[index];
+    if (element.itemId == clickedItemId) {
+      shoppingListItems.splice(index, 1);
+      updateList(shoppingListItems);
+    }
+  }
+}
+
+function updateList(updatedShoppingList) {
+  itemList.innerHTML = "";
+  let htmlShoppingListTemplate = ``;
+  for (const shoppingListItem of updatedShoppingList) {
+    htmlShoppingListTemplate = `
+      <div class="flex items-center justify-between form-input mb-3" >
+        <div class=" flex items-center">
+          <input onClick="removeItem(${shoppingListItem.itemId})" class=" mr-2" type="radio" name="discard-item">
+          <p>${shoppingListItem.productName}</p>
+        </div>
+        <p class=" opacity-70">${shoppingListItem.productAmount} ${shoppingListItem.productUnit}</p>
+      </div>
+    `;
+    itemList.innerHTML += htmlShoppingListTemplate;
+  }
+}
+
+document.querySelector(".form-shopping").addEventListener("submit", (e) => {
+  e.preventDefault();
+  addShoppingListItem();
+});
