@@ -55,8 +55,8 @@ npm run build
 
 ## Test users
 
-- **Email** some text
-- **Password** some text
+- **Email** sofienielsen@gmail.com
+- **Password** sofie99
 
 ## File structure
 
