@@ -81,73 +81,6 @@ document.addEventListener("DOMContentLoaded", (e) => {
   }, 1000);
 });
 
-// class Item {
-// 	constructor (itemName, itemAmount) {
-// 		this.name = itemName;
-//     this.amount = itemAmount;
-// 		this.create();
-// 	}
-
-// create () {
-// let html = "";
-// for (const userObject of usersArray) {
-//     html += /*html*/`
-//         <article>
-//             <img src="${userObject.avatarUrl}" onclick="showDetailView('${userObject.id}')">
-//             <h2>${userObject.name}</h2>
-//             <a href="mailto:${userObject.email}">${userObject.email}</a>
-//             <p>${userObject.enrollmentType.replace("Enrollment", "")}</p>
-//             <p>Course: ${userObject.course}</p>
-//             <button onclick="selectUser('${userObject.id}')">Update</button>
-//             <button onclick="deleteUser('${userObject.id}')">Delete</button>
-//         </article>
-//     `;
-// }
-// document.querySelector("#users-container").innerHTML = html;
-
-// 		let listItem = document.createElement("div");
-// 		listItem.classList.add("list-item");
-
-//     let removeButton = document.createElement("input");
-// 		removeButton.classList.add("remove");
-//     removeButton.type = "radio";
-// 		removeButton.addEventListener("click", () => this.remove(listItem));
-
-// 		let input = document.createElement("div");
-// 		input.type = "text";
-// 		input.classList.add("item-name");
-//     input.value = this.name;
-// 		input.disabled = true;
-
-//     let amountInput = document.createElement("input");
-//     amountInput.type = "text";
-//     amountInput.classList.add("item-amount");
-//     amountInput.value = this.amount;
-//     amountInput.disabled = true;
-
-// 		let actions = document.createElement("div");
-// 		actions.classList.add("item-actions");
-
-// 		actions.appendChild(removeButton);
-
-//     listItem.appendChild(actions);
-// 		listItem.appendChild(input);
-//     listItem.appendChild(amountInput);
-// 		itemList.appendChild(listItem);
-// 	}
-
-// 	remove (listItem) {
-// 		listItem.parentNode.removeChild(listItem);
-// 	}
-// }
-
-// function newItem () {
-// 	if (itemToAdd.value != "" || productAmount.value != "") {
-// 		new Item(itemToAdd.value, productAmount.value);
-// 		itemToAdd.value = "";
-//     productAmount.value = "";
-// 	}
-// }
 // SHOPING LIST
 const itemToAdd = document.getElementById("itemToAdd");
 const productAmount = document.getElementById("productAmount");
@@ -201,9 +134,8 @@ function updateList(updatedShoppingList) {
           <input onClick="removeItem(${shoppingListItem.itemId})" class=" mr-2" type="radio" name="discard-item">
           <p>${shoppingListItem.productName}</p>
         </div>
-        <p>${shoppingListItem.productAmount} ${shoppingListItem.productUnit}</p>
+        <p class=" opacity-70">${shoppingListItem.productAmount} ${shoppingListItem.productUnit}</p>
       </div>
-      
     `;
     itemList.innerHTML += htmlShoppingListTemplate;
   }
