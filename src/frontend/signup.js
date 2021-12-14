@@ -13,13 +13,13 @@ let uploadedCreateImg = "";
 
 signupImg.addEventListener("change", (e) => {
   uploadedCreateImg = e.target.files[0];
+  console.log(uploadedCreateImg);
 });
 
 async function createUser() {
   const formData = new FormData();
-  formData.append("file", uploadedImg);
-  console.log(uploadedCreateImg);
-  formData.append("fileSize", uploadedImg.size);
+  formData.append("file", uploadedCreateImg);
+  formData.append("fileSize", uploadedCreateImg.size);
   formData.append("name", signupUsername.value);
   formData.append("email", signupEmail.value);
   formData.append("password", signupPassword.value);

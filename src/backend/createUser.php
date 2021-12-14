@@ -74,8 +74,8 @@ if ($_GET['action'] == 'createUser') {
     $allowedMaxFileSize = 1024 * 1024 * 5;
     $imgSize = $_POST['fileSize'];
 
-    // // validation
-    if(passwordsMatch($password, $rptPassword) && allFieldsFilledCreate($username, $email, $password, $rptPassword, $phoneNumber, $address, $zipCode, $city, $imgName) && userIsUnique($email) && correctFileSize($allowedMaxFileSize, $imgSize)) {
+    //  validation
+    if(passwordsMatch($password, $rptPassword) && allFieldsFilledCreate($username, $email, $password, $rptPassword, $phoneNumber, $address, $zipCode, $city, $imgName) && correctFileSize($allowedMaxFileSize, $imgSize)) {
         global $db;
         // push user to db
         $results = $db->Query("INSERT INTO users (username, email, password, phone_number, address, zip_code, city, image_name) VALUES ('$username', '$email', '$hashPassword', '$phoneNumber', '$address', '$zipCode', '$city', '$imgName')");
@@ -113,5 +113,7 @@ if ($_GET['action'] == 'createUser') {
         global $error;
         echo json_encode($error);
     }
+    
 }
 
+?>
