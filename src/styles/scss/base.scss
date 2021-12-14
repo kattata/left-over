@@ -135,3 +135,15 @@
   justify-content: space-between;
   font-family: 'Josefin Sans';
 }
+
+.remove {
+  border: black 1px solid;
+  height: 16px;
+}
+
+.item-actions {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  margin-right: 8px;
+}

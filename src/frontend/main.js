@@ -87,15 +87,34 @@ class Item {
 	}
 
 	create () {
+    // let html = "";
+    // for (const userObject of usersArray) {
+    //     html += /*html*/`
+    //         <article>
+    //             <img src="${userObject.avatarUrl}" onclick="showDetailView('${userObject.id}')">
+    //             <h2>${userObject.name}</h2>
+    //             <a href="mailto:${userObject.email}">${userObject.email}</a>
+    //             <p>${userObject.enrollmentType.replace("Enrollment", "")}</p>
+    //             <p>Course: ${userObject.course}</p>
+    //             <button onclick="selectUser('${userObject.id}')">Update</button>
+    //             <button onclick="deleteUser('${userObject.id}')">Delete</button>
+    //         </article>
+    //     `;
+    // }
+    // document.querySelector("#users-container").innerHTML = html;
+
 		let listItem = document.createElement("div");
 		listItem.classList.add("list-item");
+
+    let removeButton = document.createElement("input");
+		removeButton.classList.add("remove");
+    removeButton.type = "radio";
+		removeButton.addEventListener("click", () => this.remove(listItem));
 
 		let input = document.createElement("input");
 		input.type = "text";
 		input.classList.add("item-name");
     input.value = this.name;
-		// input.value = this.name + this.amount;
-    // input.value = this.amount;
 		input.disabled = true;
 
     let amountInput = document.createElement("input");
@@ -104,39 +123,21 @@ class Item {
     amountInput.value = this.amount;
     amountInput.disabled = true;
 
-		// let actions = document.createElement("div");
-		// actions.classList.add("item-actions");
+		let actions = document.createElement("div");
+		actions.classList.add("item-actions");
 
-		// let updateButton = document.createElement("button");
-		// updateButton.classList.add("update");
-		// updateButton.innerText = "Update";
-		// updateButton.addEventListener("click", () => this.update(input));
-
-		let removeButton = document.createElement("button");
-		removeButton.classList.add("remove");
-    // removeButton.type = "radio";
-		removeButton.innerText = "Remove";
-		removeButton.addEventListener("click", () => this.remove(listItem));
-
-		// actions.appendChild(updateButton);
 		actions.appendChild(removeButton);
     
+    listItem.appendChild(actions);
 		listItem.appendChild(input);
     listItem.appendChild(amountInput);
-		listItem.appendChild(actions);
 		itemList.appendChild(listItem);
 	}
-
-	// update (input) {
-	// 	input.disabled = !input.disabled;
-	// }
 
 	remove (listItem) {
 		listItem.parentNode.removeChild(listItem);
 	}
 }
-
-addButton.addEventListener("click", () => newItem());
 
 function newItem () {
 	if (itemToAdd.value != "" || productAmount.value != "") {
@@ -145,3 +146,8 @@ function newItem () {
     productAmount.value = "";
 	}
 }
+
+document.querySelector(".form-shopping").addEventListener("submit", (e) => {
+  e.preventDefault();
+  newItem();
+})

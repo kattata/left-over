@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Josefin+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./public/styles/tailwind_output.css" />
     <link rel="stylesheet" href="/public/styles/bundle.css" />
+    <link rel="icon" type="image/png" href="./src/media/images/favicon.png"/>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
@@ -345,15 +346,22 @@
       <h1>Shopping List</h1>
 
         <div class="form">
-          <form class="flex w-full flex-col">
+          <form class="flex w-full flex-col form-shopping">
             <label class="form-label">Product name</label>
             <input class="form-input" id="itemToAdd" type="text" name="itemToAdd" placeholder="Product name" />
             
-            <label class="form-label">Amount</label>
-            <input class="form-input" id="productAmount" type="number" name="productAmount" placeholder="Amount" />
-
-            <!-- <button class="btn-primary self-center mt-6" id="addButton" name="add_product_sl" value="Add product">Add product</button> -->
-            <input class="btn-primary self-center mt-6" id="addButton" name="add_product_sl" value="Add product" />
+            <div class="flex w-full">
+              <div class="w-1/2 pr-1 flex flex-col">
+                <label class="form-label">Amount</label>
+                <input class="form-input" id="productAmount" type="number" name="productAmount" placeholder="Amount" />
+              </div>
+              <div class="w-1/2 pr-1 flex flex-col">
+                <label class="form-label">Unit</label>
+                <input class="form-input" id="productAmount" type="number" name="productAmount" placeholder="stk" />
+              </div>
+            </div>
+            <button class="btn-primary self-center mt-6" id="addButton" type="submit" name="add_product_sl" value="Add product">Add product</button>
+            <!-- <input class="btn-primary self-center mt-6" id="addButton" name="add_product_sl" value="Add product" /> -->
           </form>
         </div>
         <div class="list" id="list"></div>
