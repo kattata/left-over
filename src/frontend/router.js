@@ -85,8 +85,18 @@ function hideNav() {
   const editProfile = window.location.hash == "#/editProfile";
   const editPost = window.location.hash == "#/editPost";
   const createPost = window.location.hash == "#/createPost";
+  const mobilePay = window.location.hash == "#/mobilePay";
+  const summary = window.location.hash == "#/summary";
 
-  if (login || signup || editPost || editProfile || createPost) {
+  if (
+    login ||
+    signup ||
+    editPost ||
+    editProfile ||
+    createPost ||
+    mobilePay ||
+    summary
+  ) {
     nav.style.display = "none";
   } else {
     nav.style.display = "flex";
