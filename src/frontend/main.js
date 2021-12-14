@@ -111,7 +111,7 @@ class Item {
     removeButton.type = "radio";
 		removeButton.addEventListener("click", () => this.remove(listItem));
 
-		let input = document.createElement("input");
+		let input = document.createElement("div");
 		input.type = "text";
 		input.classList.add("item-name");
     input.value = this.name;
@@ -119,7 +119,7 @@ class Item {
 
     let amountInput = document.createElement("input");
     amountInput.type = "text";
-    amountInput.classList.add("item-name");
+    amountInput.classList.add("item-amount");
     amountInput.value = this.amount;
     amountInput.disabled = true;
 

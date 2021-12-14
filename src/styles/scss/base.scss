@@ -132,8 +132,8 @@
   padding: 8px 16px;
   margin-bottom: 8px;
   display: flex;
-  justify-content: space-between;
   font-family: 'Josefin Sans';
+  width: 100%;
 }
 
 .remove {
@@ -146,4 +146,10 @@
   display: flex;
   align-items: center;
   margin-right: 8px;
+}
+.item-amount{
+  width: fit-content;
+}
+.item-name{
+  text-align: left;
 }
