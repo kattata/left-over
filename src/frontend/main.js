@@ -1,9 +1,10 @@
+// initilise the appending and fetching when the app is being open
 async function init() {
   fetchPosts();
   let allPostsJson = await fetchPosts();
   appendPosts(allPostsJson);
 }
-
+//fetch the json posts from the backend
 async function fetchPosts() {
   const fetchData = await fetch("../../src/backend/json/posts.json")
     .then((res) => res.json())
@@ -13,6 +14,7 @@ async function fetchPosts() {
 
   return fetchData;
 }
+//function to append all the posts
 function appendPosts(posts) {
   document.querySelector("#posts-feed-container").innerHTML = "";
   let htnlTemplate = ``;
@@ -21,25 +23,15 @@ function appendPosts(posts) {
     <article onclick = "appendAndGoPostDetails(${post.post_id},${
       post.seller_id
     })" class="post-box border-2 mb-4 border-light-black rounded-3xl overflow-hidden">
-    <img class=" max-h-36 w-full object-cover" src="./src/media/posted/${
-      post.image_name
-    }" alt="image of sold food" />
+    <img class=" max-h-36 w-full object-cover" src="./src/media/posted/${post.image_name}" alt="image of sold food" />
     <div class="post-content-wrapper mx-3">
       <div class="flex justify-between mt-2">
         <span class="food-category-badge 
-        ${
-          post.category == "Fruits & Vegetables" ? "bg-light-green-custom" : ""
-        } ${post.category == "Dish" ? "bg-light-blue" : ""}
-        ${post.category == "Bread & Pastry" ? "bg-light-orange" : ""} ${
-      post.category == "Dessert" ? "bg-light-violet" : ""
-    }
-        ${post.category == "Diary" ? "bg-light-red" : ""}">${
-      post.category
-    }</span>
+        ${post.category == "Fruits & Vegetables" ? "bg-light-green-custom" : ""} ${post.category == "Dish" ? "bg-light-blue" : ""}
+        ${post.category == "Bread & Pastry" ? "bg-light-orange" : ""} ${post.category == "Dessert" ? "bg-light-violet" : ""}
+        ${post.category == "Diary" ? "bg-light-red" : ""}">${post.category}</span>
         <div class="flex">
-        <img class="pr-1 w-6 h-6 object-cover object-center rounded-full" src="./src/media/profile/${
-          post.seller_image
-        }" alt="" />
+        <img class="pr-1 w-6 h-6 object-cover object-center rounded-full" src="./src/media/profile/${post.seller_image}" alt="" />
         <p>${post.seller_username}</p>
         </div>
       </div>
@@ -58,7 +50,7 @@ function appendPosts(posts) {
   }
   console.log("Appended posts", posts);
 }
-
+// search function
 async function search(value) {
   _appliedFilters = [];
   appendCheckedFilter(_appliedFilters);

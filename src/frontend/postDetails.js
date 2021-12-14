@@ -1,8 +1,9 @@
+//global variable to find clicked post
 let rightPost = undefined;
 let rightUser = undefined;
 let rightTransaction = undefined;
 let rightTimeSlots = [];
-
+//fetching all neccessary data from json
 async function fetchTimeSlots() {
   const fetchData = await fetch("../../src/backend/json/time-slots.json")
     .then((res) => res.json())
@@ -30,6 +31,8 @@ async function fetchTransactions() {
 
   return fetchData;
 }
+//establishing the global variables
+
 async function getRightObjects(postId, sellerId) {
   let currentPostId = postId;
   let allPostsJson = await fetchPosts();
@@ -55,7 +58,7 @@ async function getRightObjects(postId, sellerId) {
   }
   console.log(rightPost);
 }
-
+//function that works similar to create post but combining all the data from json to one transaction
 async function createTransactin() {
   let userDetails = JSON.parse(sessionStorage.getItem("user"));
   const loggedUser = {
@@ -71,8 +74,7 @@ async function createTransactin() {
     sellerUsername: rightPost.seller_username,
     sellerImage: rightPost.seller_image,
     soldProduct: rightPost.product_name,
-    timeSlot: document.querySelector('input[name="buy-product-radio"]:checked')
-      .value,
+    timeSlot: document.querySelector('input[name="buy-product-radio"]:checked').value,
     amount: rightPost.amount,
     price: rightPost.price,
     address: rightUser.address,
@@ -113,7 +115,7 @@ async function createTransactin() {
     navigateTo("#/summary");
   }, 700);
 }
-
+//appenind the summary page
 async function appendTransactionDetails() {
   let allTransactionsJson = await fetchTransactions();
   for (const transaction of allTransactionsJson) {
@@ -167,7 +169,7 @@ function goToBrowse() {
   navigateTo("#/");
   window.location.reload();
 }
-
+//append the buy product page
 function appendBuyProduct() {
   let htmlForTimeSlots = ``;
   for (const bookedSlot of rightTimeSlots) {
@@ -183,38 +185,24 @@ function appendBuyProduct() {
   <article class="flex flex-col">
     <div class="flex justify-between mt-6">
     <span class="food-category-badge 
-    ${
-      rightPost.category == "Fruits & Vegetables" ? "bg-light-green-custom" : ""
-    } ${rightPost.category == "Dish" ? "bg-light-blue" : ""}
-    ${rightPost.category == "Bread & Pastry" ? "bg-light-orange" : ""} ${
-    rightPost.category == "Dessert" ? "bg-light-violet" : ""
-  }
-    ${rightPost.category == "Diary" ? "bg-light-red" : ""}">${
-    rightPost.category
-  }</span>
-      <span class="text-xs opacity-50 font-bold">Expires: ${
-        rightPost.expires_in
-      }</span>
+    ${rightPost.category == "Fruits & Vegetables" ? "bg-light-green-custom" : ""} ${rightPost.category == "Dish" ? "bg-light-blue" : ""}
+    ${rightPost.category == "Bread & Pastry" ? "bg-light-orange" : ""} ${rightPost.category == "Dessert" ? "bg-light-violet" : ""}
+    ${rightPost.category == "Diary" ? "bg-light-red" : ""}">${rightPost.category}</span>
+      <span class="text-xs opacity-50 font-bold">Expires: ${rightPost.expires_in}</span>
     </div>
-    <img class="max-h-36 rounded-3xl mt-4 w-full object-cover" src="./src/media/posted/${
-      rightPost.image_name
-    }" alt="image of sold food" />
+    <img class="max-h-36 rounded-3xl mt-4 w-full object-cover" src="./src/media/posted/${rightPost.image_name}" alt="image of sold food" />
     <div class="flex justify-between font-bold pt-4 pb-2 border-b-1 border-light-green-custom">
       <p class="text-lg">Amount ${rightPost.amount}</p>
       <p class="text-lg">DKK ${rightPost.price}</p>
     </div>
     <div class="flex justify-between  pt-2 items-center">
       <div class="flex items-center">
-        <img class="seller-img" src="./src/media/profile/${
-          rightPost.seller_image
-        }"><p class="text-sm pl-1">${rightPost.seller_username}</p>
+        <img class="seller-img" src="./src/media/profile/${rightPost.seller_image}"><p class="text-sm pl-1">${rightPost.seller_username}</p>
       </div>
       <p class="text-sm">${rightUser.city}</p>
     </div>
     <h4 class="mt-6">Choose collection time</h4>
-    <label class="form-label" for="product_categories">${
-      rightTimeSlots[0].day
-    }</label>
+    <label class="form-label" for="product_categories">${rightTimeSlots[0].day}</label>
     <div id="buy-product-wrapper">
     ${htmlForTimeSlots}
     </div>
@@ -224,7 +212,7 @@ function appendBuyProduct() {
     `;
   document.querySelector("#buy-product").innerHTML += htnlTemplate;
 }
-
+//function called when the post is being clicked
 async function appendPostDetails(postId, sellerId) {
   await getRightObjects(postId, sellerId);
   document.querySelector("#post-details-before-purchase").innerHTML = "";
@@ -233,31 +221,19 @@ async function appendPostDetails(postId, sellerId) {
   <article class="flex flex-col">
     <div class="flex justify-between mt-6">
     <span class="food-category-badge 
-    ${
-      rightPost.category == "Fruits & Vegetables" ? "bg-light-green-custom" : ""
-    } ${rightPost.category == "Dish" ? "bg-light-blue" : ""}
-    ${rightPost.category == "Bread & Pastry" ? "bg-light-orange" : ""} ${
-    rightPost.category == "Dessert" ? "bg-light-violet" : ""
-  }
-    ${rightPost.category == "Diary" ? "bg-light-red" : ""}">${
-    rightPost.category
-  }</span>
-      <span class="text-xs opacity-50 font-bold">Expires: ${
-        rightPost.expires_in
-      }</span>
+    ${rightPost.category == "Fruits & Vegetables" ? "bg-light-green-custom" : ""} ${rightPost.category == "Dish" ? "bg-light-blue" : ""}
+    ${rightPost.category == "Bread & Pastry" ? "bg-light-orange" : ""} ${rightPost.category == "Dessert" ? "bg-light-violet" : ""}
+    ${rightPost.category == "Diary" ? "bg-light-red" : ""}">${rightPost.category}</span>
+      <span class="text-xs opacity-50 font-bold">Expires: ${rightPost.expires_in}</span>
     </div>
-    <img class="max-h-36 rounded-3xl mt-4 w-full object-cover" src="./src/media/posted/${
-      rightPost.image_name
-    }" alt="image of sold food" />
+    <img class="max-h-36 rounded-3xl mt-4 w-full object-cover" src="./src/media/posted/${rightPost.image_name}" alt="image of sold food" />
     <div class="flex justify-between font-bold pt-4 pb-2 border-b-1 border-light-green-custom">
       <p class="text-lg">Amount ${rightPost.amount}</p>
       <p class="text-lg">DKK ${rightPost.price}</p>
     </div>
     <div class="flex justify-between  pt-2 items-center">
       <div class="flex items-center">
-        <img class="seller-img" src="./src/media/profile/${
-          rightPost.seller_image
-        }"><p class="text-sm pl-1">${rightPost.seller_username}</p>
+        <img class="seller-img" src="./src/media/profile/${rightPost.seller_image}"><p class="text-sm pl-1">${rightPost.seller_username}</p>
       </div>
       <p class="text-sm">${rightUser.city}</p>
     </div>
@@ -265,7 +241,6 @@ async function appendPostDetails(postId, sellerId) {
     <button onclick="navigateTo('#/buyProduct')" class="btn-primary mt-8 self-center">Buy</button>
   </article>
     `;
-  document.querySelector("#post-details-before-purchase").innerHTML +=
-    htnlTemplate;
+  document.querySelector("#post-details-before-purchase").innerHTML += htnlTemplate;
   appendBuyProduct();
 }

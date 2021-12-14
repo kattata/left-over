@@ -1,0 +1,43 @@
+// SPLASH SCREEN
+.splash {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  background-color: #eef0eb;
+  z-index: 200;
+  text-align: center;
+  color: #2c2d2b;
+}
+
+.splash.display-none {
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #eef0eb;
+  z-index: -10;
+  text-align: center;
+  color: #2c2d2b;
+  transition: all 0.5s;
+}
+
+.splash img {
+  margin: 0 auto;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1s ease-in forwards;
+}

@@ -1,10 +1,10 @@
+//global variables for filters
 let _appliedFilters = [];
 let _filteredJson = [];
 let _clickedFilters = [];
 let _clickedPostId = undefined;
 let _clickedPostSellerId = undefined;
-
-//Needs to be here modules have issues with bindings
+//trigger appendig of the post detials when clicked
 function appendAndGoPostDetails(postId, sellerId) {
   navigateTo("#/postDetials");
   _clickedPostId = postId;
@@ -28,25 +28,15 @@ function appendPosts(posts) {
     <article onclick = "appendAndGoPostDetails(${post.post_id},${
       post.seller_id
     })" class="post-box border-2 mb-4 border-light-black rounded-3xl overflow-hidden">
-    <img class="max-h-36 w-full object-cover" src="./src/media/posted/${
-      post.image_name
-    }" alt="image of sold food" />
+    <img class="max-h-36 w-full object-cover" src="./src/media/posted/${post.image_name}" alt="image of sold food" />
     <div class="post-content-wrapper mx-3">
       <div class="flex justify-between mt-2">
         <span class="food-category-badge 
-        ${
-          post.category == "Fruits & Vegetables" ? "bg-light-green-custom" : ""
-        } ${post.category == "Dish" ? "bg-light-blue" : ""}
-        ${post.category == "Bread & Pastry" ? "bg-light-orange" : ""} ${
-      post.category == "Dessert" ? "bg-light-violet" : ""
-    }
-        ${post.category == "Diary" ? "bg-light-red" : ""}">${
-      post.category
-    }</span>
+        ${post.category == "Fruits & Vegetables" ? "bg-light-green-custom" : ""} ${post.category == "Dish" ? "bg-light-blue" : ""}
+        ${post.category == "Bread & Pastry" ? "bg-light-orange" : ""} ${post.category == "Dessert" ? "bg-light-violet" : ""}
+        ${post.category == "Diary" ? "bg-light-red" : ""}">${post.category}</span>
         <div class="flex">
-          <img class="pr-1 w-6 h-6 object-cover object-center rounded-full" src="./src/media/profile/${
-            post.seller_image
-          }" alt="" />
+          <img class="pr-1 w-6 h-6 object-cover object-center rounded-full" src="./src/media/profile/${post.seller_image}" alt="" />
           <p>${post.seller_username}</p>
         </div>
       </div>
@@ -65,6 +55,7 @@ function appendPosts(posts) {
   }
   // console.log("Appended posts", posts);
 }
+//appends all checked filters in filters page
 function appendCheckedFilter(filters) {
   document.querySelector("#selected-filters-wrapper").innerHTML = ``;
   let allCheckedFilters = filters;
@@ -82,8 +73,7 @@ function appendCheckedFilter(filters) {
   />  
   <label  class="btn-tertiary inline-block mt12 mb-1 mr-1 transition-colors duration-200" for="checked_browse_${filter}">${filter} X</label>  
     `;
-    document.querySelector("#selected-filters-wrapper").innerHTML +=
-      htnlTemplate;
+    document.querySelector("#selected-filters-wrapper").innerHTML += htnlTemplate;
   }
   // console.log("appended filters", allCheckedFilters);
 }
@@ -93,6 +83,7 @@ function showFiltersPage() {
   document.querySelector("#filters-wrapper").classList.toggle("left-full");
   document.querySelector("#filters-wrapper").classList.toggle("left-0");
 }
+//array that remowes any duplicates from the array based on id
 function removeDuplicates(array) {
   let arrayToValidate = array;
   for (let index = 0; index < arrayToValidate.length; index++) {
@@ -107,6 +98,7 @@ function removeDuplicates(array) {
     }
   }
 }
+// function allowing to uncheck filters without going to the filters page
 function removeFilterChecked(value, event) {
   // showFiltersPage();
   resetCheckedFilter(value);
@@ -116,7 +108,7 @@ function removeFilterChecked(value, event) {
 
   // console.log("filters", _appliedFilters);
 }
-
+// function to add any filter without duplicates and also remowe filters all on click
 function filterProduct(value, event) {
   let checkboxValue = value;
   if (event.target.checked === true) {
@@ -152,7 +144,7 @@ function filterProduct(value, event) {
   }
   // console.log("filters to apply", _appliedFilters);
 }
-
+//reset checked filters
 function resetCheckedFilter(value) {
   let checkedFilterValue = value;
   for (const clickedFilter of _clickedFilters) {
@@ -162,7 +154,7 @@ function resetCheckedFilter(value) {
   }
   _clickedFilters;
 }
-
+//reset all filters (button called reset )
 async function resetAllFilters() {
   let allPostsJson = await fetchPosts();
   _clickedFilters.forEach((checkbox) => (checkbox.checked = false));
@@ -178,6 +170,7 @@ function resetAllFiltersAndClose() {
     showFiltersPage();
   }, 150);
 }
+//function that works with filterProduct function and applies selected filters
 async function applyFilters() {
   let allPostsJson = await fetchPosts();
   _filteredJson = [];
@@ -193,9 +186,7 @@ async function applyFilters() {
   if (_filteredJson.length === 0 && _appliedFilters.length === 0) {
     appendPosts(allPostsJson);
   } else if (_filteredJson.length === 0 && _appliedFilters.length !== 0) {
-    document.querySelector(
-      "#posts-feed-container"
-    ).innerHTML = ` <div class="w-full mt-20 flex flex-col justify-center items-center text-center">
+    document.querySelector("#posts-feed-container").innerHTML = ` <div class="w-full mt-20 flex flex-col justify-center items-center text-center">
     <img class=" w-2/3" src="./src/media/icons/no-results.svg" alt="No results icon" />
     <h3>No results to show</h3>
     <p>Please, check spelling or try different keyword</p>

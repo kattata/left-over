@@ -1,5 +1,5 @@
 let _appliedTimeSlots = [];
-
+// function to add checked filters
 function filterTimeSlot(value, event) {
   let checkboxValue = value;
   if (event.target.checked === true) {
@@ -32,6 +32,7 @@ function filterTimeSlot(value, event) {
   }
   // console.log("filters to apply", _appliedTimeSlots);
 }
+//grab uploaded image
 const uploadedImage = document.querySelector("#product-uploaded-image");
 
 let uploadedImg = "";
@@ -43,14 +44,17 @@ uploadedImage.addEventListener("change", (e) => {
 const formData = new FormData();
 formData.append("file", uploadedImg);
 
+//actual function to send information from frontend to backend
 async function createPost() {
+  //grab user from seasionStorage
   let userDetails = JSON.parse(sessionStorage.getItem("user"));
+  //assign all the data to object
   const currentUser = {
     id: userDetails.user_id,
     name: userDetails.username,
     profileImage: userDetails.image_name,
   };
-
+  //object with post information
   const newPost = {
     sellerId: currentUser.id,
     sellerUsername: currentUser.name,
@@ -58,18 +62,14 @@ async function createPost() {
     productName: document.querySelector("#create-post-product-name").value,
     productAmount: document.querySelector("#create-post-product-amount").value,
     productPrice: document.querySelector("#create-post-product-price").value,
-    productCategory: document.querySelector(
-      'input[name="product_category"]:checked'
-    ).value,
-    productDiet: document.querySelector('input[name="product_diet"]:checked')
-      .value,
+    productCategory: document.querySelector('input[name="product_category"]:checked').value,
+    productDiet: document.querySelector('input[name="product_diet"]:checked').value,
     productDescription: document.querySelector("#product_description").value,
-    productExpirationDate: document.querySelector(
-      "#create-post-product-expiration-date"
-    ).value,
+    productExpirationDate: document.querySelector("#create-post-product-expiration-date").value,
     reservedDay: document.querySelector("#product-pick-up-day").value,
     reservedTimeSlots: JSON.stringify(_appliedTimeSlots),
   };
+  //use FormData() to properly send images and all the data to backend
   const formData = new FormData();
   formData.append("file", uploadedImg);
   formData.append("sellerId", newPost.sellerId);
@@ -84,13 +84,13 @@ async function createPost() {
   formData.append("productExpirationDate", newPost.productExpirationDate);
   formData.append("reservedDay", newPost.reservedDay);
   formData.append("reservedTimeSlots", newPost.reservedTimeSlots);
-
-  console.log(formData);
+  //fetch call
   await fetch("../../src/backend/addPost.php?action=newPost", {
     method: "POST",
     body: formData,
   });
 }
+//when the form is submited
 document.querySelector("#add-post-form").addEventListener("submit", (e) => {
   e.preventDefault();
   console.log("I work");
