@@ -16,6 +16,7 @@ signupImg.addEventListener("change", (e) => {
   console.log(uploadedCreateImg);
 });
 
+// send data to backend and create a user
 async function createUser() {
   const formData = new FormData();
   formData.append("file", uploadedCreateImg);

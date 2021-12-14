@@ -17,6 +17,7 @@ editProfileImg.addEventListener("change", (e) => {
   uploadedEditImg = e.target.files[0];
 });
 
+// collect data in form data and send to backend
 async function updateUser() {
   const currentUser = JSON.parse(sessionStorage.getItem("user"));
 
@@ -57,6 +58,7 @@ document.querySelector(".edit-profile-form").addEventListener("submit", (e) => {
   updateUser();
 });
 
+// update session storage with updated data
 async function updateSession() {
   const response = await fetch("../../src/backend/json/users.json");
   const result = await response.json();

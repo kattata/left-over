@@ -37,12 +37,14 @@ let loginError = "";
 let loginUserId = 0;
 let _posts = "";
 
+// clear session and logout
 function logout() {
   sessionStorage.clear();
   navigateTo("#/login");
   window.location.reload();
 }
 
+// send data to backend and login
 async function login() {
   const user = {
     email: loginEmail.value,
@@ -69,6 +71,7 @@ document.querySelector(".login-form").addEventListener("submit", (e) => {
   login();
 });
 
+// add logged in user to session storage
 async function searchForUser() {
   const response = await fetch("../../src/backend/json/users.json");
   const result = await response.json();
@@ -101,7 +104,7 @@ async function appendUserInfo() {
   appendToEditProfile(userSessionInfo);
 }
 
-// append user info to edit profile
+// append user info to inputs in edit profile
 function appendToEditProfile(userSession) {
   if (userSession) {
     profileUsername.value = userSession.username;
@@ -114,7 +117,7 @@ function appendToEditProfile(userSession) {
   }
 }
 
-// append posts to profile page
+// append posts to profile page - posted tab
 async function appendPostedPosts(userSessionInfo) {
   // fetch posts
   const response = await fetch("../../src/backend/json/posts.json");
@@ -169,6 +172,7 @@ async function appendPostedPosts(userSessionInfo) {
   }
 }
 
+// append posts to profile page - purchased tab
 async function appendPurchasedPosts(currentUser) {
   const response = await fetch("../../src/backend/json/transactions.json");
   const purchasedPosts = await response.json();
@@ -217,6 +221,7 @@ async function appendPurchasedPosts(currentUser) {
   }
 }
 
+// open a page with post details and set the data in session storage
 function openPostDetails(postId) {
   navigateTo("#/myPostDetails");
   // find the selected post information
@@ -231,6 +236,7 @@ function openPostDetails(postId) {
   console.log(postInfo);
 }
 
+// append data from session to post details
 function appendMyPostDetails(post) {
   if (post) {
     let html = "";
@@ -282,13 +288,13 @@ function appendMyPostDetails(post) {
   }
 }
 
+// EDIT POST
 let uploadedEditPostImg = "";
 
 let postInfo = sessionStorage.getItem("currentPost");
 appendToEditPost(JSON.parse(postInfo));
 appendMyPostDetails(JSON.parse(postInfo));
 
-// edit post
 editPostImg.addEventListener("change", (e) => {
   uploadedEditPostImg = e.target.files[0];
 });
@@ -296,6 +302,7 @@ editPostImg.addEventListener("change", (e) => {
 let editPostError = "";
 let updatedPost = "";
 
+// send data to backend and display error messages
 async function editPost(postId) {
   let currentPost = JSON.parse(sessionStorage.getItem("currentPost"));
   navigateTo("#/editPost");
@@ -347,12 +354,14 @@ document.querySelector(".edit-post-form").addEventListener("submit", (e) => {
   editPost(postId);
 });
 
+// update session with with new data
 async function updateCurrentPostSession(currentPost) {
   sessionStorage.currentPost = JSON.stringify(currentPost);
   appendToEditPost(currentPost);
   window.location.reload();
 }
 
+// append current data to inputs in edit post
 function appendToEditPost(postInfo) {
   if (postInfo) {
     editPostName.value = postInfo.product_name;
@@ -382,6 +391,7 @@ async function deletePost(postId) {
   appendPurchasedPosts(userSessionInfo);
 }
 
+// select correct filters and push to the array
 let editTimeSlots = [];
 
 function filterTimeSlotEdit(value, event) {
