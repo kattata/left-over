@@ -369,7 +369,7 @@ function appendToEditPost(postInfo) {
 // delete post
 async function deletePost(postId) {
   const response = await fetch(
-    "http://localhost:3000/src/backend/deletePost.php?action=deletePost",
+    "../../src/backend/deletePost.php?action=deletePost",
     {
       method: "POST",
       headers: { "Content-Type": "application/json; charset=utf-8" },
