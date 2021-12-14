@@ -129,7 +129,7 @@ async function appendPostedPosts(userSessionInfo) {
       <article class="post-box border-2 mb-4 border-light-black rounded-3xl overflow-hidden" onclick="openPostDetails(${
         post.post_id
       })">
-      <img class="max-h-24 w-full object-cover" src="./src/media/posted/${
+      <img class="max-h-36 w-full object-cover" src="./src/media/posted/${
         post.image_name
       }" alt="image of sold food" />
       <div class="post-content-wrapper mx-3">
@@ -157,7 +157,7 @@ async function appendPostedPosts(userSessionInfo) {
           <p>${post.product_name}</p>
           <p>DKK ${post.price}</p>
         </div>
-        <div class="flex justify-between mt-1 mb-4 opacity-50 text-xs">
+        <div class="flex justify-between mt-1 mb-2 opacity-50 text-xs">
           <p>Amount ${post.amount}</p>
           <p>Expires: ${post.expires_in}</p>
         </div>
@@ -179,7 +179,7 @@ async function appendPurchasedPosts(currentUser) {
       let html = "";
       html = `
     <article class="post-box border-2 mb-4 border-light-black rounded-3xl overflow-hidden">
-    <img class="max-h-24 w-full object-cover" src="./src/media/posted/${
+    <img class="max-h-36 w-full object-cover" src="./src/media/posted/${
       post.post_image
     }" alt="image of sold food" />
     <div class="post-content-wrapper mx-3">
@@ -205,7 +205,7 @@ async function appendPurchasedPosts(currentUser) {
         <p>${post.product_name}</p>
         <p>DKK ${post.price}</p>
       </div>
-      <div class="flex justify-between mt-1 mb-4 opacity-50 text-xs">
+      <div class="flex justify-between mt-1 mb-2 opacity-50 text-xs">
         <p>Amount ${post.amount}</p>
         <p>Expires: ${post.expires_in}</p>
       </div>
@@ -249,8 +249,8 @@ function appendMyPostDetails(post) {
   </div>
 
   </div>
-  <h1>${post.product_name}</h1>
-  <div class="flex justify-between mb-2 items-center">
+  <h1 class="mt-4">${post.product_name}</h1>
+  <div class="flex justify-between mb-4 items-center">
   <span class="food-category-badge
   ${post.category == "Fruits & Vegetables" ? "bg-light-green-custom" : ""} ${
       post.category == "Dish" ? "bg-light-blue" : ""
@@ -261,7 +261,7 @@ function appendMyPostDetails(post) {
   ${post.category == "Diary" ? "bg-light-red" : ""}">${post.category}</span>
   <p class="grey-text">Expires: ${post.expires_in}</p>
   </div>
-  <img class="max-h-24 w-full object-cover mb-4" src="./src/media/posted/${
+  <img class="max-h-36 w-full object-cover mb-4 rounded-3xl" src="./src/media/posted/${
     post.image_name
   }" alt="image of sold food" />
   <div class="flex justify-between">

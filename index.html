@@ -2,12 +2,17 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <title>Left Over App</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Josefin+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Josefin+Sans:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./public/styles/tailwind_output.css" />
     <link rel="stylesheet" href="/public/styles/bundle.css" />
+    <link rel="icon" type="image/png" href="./src/media/images/favicon.png" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
@@ -15,7 +20,18 @@
   <body class="bg-light-grey">
     <!-- NAVIGATION -->
     <header class="bottom-0 left-0 w-full fixed z-30">
-      <nav class="bg-light-black relative flex rounded-t-3xl flex-row justify-between items-center p-4">
+      <nav
+        class="
+          bg-light-black
+          relative
+          flex
+          rounded-t-3xl
+          flex-row
+          justify-between
+          items-center
+          p-4
+        "
+      >
         <a
           class="
             rounded-full
@@ -31,26 +47,91 @@
           "
           href="#/createPost"
         >
-          <img src="./src/media/icons/create-post-icon.svg" alt="" class="h-8" />
+          <img
+            src="./src/media/icons/create-post-icon.svg"
+            alt=""
+            class="h-8"
+          />
         </a>
         <div class="flex">
-          <a class="nav-link font-jesefin-sans text-light-grey text-xs flex flex-col items-center" href="#/"
-            ><img src="./src/media/icons/browse-icon.svg" alt="" class="h-8 p-1" />Browse</a
+          <a
+            class="
+              nav-link
+              font-jesefin-sans
+              text-light-grey text-xs
+              flex flex-col
+              items-center
+            "
+            href="#/"
+            ><img
+              src="./src/media/icons/browse-icon.svg"
+              alt=""
+              class="h-8 p-1"
+            />Browse</a
           >
-          <a class="nav-link font-jesefin-sans text-light-grey text-xs flex flex-col items-center ml-10 mr-6" href="#/blog"
-            ><img src="./src/media/icons/blog-icon.svg" alt="" class="h-8 p-1" />Blog</a
+          <a
+            class="
+              nav-link
+              font-jesefin-sans
+              text-light-grey text-xs
+              flex flex-col
+              items-center
+              ml-10
+              mr-6
+            "
+            href="#/blog"
+            ><img
+              src="./src/media/icons/blog-icon.svg"
+              alt=""
+              class="h-8 p-1"
+            />Blog</a
           >
         </div>
         <div class="flex flex-row">
-          <a class="nav-link font-jesefin-sans text-light-grey text-xs flex flex-col items-center ml-6 mr-6" href="#/shoppingList"
-            ><img src="./src/media/icons/shopping-list-icon.svg" alt="" class="h-8 p-1" />Shopping List</a
+          <a
+            class="
+              nav-link
+              font-jesefin-sans
+              text-light-grey text-xs
+              flex flex-col
+              items-center
+              ml-6
+              mr-6
+            "
+            href="#/shoppingList"
+            ><img
+              src="./src/media/icons/shopping-list-icon.svg"
+              alt=""
+              class="h-8 p-1"
+            />Shopping List</a
           >
-          <a class="nav-link font-jesefin-sans text-light-grey text-xs flex flex-col items-center" href="#/profile"
-            ><img src="./src/media/icons/profile-icon.svg" alt="" class="h-8 p-1" />Profile</a
+          <a
+            class="
+              nav-link
+              font-jesefin-sans
+              text-light-grey text-xs
+              flex flex-col
+              items-center
+            "
+            href="#/profile"
+            ><img
+              src="./src/media/icons/profile-icon.svg"
+              alt=""
+              class="h-8 p-1"
+            />Profile</a
           >
         </div>
       </nav>
     </header>
+
+    <!-- SPLASH SCREEN -->
+    <div class="splash">
+      <img
+        src="./src/media/images/splash-screen.png"
+        alt="Splash screen"
+        class="fade-in"
+      />
+    </div>
 
     <!-- LOGIN PAGE -->
     <section id="login" class="page">
@@ -58,11 +139,21 @@
         <h1 class="text-center mt-40">Log in</h1>
         <form class="login-form flex flex-col">
           <label class="form-label">Email</label>
-          <input type="text" placeholder="Enter email" class="login-email form-input" />
+          <input
+            type="text"
+            placeholder="Enter email"
+            class="login-email form-input"
+          />
           <label class="form-label">Password</label>
-          <input type="password" placeholder="Enter password" class="login-password form-input" />
+          <input
+            type="password"
+            placeholder="Enter password"
+            class="login-password form-input"
+          />
           <p class="login-error mt-6"></p>
-          <button type="submit" class="btn-primary mt-6 w-1/3 m-auto">Log in</button>
+          <button type="submit" class="btn-primary mt-6 w-1/3 m-auto">
+            Log in
+          </button>
           <p class="text-center mt-2">Forgot your password?</p>
           <div class="flex items-center mt-20 m-auto">
             <p>Not a member yet?</p>
@@ -79,19 +170,47 @@
         <h1 class="text-center">Sign up</h1>
         <form class="signup-form flex flex-col" enctype="multipart/form-data">
           <label class="form-label">Name</label>
-          <input type="text" placeholder="Enter name" class="signup-name form-input" />
+          <input
+            type="text"
+            placeholder="Enter name"
+            class="signup-name form-input"
+          />
           <label class="form-label">Email</label>
-          <input type="text" placeholder="Enter email" class="signup-email form-input" />
+          <input
+            type="text"
+            placeholder="Enter email"
+            class="signup-email form-input"
+          />
           <label class="form-label">Password</label>
-          <input type="password" placeholder="Enter password" class="signup-password form-input" />
+          <input
+            type="password"
+            placeholder="Enter password"
+            class="signup-password form-input"
+          />
           <label class="form-label">Repeat password</label>
-          <input type="password" placeholder="Repeat password" class="signup-rpt-password form-input" />
+          <input
+            type="password"
+            placeholder="Repeat password"
+            class="signup-rpt-password form-input"
+          />
           <label class="form-label">Phone number</label>
-          <input type="text" placeholder="Enter phone number" class="signup-phone-number form-input" />
+          <input
+            type="text"
+            placeholder="Enter phone number"
+            class="signup-phone-number form-input"
+          />
           <label class="form-label">Address</label>
-          <input type="text" placeholder="Enter address" class="signup-address form-input" />
+          <input
+            type="text"
+            placeholder="Enter address"
+            class="signup-address form-input"
+          />
           <label class="form-label">Zip code</label>
-          <input type="text" placeholder="Enter zip code" class="signup-zip-code form-input" />
+          <input
+            type="text"
+            placeholder="Enter zip code"
+            class="signup-zip-code form-input"
+          />
           <label class="form-label">City</label>
           <input type="text" placeholder="Enter city" class="signup-city form-input" />
           <label class="form-label">Profile picture (max. 2 GB)</label>
@@ -136,33 +255,184 @@
         />
         <label class="form-label" for="product_categories">Category</label>
         <div id="product-category-wrapper">
-          <input id="product_category_dish" type="radio" name="product_category" value="Dish" hidden />
-          <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="product_category_dish">Dish</label>
-          <input id="product_category_fruits_vegetables" type="radio" name="product_category" value="Fruits & Vegetables" hidden />
-          <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="product_category_fruits_vegetables"
+          <input
+            id="product_category_dish"
+            type="radio"
+            name="product_category"
+            value="Dish"
+            hidden
+          />
+          <label
+            class="
+              btn-secondary
+              inline-block
+              mb-2
+              mr-1
+              transition-colors
+              duration-200
+            "
+            for="product_category_dish"
+            >Dish</label
+          >
+          <input
+            id="product_category_fruits_vegetables"
+            type="radio"
+            name="product_category"
+            value="Fruits & Vegetables"
+            hidden
+          />
+          <label
+            class="
+              btn-secondary
+              inline-block
+              mb-2
+              mr-1
+              transition-colors
+              duration-200
+            "
+            for="product_category_fruits_vegetables"
             >Fruits & Vegetables</label
           >
-          <input id="product_category_diary" type="radio" name="product_category" value="Diary" hidden />
-          <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="product_category_diary">Diary</label>
-          <input id="product_category_bread_pastery" type="radio" name="product_category" value="Bread & Pastry" hidden />
-          <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="product_category_bread_pastery"
+          <input
+            id="product_category_diary"
+            type="radio"
+            name="product_category"
+            value="Diary"
+            hidden
+          />
+          <label
+            class="
+              btn-secondary
+              inline-block
+              mb-2
+              mr-1
+              transition-colors
+              duration-200
+            "
+            for="product_category_diary"
+            >Diary</label
+          >
+          <input
+            id="product_category_bread_pastery"
+            type="radio"
+            name="product_category"
+            value="Bread & Pastry"
+            hidden
+          />
+          <label
+            class="
+              btn-secondary
+              inline-block
+              mb-2
+              mr-1
+              transition-colors
+              duration-200
+            "
+            for="product_category_bread_pastery"
             >Bread & Pastry</label
           >
-          <input id="product_category_dessert" type="radio" name="product_category" value="Dessert" hidden />
-          <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="product_category_dessert">Dessert</label>
+          <input
+            id="product_category_dessert"
+            type="radio"
+            name="product_category"
+            value="Dessert"
+            hidden
+          />
+          <label
+            class="
+              btn-secondary
+              inline-block
+              mb-2
+              mr-1
+              transition-colors
+              duration-200
+            "
+            for="product_category_dessert"
+            >Dessert</label
+          >
         </div>
         <label class="form-label pt-2">Diet</label>
         <div id="product-diet-wrapper">
-          <input id="product_diet_vegetarian" type="radio" name="product_diet" value="Vegetarian" hidden />
-          <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="product_diet_vegetarian">Vegetarian</label>
-          <input id="product_diet_vegan" type="radio" name="product_diet" value="Vegan" hidden />
-          <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="product_diet_vegan">Vegan</label>
-          <input id="product_diet_gluten_free" type="radio" name="product_diet" value="Gluten-free" hidden />
-          <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="product_diet_gluten_free">Gluten-free</label>
-          <input id="product_diet_diary_free" type="radio" name="product_diet" value="Diary-free" hidden />
-          <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="product_diet_diary_free">Diary-free</label>
+          <input
+            id="product_diet_vegetarian"
+            type="radio"
+            name="product_diet"
+            value="Vegetarian"
+            hidden
+          />
+          <label
+            class="
+              btn-secondary
+              inline-block
+              mb-2
+              mr-1
+              transition-colors
+              duration-200
+            "
+            for="product_diet_vegetarian"
+            >Vegetarian</label
+          >
+          <input
+            id="product_diet_vegan"
+            type="radio"
+            name="product_diet"
+            value="Vegan"
+            hidden
+          />
+          <label
+            class="
+              btn-secondary
+              inline-block
+              mb-2
+              mr-1
+              transition-colors
+              duration-200
+            "
+            for="product_diet_vegan"
+            >Vegan</label
+          >
+          <input
+            id="product_diet_gluten_free"
+            type="radio"
+            name="product_diet"
+            value="Gluten-free"
+            hidden
+          />
+          <label
+            class="
+              btn-secondary
+              inline-block
+              mb-2
+              mr-1
+              transition-colors
+              duration-200
+            "
+            for="product_diet_gluten_free"
+            >Gluten-free</label
+          >
+          <input
+            id="product_diet_diary_free"
+            type="radio"
+            name="product_diet"
+            value="Diary-free"
+            hidden
+          />
+          <label
+            class="
+              btn-secondary
+              inline-block
+              mb-2
+              mr-1
+              transition-colors
+              duration-200
+            "
+            for="product_diet_diary_free"
+            >Diary-free</label
+          >
         </div>
-        <label class="form-label pt-2" for="product_collection_time">Collection day</label>
+        <label class="form-label pt-2" for="product_collection_time"
+          >Collection day</label
+        >
 
         <input id="product-pick-up-day" class="form-input w-1/2" type="date" pattern="\d{2}-\d{2}-\d{4}" name="product_expiration-date" />
         <label class="form-label pt-2" for="product_collection_time">Time slots</label>
@@ -227,7 +497,14 @@
         <label class="form-label" for="product_description">Description</label>
         <textarea
           name="product_description"
-          class="rounded-3xl bg-light-grey outline-none border-2 border-light-black w-full p-3"
+          class="
+            rounded-3xl
+            bg-light-grey
+            outline-none
+            border-2 border-light-black
+            w-full
+            p-3
+          "
           id="product_description"
         ></textarea>
         <div id="user-data-wrapper"></div>
@@ -352,25 +629,74 @@
     <section id="browse" class="page container overflow-hidden">
       <h1 class="">Browse</h1>
       <div class="filter-wrapper flex justify-between">
-        <input onkeyup="search(this.value)" type="text" name="search-results" class="form-input w-full mr-2" placeholder="Search" />
-        <button onclick="showFiltersPage()" class="btn-tertiary rounded-full h-10 w-11 px-2 flex justify-center items-center">
+        <input
+          onkeyup="search(this.value)"
+          type="text"
+          name="search-results"
+          class="form-input w-full mr-2"
+          placeholder="Search"
+        />
+        <button
+          onclick="showFiltersPage()"
+          class="
+            btn-tertiary
+            rounded-full
+            h-10
+            w-11
+            px-2
+            flex
+            justify-center
+            items-center
+          "
+        >
           <img src="./src/media/icons/filter-icon.svg" class="h-5" alt="" />
         </button>
       </div>
       <div class="pt-2" id="selected-filters-wrapper"></div>
       <div id="filters-wrapper" class="w-full transition-all duration-300 h-screen fixed z-30 top-0 left-full bg-light-grey container">
         <div class="flex justify-between items-center pb-6">
-          <h1 class="flex pb-0"><img onclick="showFiltersPage()" src="./src/media/icons/close-icon.svg" alt="closing icon" />Filters</h1>
+          <h1 class="flex pb-0">
+            <img
+              onclick="showFiltersPage()"
+              src="./src/media/icons/close-icon.svg"
+              alt="closing icon"
+            />Filters
+          </h1>
           <div>
-            <button onclick="resetAllFiltersAndClose()" class="btn-text-black">Reset</button>
-            <button onclick="applyFiltersAndClose()" class="btn-text-green ml-2">Apply</button>
+            <button onclick="resetAllFiltersAndClose()" class="btn-text-black">
+              Reset
+            </button>
+            <button
+              onclick="applyFiltersAndClose()"
+              class="btn-text-green ml-2"
+            >
+              Apply
+            </button>
           </div>
         </div>
         <div class="filter-buttons-container">
           <label class="form-label pt-0">Categories</label>
           <div id="filter-category">
-            <input onclick="filterProduct(this.value, event)" id="filter_category_dish" type="checkbox" name="filter_category" value="Dish" hidden />
-            <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="filter_category_dish">Dish</label>
+            <input
+              onclick="filterProduct(this.value, event)"
+              id="filter_category_dish"
+              type="checkbox"
+              name="filter_category"
+              value="Dish"
+              hidden
+            />
+            <label
+              class="
+                btn-secondary
+                inline-block
+                mb-2
+                mr-1
+                transition-colors
+                duration-200
+              "
+              for="filter_category_dish"
+              >Dish</label
+            >
             <input
               onclick="filterProduct(this.value, event)"
               id="filter_category_fruits_vegetables"
@@ -379,7 +705,16 @@
               value="Fruits & Vegetables"
               hidden
             />
-            <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="filter_category_fruits_vegetables"
+            <label
+              class="
+                btn-secondary
+                inline-block
+                mb-2
+                mr-1
+                transition-colors
+                duration-200
+              "
+              for="filter_category_fruits_vegetables"
               >Fruits & Vegetables</label
             >
             <input
@@ -390,7 +725,18 @@
               value="Diary"
               hidden
             />
-            <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="filter_category_diary">Diary</label>
+            <label
+              class="
+                btn-secondary
+                inline-block
+                mb-2
+                mr-1
+                transition-colors
+                duration-200
+              "
+              for="filter_category_diary"
+              >Diary</label
+            >
             <input
               onclick="filterProduct(this.value, event)"
               id="filter_category_bread_pastery"
@@ -399,7 +745,16 @@
               value="Bread & Pastry"
               hidden
             />
-            <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="filter_category_bread_pastery"
+            <label
+              class="
+                btn-secondary
+                inline-block
+                mb-2
+                mr-1
+                transition-colors
+                duration-200
+              "
+              for="filter_category_bread_pastery"
               >Bread & Pastry</label
             >
             <input
@@ -410,7 +765,18 @@
               value="Dessert"
               hidden
             />
-            <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="filter_category_dessert">Dessert</label>
+            <label
+              class="
+                btn-secondary
+                inline-block
+                mb-2
+                mr-1
+                transition-colors
+                duration-200
+              "
+              for="filter_category_dessert"
+              >Dessert</label
+            >
           </div>
         </div>
         <div class="filter-buttons-container">
@@ -424,9 +790,38 @@
               value="Vegetarian"
               hidden
             />
-            <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="filter_diet_vegetarian">Vegetarian</label>
-            <input onclick="filterProduct(this.value, event)" id="filter_diet_vegan" type="checkbox" name="filter_diet" value="Vegan" hidden />
-            <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="filter_diet_vegan">Vegan</label>
+            <label
+              class="
+                btn-secondary
+                inline-block
+                mb-2
+                mr-1
+                transition-colors
+                duration-200
+              "
+              for="filter_diet_vegetarian"
+              >Vegetarian</label
+            >
+            <input
+              onclick="filterProduct(this.value, event)"
+              id="filter_diet_vegan"
+              type="checkbox"
+              name="filter_diet"
+              value="Vegan"
+              hidden
+            />
+            <label
+              class="
+                btn-secondary
+                inline-block
+                mb-2
+                mr-1
+                transition-colors
+                duration-200
+              "
+              for="filter_diet_vegan"
+              >Vegan</label
+            >
             <input
               onclick="filterProduct(this.value, event)"
               id="filter_diet_gluten_free"
@@ -435,7 +830,18 @@
               value="Gluten-free"
               hidden
             />
-            <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="filter_diet_gluten_free">Gluten-free</label>
+            <label
+              class="
+                btn-secondary
+                inline-block
+                mb-2
+                mr-1
+                transition-colors
+                duration-200
+              "
+              for="filter_diet_gluten_free"
+              >Gluten-free</label
+            >
             <input
               onclick="filterProduct(this.value, event)"
               id="filter_diet_diary_free"
@@ -444,7 +850,18 @@
               value="Diary-free"
               hidden
             />
-            <label class="btn-secondary inline-block mb-2 mr-1 transition-colors duration-200" for="filter_diet_diary_free">Diary-free</label>
+            <label
+              class="
+                btn-secondary
+                inline-block
+                mb-2
+                mr-1
+                transition-colors
+                duration-200
+              "
+              for="filter_diet_diary_free"
+              >Diary-free</label
+            >
           </div>
         </div>
       </div>
@@ -460,8 +877,14 @@
         <button class="btn-text-green">SEE ALL</button>
       </div>
 
-      <div class="border-light-black border-solid border bg-light-grey rounded-3xl">
-        <img src="./src/media/images/tipsandtrick.png" alt="" class="rounded-t-3xl" />
+      <div
+        class="border-light-black border-solid border bg-light-grey rounded-3xl"
+      >
+        <img
+          src="./src/media/images/tipsandtrick.png"
+          alt=""
+          class="rounded-t-3xl"
+        />
         <p class="p-4">How to store food properly and enjoy it for longer</p>
       </div>
 
@@ -472,13 +895,45 @@
       </div>
 
       <div class="overflow-auto flex whitespace-nowrap">
-        <div class="border-light-black border-solid border bg-light-grey rounded-3xl inline-block w-52 mr-4 whitespace-normal">
-          <img src="./src/media/images/news1.png" alt="" class="rounded-t-3xl" />
-          <p class="p-4 whitespace-pre-line">Major brand promised to reduce their food waste by 20%</p>
+        <div
+          class="
+            border-light-black border-solid border
+            bg-light-grey
+            rounded-3xl
+            inline-block
+            w-52
+            mr-4
+            whitespace-normal
+          "
+        >
+          <img
+            src="./src/media/images/news1.png"
+            alt=""
+            class="rounded-t-3xl"
+          />
+          <p class="p-4 whitespace-pre-line">
+            Major brand promised to reduce their food waste by 20%
+          </p>
         </div>
-        <div class="border-light-black border-solid border bg-light-grey rounded-3xl inline-block w-52 whitespace-normal">
-          <img src="./src/media/images/news2.png" alt="" class="rounded-t-3xl" />
-          <p class="p-4 whitespace-pre-line">Livestock or livestock feed occupies 1/3 of the earth’s ice-free land</p>
+        <div
+          class="
+            border-light-black border-solid border
+            bg-light-grey
+            rounded-3xl
+            inline-block
+            w-52
+            whitespace-normal
+          "
+        >
+          <img
+            src="./src/media/images/news2.png"
+            alt=""
+            class="rounded-t-3xl"
+          />
+          <p class="p-4 whitespace-pre-line">
+            Livestock or livestock feed occupies 1/3 of the earth’s ice-free
+            land
+          </p>
         </div>
       </div>
 
@@ -489,13 +944,42 @@
       </div>
 
       <div class="overflow-auto flex whitespace-nowrap">
-        <div class="border-light-black border-solid border bg-light-grey rounded-3xl inline-block w-52 mr-4 whitespace-normal">
-          <img src="./src/media/images/recipes1.png" alt="" class="rounded-t-3xl" />
+        <div
+          class="
+            border-light-black border-solid border
+            bg-light-grey
+            rounded-3xl
+            inline-block
+            w-52
+            mr-4
+            whitespace-normal
+          "
+        >
+          <img
+            src="./src/media/images/recipes1.png"
+            alt=""
+            class="rounded-t-3xl"
+          />
           <p class="p-4 whitespace-pre-line">Red curry with tofu and carrot</p>
         </div>
-        <div class="border-light-black border-solid border bg-light-grey rounded-3xl inline-block w-52 whitespace-normal">
-          <img src="./src/media/images/recipes2.png" alt="" class="rounded-t-3xl" />
-          <p class="p-4 whitespace-pre-line">Vegetable stock from leftover ingredients</p>
+        <div
+          class="
+            border-light-black border-solid border
+            bg-light-grey
+            rounded-3xl
+            inline-block
+            w-52
+            whitespace-normal
+          "
+        >
+          <img
+            src="./src/media/images/recipes2.png"
+            alt=""
+            class="rounded-t-3xl"
+          />
+          <p class="p-4 whitespace-pre-line">
+            Vegetable stock from leftover ingredients
+          </p>
         </div>
       </div>
     </section>
@@ -503,8 +987,54 @@
     <!-- SHOPPING LIST PAGE -->
     <section id="shoppingList" class="page container">
       <h1>Shopping List</h1>
-    </section>
 
+      <div class="form">
+        <form class="flex w-full flex-col form-shopping">
+          <label class="form-label">Product name</label>
+          <input
+            class="form-input"
+            id="itemToAdd"
+            type="text"
+            name="itemToAdd"
+            placeholder="Product name"
+          />
+
+          <div class="flex w-full">
+            <div class="w-1/2 pr-1 flex flex-col">
+              <label class="form-label">Amount</label>
+              <input
+                class="form-input"
+                id="productAmount"
+                type="number"
+                name="productAmount"
+                placeholder="Amount"
+              />
+            </div>
+            <div class="w-1/2 pr-1 flex flex-col">
+              <label class="form-label">Unit</label>
+              <input
+                class="form-input"
+                id="productUnit"
+                type="text"
+                name="productUnit"
+                placeholder="stk"
+              />
+            </div>
+          </div>
+          <button
+            class="btn-primary self-center mt-6"
+            id="addButton"
+            type="submit"
+            name="add_product_sl"
+            value="Add product"
+          >
+            Add product
+          </button>
+          <!-- <input class="btn-primary self-center mt-6" id="addButton" name="add_product_sl" value="Add product" /> -->
+        </form>
+      </div>
+      <div class="list" id="list"></div>
+    </section>
     <!-- PROFILE PAGE -->
     <section id="profile" class="page">
       <div class="container mb-10">
@@ -516,8 +1046,15 @@
           <div class="ml-4">
             <p class="profile-username"></p>
             <p class="grey-text pb-2">Joined 5 months ago</p>
-            <button class="btn-text-green" onclick="navigateTo('#/editProfile')">Edit profile</button>
-            <button class="btn-text-green ml-2 logout" onclick="logout()">Log out</button>
+            <button
+              class="btn-text-green"
+              onclick="navigateTo('#/editProfile')"
+            >
+              Edit profile
+            </button>
+            <button class="btn-text-green ml-2 logout" onclick="logout()">
+              Log out
+            </button>
           </div>
         </header>
         <span class="w-full h-px bg-green-custom block opacity-50 mb-4"></span>
@@ -526,7 +1063,8 @@
         <div class="mb-6">
           <p>Your environmental impact</p>
           <p class="mb-4 grey-text">
-            Thanks to your activities on Left Over, you are helping slow down the negative effects of food waste in the environment.
+            Thanks to your activities on Left Over, you are helping slow down
+            the negative effects of food waste in the environment.
           </p>
           <div>
             <div class="flex w-full justify-between mb-2">
@@ -553,11 +1091,35 @@
         <div class="profile-posts">
           <div class="flex justify-between w-full mb-4">
             <div class="w-1/2 active-profile-tab posted-tab">
-              <button class="btn-text-black posted-btn text-green-custom opacity-50 m-auto block font-normal" onclick="openPosted()">Posted</button>
+              <button
+                class="
+                  btn-text-black
+                  posted-btn
+                  text-green-custom
+                  opacity-50
+                  m-auto
+                  block
+                  font-normal
+                "
+                onclick="openPosted()"
+              >
+                Posted
+              </button>
               <span class="w-full h-px bg-green-custom block opacity-50"></span>
             </div>
             <div class="w-1/2 purchased-tab">
-              <button class="btn-text-black purchased-btn text-green-custom opacity-50 m-auto block font-normal" onclick="openPurchased()">
+              <button
+                class="
+                  btn-text-black
+                  purchased-btn
+                  text-green-custom
+                  opacity-50
+                  m-auto
+                  block
+                  font-normal
+                "
+                onclick="openPurchased()"
+              >
                 Purchased
               </button>
               <span class="w-full h-px bg-green-custom block opacity-50"></span>
@@ -580,18 +1142,42 @@
         <h1>Edit profile</h1>
         <form class="edit-profile-form flex flex-col">
           <label class="form-label">Name</label>
-          <input type="text" placeholder="Enter name" class="edit-profile-name form-input" />
+          <input
+            type="text"
+            placeholder="Enter name"
+            class="edit-profile-name form-input"
+          />
           <label class="form-label">Email</label>
-          <input type="text" placeholder="Enter email" class="edit-profile-email form-input" />
+          <input
+            type="text"
+            placeholder="Enter email"
+            class="edit-profile-email form-input"
+          />
           <label class="form-label">Password</label>
-          <input type="password" placeholder="Enter password" class="edit-profile-password form-input" />
+          <input
+            type="password"
+            placeholder="Enter password"
+            class="edit-profile-password form-input"
+          />
           <button class="btn-text-green mt-2 text-left">Change password</button>
           <label class="form-label">Phone number</label>
-          <input type="text" placeholder="Enter phone number" class="edit-profile-phone-number form-input" />
+          <input
+            type="text"
+            placeholder="Enter phone number"
+            class="edit-profile-phone-number form-input"
+          />
           <label class="form-label">Address</label>
-          <input type="text" placeholder="Enter address" class="edit-profile-address form-input" />
+          <input
+            type="text"
+            placeholder="Enter address"
+            class="edit-profile-address form-input"
+          />
           <label class="form-label">Zip code</label>
-          <input type="text" placeholder="Enter zip code" class="edit-profile-zip-code form-input" />
+          <input
+            type="text"
+            placeholder="Enter zip code"
+            class="edit-profile-zip-code form-input"
+          />
           <label class="form-label">City</label>
           <input type="text" placeholder="Enter city" class="edit-profile-city form-input" />
           <label class="form-label">Profile picture (max. 2 GB)</label>
