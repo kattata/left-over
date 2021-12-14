@@ -17,6 +17,7 @@ const _routes = {
   "#/editProfile": "editProfile",
   "#/myPostDetails": "myPostDetails",
   "#/purchasedSummary": "purchasedSummary",
+  "#/mobilePay": "mobilePay",
 };
 
 const _pages = document.querySelectorAll(".page");
