@@ -131,12 +131,16 @@ if ($_GET['action'] == 'newTransaction'){
   $transactionCollectionDay = $_POST['ts-collection_date'];
   $transactionPhone = $_POST['ts-phone_number'];
   $transactionTime = $_POST['ts-time_slot'];
+  $transactionImageName = $_POST['ts-image_name'];
+  $transactionSellerImage = $_POST['ts-seller_image'];
+  $transactionCategory = $_POST['ts-category'];
+  $transactionExpiresIn = $_POST['ts-expires_in'];
 
 
   $transactionQuery = $db->Query("INSERT INTO Transactions 
-  (transaction_id, post_id, seller_id, seller_username, buyer_id, buyer_username, product_name, amount, price, address, zip_code, city,	collection_day, phone_number, time_slot)
+  (transaction_id, post_id, seller_id, seller_username, buyer_id, buyer_username, product_name, amount, price, address, zip_code, city,	collection_day, phone_number, time_slot, seller_image, post_image, expires_in, category)
   VALUES ('$transactionId', '$transactionPostId', '$transactionSellerId', '$transactionSellerUserName', '$transactionBuyerId', '$transactionBuyerUserName', '$transactionProductName', '$transactionAmount'
-  ,'$transactionPrice', '$transactionAddress', '$transactionZipCod', '$transactionCity', '$transactionCollectionDay', '$transactionPhone','$transactionTime')");
+  ,'$transactionPrice', '$transactionAddress', '$transactionZipCod', '$transactionCity', '$transactionCollectionDay', '$transactionPhone','$transactionTime', '$transactionSellerImage', '$transactionImageName', '$transactionExpiresIn', '$transactionCategory')");
   echo $db -> error;
   
   $TransactionArray = $db->Query("SELECT * FROM Transactions");
@@ -158,10 +162,10 @@ if ($_GET['action'] == 'newTransaction'){
         "collection_day" => $result["collection_day"],
         "phone_number" => $result["phone_number"],
         "time_slot" => $result["time_slot"],
-
-
-
-
+        "seller_image" => $result["seller_image"],
+        "post_image" => $result["post_image"],
+        "category" => $result["category"],
+        "expires_in" => $result["expires_in"],
     );
     array_push($TransactionJsonArray, $transactionsArray);
 }
@@ -171,4 +175,5 @@ fclose($fp3);
 $source3 = "transactions.json";
 $destination3 = "./json/transactions.json";
 echo rename($source3, $destination3) ? "OK" : "ERROR" ;
+echo $transactionExpiresIn;
 }

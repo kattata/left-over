@@ -104,6 +104,41 @@ if ($_GET['action'] == 'updateUser') {
         $source = "posts.json";
         $destination = "./json/posts.json";
         rename($source, $destination) ? "OK" : "ERROR";
+        // update image in transaction
+        $db->Query("UPDATE Transactions SET seller_image = '$imgName' WHERE seller_id = '$id'");
+        
+        $TransactionArray = $db->Query("SELECT * FROM Transactions");
+        $TransactionJsonArray = array();
+        foreach ($TransactionArray as $result) {
+            $transactionsArray = array(
+                "transaction_id" => $result["transaction_id"],
+                "post_id" => $result["post_id"],
+                "seller_id" => $result["seller_id"],
+                "seller_username" => $result["seller_username"],
+                "buyer_id" => $result["buyer_id"],
+                "buyer_username" => $result["buyer_username"],
+                "product_name" => $result["product_name"],
+                "amount" => $result["amount"],
+                "price" => $result["price"],
+                "address" => $result["address"],
+                "zip_code" => $result["zip_code"],
+                "city" => $result["city"],
+                "collection_day" => $result["collection_day"],
+                "phone_number" => $result["phone_number"],
+                "time_slot" => $result["time_slot"],
+                "seller_image" => $result["seller_image"],
+                "post_image" => $result["post_image"],
+                "category" => $result["category"],
+                "expires_in" => $result["expires_in"],
+            );
+            array_push($TransactionJsonArray, $transactionsArray);
+            }
+            $fp3 = fopen('transactions.json', 'w');
+            fwrite($fp3, json_encode($TransactionJsonArray));
+            fclose($fp3);
+            $source3 = "transactions.json";
+            $destination3 = "./json/transactions.json";
+            rename($source3, $destination3) ? "OK" : "ERROR" ;
         // upload image
         move_uploaded_file($_FILES['file']["tmp_name"], $targetFolder . $fileName);
         // errors
