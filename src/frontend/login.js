@@ -176,7 +176,6 @@ async function appendPurchasedPosts(currentUser) {
   // append purchased posts
   for (const post of purchasedPosts) {
     if (currentUser && post.buyer_id == currentUser.user_id) {
-      console.log(post);
       let html = "";
       html = `
     <article class="post-box border-2 mb-4 border-light-black rounded-3xl overflow-hidden">
@@ -233,8 +232,9 @@ function openPostDetails(postId) {
 }
 
 function appendMyPostDetails(post) {
-  let html = "";
-  html = `
+  if (post) {
+    let html = "";
+    html = `
   <div class="flex justify-between">
   <button onclick="navigateTo('#/profile')" class="btn-text-green flex items-center">
     <img src="./src/media/icons/back-arrow-icon.svg" alt="arrow back" /> Back
@@ -253,11 +253,11 @@ function appendMyPostDetails(post) {
   <div class="flex justify-between mb-2 items-center">
   <span class="food-category-badge
   ${post.category == "Fruits & Vegetables" ? "bg-light-green-custom" : ""} ${
-    post.category == "Dish" ? "bg-light-blue" : ""
-  }
+      post.category == "Dish" ? "bg-light-blue" : ""
+    }
   ${post.category == "Bread & Pastry" ? "bg-light-orange" : ""} ${
-    post.category == "Dessert" ? "bg-light-violet" : ""
-  }
+      post.category == "Dessert" ? "bg-light-violet" : ""
+    }
   ${post.category == "Diary" ? "bg-light-red" : ""}">${post.category}</span>
   <p class="grey-text">Expires: ${post.expires_in}</p>
   </div>
@@ -278,7 +278,8 @@ function appendMyPostDetails(post) {
   </div>
   <p class="mt-6">${post.description}</p>
   `;
-  document.querySelector(".my-post-details").innerHTML = html;
+    document.querySelector(".my-post-details").innerHTML = html;
+  }
 }
 
 let uploadedEditPostImg = "";
@@ -353,14 +354,16 @@ async function updateCurrentPostSession(currentPost) {
 }
 
 function appendToEditPost(postInfo) {
-  editPostName.value = postInfo.product_name;
-  editPostAmount.value = postInfo.amount;
-  editPostPrice.value = postInfo.price;
-  editPostExpirationDate.value = postInfo.expires_in;
-  editPostDescription.value = postInfo.description;
-  editPostCategory.checked = postInfo.category;
-  editPostDiet.checked = postInfo.diet;
-  // editPostCollectionDay.value = postInfo.
+  if (postInfo) {
+    editPostName.value = postInfo.product_name;
+    editPostAmount.value = postInfo.amount;
+    editPostPrice.value = postInfo.price;
+    editPostExpirationDate.value = postInfo.expires_in;
+    editPostDescription.value = postInfo.description;
+    editPostCategory.checked = postInfo.category;
+    editPostDiet.checked = postInfo.diet;
+    // editPostCollectionDay.value = postInfo.
+  }
 }
 
 // delete post

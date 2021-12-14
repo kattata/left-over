@@ -157,11 +157,15 @@ async function appendTransactionDetails() {
 <p class="font-bold">Collection time</p>
 <p>${rightTransaction.time_slot}</p>
 </div> 
- <button  onclick="navigateTo('#/')" class="btn-primary mt-8 self-center">Continue browsing</button>
+ <button  onclick="goToBrowse()" class="btn-primary mt-8 self-center">Continue browsing</button>
   </article>
 
     `;
   document.querySelector("#purchase-summary").innerHTML = htnlTemplate;
+}
+function goToBrowse() {
+  navigateTo("#/");
+  window.location.reload();
 }
 
 function appendBuyProduct() {
@@ -201,7 +205,7 @@ function appendBuyProduct() {
     </div>
     <div class="flex justify-between  pt-2 items-center">
       <div class="flex items-center">
-        <img src="./src/media/posted/${
+        <img class="seller-img" src="./src/media/profile/${
           rightPost.seller_image
         }"><p class="text-sm pl-1">${rightPost.seller_username}</p>
       </div>
@@ -251,7 +255,7 @@ async function appendPostDetails(postId, sellerId) {
     </div>
     <div class="flex justify-between  pt-2 items-center">
       <div class="flex items-center">
-        <img src="./src/media/posted/${
+        <img class="seller-img" src="./src/media/profile/${
           rightPost.seller_image
         }"><p class="text-sm pl-1">${rightPost.seller_username}</p>
       </div>

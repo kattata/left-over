@@ -44,7 +44,7 @@ function appendPosts(posts) {
       post.category
     }</span>
         <div class="flex">
-          <img class="pr-1 w-6 h-6 object-cover object-center rounded-full" src="./src/media/posted/${
+          <img class="pr-1 w-6 h-6 object-cover object-center rounded-full" src="./src/media/profile/${
             post.seller_image
           }" alt="" />
           <p>${post.seller_username}</p>
@@ -80,7 +80,7 @@ function appendCheckedFilter(filters) {
     checked
     hidden
   />  
-  <label  class="btn-tertiary inline-block mt-2 mb-2 mr-1 transition-colors duration-200" for="checked_browse_${filter}">${filter} X</label>  
+  <label  class="btn-tertiary inline-block mt12 mb-1 mr-1 transition-colors duration-200" for="checked_browse_${filter}">${filter} X</label>  
     `;
     document.querySelector("#selected-filters-wrapper").innerHTML +=
       htnlTemplate;
