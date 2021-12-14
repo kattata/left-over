@@ -21,7 +21,7 @@ function appendPosts(posts) {
     <article onclick = "appendAndGoPostDetails(${post.post_id},${
       post.seller_id
     })" class="post-box border-2 mb-4 border-light-black rounded-3xl overflow-hidden">
-    <img class="max-h-24 w-full object-cover" src="./src/media/posted/${
+    <img class=" max-h-36 w-full object-cover" src="./src/media/posted/${
       post.image_name
     }" alt="image of sold food" />
     <div class="post-content-wrapper mx-3">
@@ -47,7 +47,7 @@ function appendPosts(posts) {
         <p>${post.product_name}</p>
         <p>DKK ${post.price}</p>
       </div>
-      <div class="flex justify-between mt-1 mb-4 opacity-50 text-xs">
+      <div class="flex justify-between mt-1 mb-2 opacity-50 text-xs">
         <p>Amount ${post.amount}</p>
         <p>Expires: ${post.expires_in}</p>
       </div>

@@ -179,7 +179,7 @@ function appendBuyProduct() {
   document.querySelector("#buy-product").innerHTML = "";
   let htnlTemplate = `
   <p class=" mt-4">You are buying</p>
-  <h2 class=" font-jesefin-sans">${rightPost.product_name}</h2>
+  <h2 class="">${rightPost.product_name}</h2>
   <article class="flex flex-col">
     <div class="flex justify-between mt-6">
     <span class="food-category-badge 
@@ -196,7 +196,7 @@ function appendBuyProduct() {
         rightPost.expires_in
       }</span>
     </div>
-    <img class="max-h-28 rounded-3xl mt-4 w-full object-cover" src="./src/media/posted/${
+    <img class="max-h-36 rounded-3xl mt-4 w-full object-cover" src="./src/media/posted/${
       rightPost.image_name
     }" alt="image of sold food" />
     <div class="flex justify-between font-bold pt-4 pb-2 border-b-1 border-light-green-custom">
@@ -229,7 +229,7 @@ async function appendPostDetails(postId, sellerId) {
   await getRightObjects(postId, sellerId);
   document.querySelector("#post-details-before-purchase").innerHTML = "";
   let htnlTemplate = `
-  <h2 class=" font-jesefin-sans mt-4">${rightPost.product_name}</h2>
+  <h2 class=" mt-4">${rightPost.product_name}</h2>
   <article class="flex flex-col">
     <div class="flex justify-between mt-6">
     <span class="food-category-badge 
@@ -246,7 +246,7 @@ async function appendPostDetails(postId, sellerId) {
         rightPost.expires_in
       }</span>
     </div>
-    <img class="max-h-28 rounded-3xl mt-4 w-full object-cover" src="./src/media/posted/${
+    <img class="max-h-36 rounded-3xl mt-4 w-full object-cover" src="./src/media/posted/${
       rightPost.image_name
     }" alt="image of sold food" />
     <div class="flex justify-between font-bold pt-4 pb-2 border-b-1 border-light-green-custom">
