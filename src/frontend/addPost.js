@@ -58,10 +58,15 @@ async function createPost() {
     productName: document.querySelector("#create-post-product-name").value,
     productAmount: document.querySelector("#create-post-product-amount").value,
     productPrice: document.querySelector("#create-post-product-price").value,
-    productCategory: document.querySelector('input[name="product_category"]:checked').value,
-    productDiet: document.querySelector('input[name="product_diet"]:checked').value,
+    productCategory: document.querySelector(
+      'input[name="product_category"]:checked'
+    ).value,
+    productDiet: document.querySelector('input[name="product_diet"]:checked')
+      .value,
     productDescription: document.querySelector("#product_description").value,
-    productExpirationDate: document.querySelector("#create-post-product-expiration-date").value,
+    productExpirationDate: document.querySelector(
+      "#create-post-product-expiration-date"
+    ).value,
     reservedDay: document.querySelector("#product-pick-up-day").value,
     reservedTimeSlots: JSON.stringify(_appliedTimeSlots),
   };
@@ -90,4 +95,6 @@ document.querySelector("#add-post-form").addEventListener("submit", (e) => {
   e.preventDefault();
   console.log("I work");
   createPost();
+  navigateTo("#/");
+  window.location.reload();
 });

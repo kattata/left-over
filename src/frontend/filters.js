@@ -70,7 +70,7 @@ function appendCheckedFilter(filters) {
     checked
     hidden
   />  
-  <label  class="btn-tertiary inline-block mt-2 mb-2 mr-1 transition-colors duration-200" for="checked_browse_${filter}">${filter} X</label>  
+  <label  class="btn-tertiary inline-block mt-1 mb-1 mr-1 transition-colors duration-200" for="checked_browse_${filter}">${filter} X</label>  
     `;
     document.querySelector("#selected-filters-wrapper").innerHTML += htnlTemplate;
   }

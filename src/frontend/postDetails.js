@@ -53,7 +53,6 @@ async function getRightObjects(postId, sellerId) {
       rightTimeSlots;
     }
   }
-  console.log(rightPost);
 }
 
 async function createTransactin() {
@@ -70,7 +69,8 @@ async function createTransactin() {
     sellerId: rightPost.seller_id,
     sellerUsername: rightPost.seller_username,
     soldProduct: rightPost.product_name,
-    timeSlot: document.querySelector('input[name="buy-product-radio"]:checked').value,
+    timeSlot: document.querySelector('input[name="buy-product-radio"]:checked')
+      .value,
     amount: rightPost.amount,
     price: rightPost.price,
     address: rightUser.address,
@@ -170,24 +170,38 @@ function appendBuyProduct() {
   <article class="flex flex-col">
     <div class="flex justify-between mt-6">
     <span class="food-category-badge 
-    ${rightPost.category == "Fruits & Vegetables" ? "bg-light-green-custom" : ""} ${rightPost.category == "Dish" ? "bg-light-blue" : ""}
-    ${rightPost.category == "Bread & Pastry" ? "bg-light-orange" : ""} ${rightPost.category == "Dessert" ? "bg-light-violet" : ""}
-    ${rightPost.category == "Diary" ? "bg-light-red" : ""}">${rightPost.category}</span>
-      <span class="text-xs opacity-50 font-bold">Expires: ${rightPost.expires_in}</span>
+    ${
+      rightPost.category == "Fruits & Vegetables" ? "bg-light-green-custom" : ""
+    } ${rightPost.category == "Dish" ? "bg-light-blue" : ""}
+    ${rightPost.category == "Bread & Pastry" ? "bg-light-orange" : ""} ${
+    rightPost.category == "Dessert" ? "bg-light-violet" : ""
+  }
+    ${rightPost.category == "Diary" ? "bg-light-red" : ""}">${
+    rightPost.category
+  }</span>
+      <span class="text-xs opacity-50 font-bold">Expires: ${
+        rightPost.expires_in
+      }</span>
     </div>
-    <img class="max-h-28 rounded-3xl mt-4 w-full object-cover" src="./src/media/posted/${rightPost.image_name}" alt="image of sold food" />
+    <img class="max-h-28 rounded-3xl mt-4 w-full object-cover" src="./src/media/posted/${
+      rightPost.image_name
+    }" alt="image of sold food" />
     <div class="flex justify-between font-bold pt-4 pb-2 border-b-1 border-light-green-custom">
       <p class="text-lg">Amount ${rightPost.amount}</p>
       <p class="text-lg">DKK ${rightPost.price}</p>
     </div>
     <div class="flex justify-between  pt-2 items-center">
       <div class="flex items-center">
-        <img src="./src/media/posted/${rightPost.seller_image}"><p class="text-sm pl-1">${rightPost.seller_username}</p>
+        <img src="./src/media/posted/${
+          rightPost.seller_image
+        }"><p class="text-sm pl-1">${rightPost.seller_username}</p>
       </div>
       <p class="text-sm">${rightUser.city}</p>
     </div>
     <h4 class="mt-6">Choose collection time</h4>
-    <label class="form-label" for="product_categories">${rightTimeSlots[0].day}</label>
+    <label class="form-label" for="product_categories">${
+      rightTimeSlots[0].day
+    }</label>
     <div id="buy-product-wrapper">
     ${htmlForTimeSlots}
     </div>
@@ -206,19 +220,31 @@ async function appendPostDetails(postId, sellerId) {
   <article class="flex flex-col">
     <div class="flex justify-between mt-6">
     <span class="food-category-badge 
-    ${rightPost.category == "Fruits & Vegetables" ? "bg-light-green-custom" : ""} ${rightPost.category == "Dish" ? "bg-light-blue" : ""}
-    ${rightPost.category == "Bread & Pastry" ? "bg-light-orange" : ""} ${rightPost.category == "Dessert" ? "bg-light-violet" : ""}
-    ${rightPost.category == "Diary" ? "bg-light-red" : ""}">${rightPost.category}</span>
-      <span class="text-xs opacity-50 font-bold">Expires: ${rightPost.expires_in}</span>
+    ${
+      rightPost.category == "Fruits & Vegetables" ? "bg-light-green-custom" : ""
+    } ${rightPost.category == "Dish" ? "bg-light-blue" : ""}
+    ${rightPost.category == "Bread & Pastry" ? "bg-light-orange" : ""} ${
+    rightPost.category == "Dessert" ? "bg-light-violet" : ""
+  }
+    ${rightPost.category == "Diary" ? "bg-light-red" : ""}">${
+    rightPost.category
+  }</span>
+      <span class="text-xs opacity-50 font-bold">Expires: ${
+        rightPost.expires_in
+      }</span>
     </div>
-    <img class="max-h-28 rounded-3xl mt-4 w-full object-cover" src="./src/media/posted/${rightPost.image_name}" alt="image of sold food" />
+    <img class="max-h-28 rounded-3xl mt-4 w-full object-cover" src="./src/media/posted/${
+      rightPost.image_name
+    }" alt="image of sold food" />
     <div class="flex justify-between font-bold pt-4 pb-2 border-b-1 border-light-green-custom">
       <p class="text-lg">Amount ${rightPost.amount}</p>
       <p class="text-lg">DKK ${rightPost.price}</p>
     </div>
     <div class="flex justify-between  pt-2 items-center">
       <div class="flex items-center">
-        <img src="./src/media/posted/${rightPost.seller_image}"><p class="text-sm pl-1">${rightPost.seller_username}</p>
+        <img src="./src/media/posted/${
+          rightPost.seller_image
+        }"><p class="text-sm pl-1">${rightPost.seller_username}</p>
       </div>
       <p class="text-sm">${rightUser.city}</p>
     </div>
@@ -226,6 +252,7 @@ async function appendPostDetails(postId, sellerId) {
     <button onclick="navigateTo('#/buyProduct')" class="btn-primary mt-8 self-center">Buy</button>
   </article>
     `;
-  document.querySelector("#post-details-before-purchase").innerHTML += htnlTemplate;
+  document.querySelector("#post-details-before-purchase").innerHTML +=
+    htnlTemplate;
   appendBuyProduct();
 }
