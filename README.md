@@ -12,6 +12,7 @@
 # Installation
 
 Note that the commands below apply only if you want to change the code.
+
 If you want to open it on your local machine, run the code with PHP server from index.html.
 
 ## Gulp and npm
