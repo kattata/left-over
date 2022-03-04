@@ -1,17 +1,22 @@
 # Left-over-spa
 
-Project of Kasia, Ola and Piotr
+- Student project developed in a group of 3
+- Goal: Practive full stack web development. The application helps people connect to exchange food products and meals in order to reduce food waste.
+- Stack: JavaScript, PHP, MySQL, Tailwind, Gulp, SASS
 
-![alt text](https://mir-s3-cdn-cf.behance.net/project_modules/disp/09f37545677313.5838e5ef4c6de.gif)
+## Test users
 
-# commands
+- **Email**: sofienielsen@gmail.com
+- **Password**: sofie99
 
-Note that those apply ONLY if you want to change the code
-if you want to open it on your local machine just run PHP serwer on index.html and you all good
+# Installation
 
-## Installation
+Note that the commands below apply only if you want to change the code.
+If you want to open it on your local machine, run the code with PHP server from index.html.
 
-Before you use the code run
+## Gulp and npm
+
+Before you use the code, run
 
 ```bash
 npm i
@@ -35,30 +40,23 @@ npm run build-tailwind
 
 ## SASS
 
-When you want to add styles or update them use Gulp it's awesome and merges all sass files together into one :)
+When you want to add styles or update them use Gulp to merge all SASS files together into one
 
-Also it will watch for changes in the scss files and compile, minifiy and bundle them at once.
+Also it will watch for changes in the SCSS files to compile, minify and bundle them.
 
 ```bash
 npm run gulp-watch
 ```
 
-## Before sending the code online
+## Before deployment
 
-It's important that you run the command belowe so that postcss can purge all the unused data, otherwise you are going to have 200k+ lines of css :)
+Run the command below for PostCSS to purge all the unused data and avoid excess CSS.
 
 ```bash
 npm run build
 ```
 
-# Coding structure
-
-## Test users
-
-- **Email**: sofienielsen@gmail.com
-- **Password**: sofie99
-
-## File structure
+# File structure
 
 - public/styles/ -> bundled scss and purged tailwind classes
 - src/styles/ -> tailwind.scss file and all scss that gets bundled by gulp
