@@ -1,4 +1,4 @@
-# Left-over-spa
+# Left Over
 
 - Student project developed in a group of 3
 - Goal: Practive full stack web development. The application helps people connect to exchange food products and meals in order to reduce food waste.
@@ -48,7 +48,7 @@ Also it will watch for changes in the SCSS files to compile, minify and bundle t
 npm run gulp-watch
 ```
 
-## Before deployment
+## Deployment
 
 Run the command below for PostCSS to purge all the unused data and avoid excess CSS.
 
