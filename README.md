@@ -1,7 +1,7 @@
 # Left Over
 
 - Student project developed in a group of 3
-- Goal: Practive full stack web development. The application helps people connect to exchange food products and meals in order to reduce food waste.
+- Goal: Practice full stack web development. The application helps people connect to exchange food products and meals in order to reduce food waste.
 - Stack: JavaScript, PHP, MySQL, Tailwind, Gulp, SASS
 
 ## Test users
